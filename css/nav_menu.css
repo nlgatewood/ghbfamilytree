@@ -1,0 +1,79 @@
+body {
+	color: white;
+}
+
+a {
+	color: #D34808;
+}
+
+a.back-home {
+	position: relative;
+	right: 5px;
+}
+
+/*Banner and Navigation Bar
+  -------------------------*/
+.banner {
+	width: 98%;
+	height: 190px;
+}
+
+ul.navbar {
+   list-style-type: none;
+	border: 2px double #78BEB3;
+	border-top-style: hidden;
+	border-right-style: hidden;
+	border-left-style: hidden;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+	width: 98%;
+}
+
+li a.navbar-link {
+    float: left;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+	 width: 120px;
+}
+
+li a.navbar-link:hover {
+    background-color: #78BEB3;
+}
+
+/*Family Selection link
+  ---------------------*/
+.dropdown {
+    float: right;
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+	 border: 5px solid #0D2F36;
+    background-color: #78BEB3;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	 top: 244px;
+	 left: 328px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+	 text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #0D2F36;
+}
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:block;}

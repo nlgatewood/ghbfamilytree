@@ -1,0 +1,35 @@
+div.panel {
+	margin-top: 50px;
+	margin-bottom: 21px;
+	border: 1px solid white;
+	border-radius: 4px;
+	width: 50%;
+}
+
+div.panel-heading {
+	color: #ffffff;
+	background-color: #4C808D;
+	border-color: #4C808D;
+	padding: 10px 15px;
+	border-bottom: 1px solid transparent;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+}
+
+h1.panel-title {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 20px;
+}
+div.panel p {
+
+	text-align:left;
+	margin-left: 10;
+	margin-right: 10;
+}
+
+div.panel-text p {
+
+	text-indent: 40px;
+}
+
