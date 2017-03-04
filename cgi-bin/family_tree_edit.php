@@ -2,8 +2,8 @@
 	//Get POST and GET variables
 	$page     = isset($_GET["pg"]) ? $_GET["pg"] : '';
 	$submit	  = isset($_POST["submit"]) ? $_POST["submit"] : '';
-	$user     = 'root';
-	$password = 'cs4bguz$';
+	$user     = $CONFIG['admin_uname'];
+	$password = $CONFIG['admin_pw'];
 	$dbase 	 = 'ghbfamilytree';
 
 	$field_array = [];
@@ -15,7 +15,7 @@
 
    //Get the field list to create the fields we want to populate
    //-----------------------------------------------------------
-   $conn = new mysqli('localhost','root','cs4bguz$','information_schema');
+   $conn = new mysqli('localhost',$user,$password,'information_schema');
 
 	//Get the members list
    $ft_members_sql = "SELECT column_name,column_comment FROM COLUMNS WHERE table_name IN ('ft_members') AND column_comment != ''";
