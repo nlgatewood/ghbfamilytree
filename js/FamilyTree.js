@@ -56,3 +56,12 @@ function collapseExpandTree(id){
 
    $('#'+id+'-fam-arrow').attr('src', '/images/'+arrowDirection+'_arrow_12x12.png');
 }
+
+/*------------------------------------------------------------------------------------
+ *Popup window code
+ *------------------------------------------------------------------------------------*/
+function popupWindow(url, name) {
+
+	popupWindow = window.open(url, name,'height=700,width=1000,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes');
+	popupwindow.focus();
+}

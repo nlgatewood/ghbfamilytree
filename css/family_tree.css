@@ -1,7 +1,7 @@
 /*Wrapper for the tree diagram*/
 div.tree-wrapper {
 
-	width: 80%;
+	width: 90%;
 	height: 700px; 
 	float: center;
 }
@@ -42,4 +42,45 @@ ul.tree-member-list li {
 .ft_members {
 
 	white-space: nowrap;
+}
+
+/*------------------------------------------
+ * 'tooltip' class
+ *------------------------------------------*/
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted #D34808;
+	 color: #D34808;
+	 float: left;
+}
+
+.tooltip .tooltiptext {
+
+    visibility: hidden;
+    width: 520px;
+	 background-color: #78BEB3;
+    color: black;
+    border: 5px solid #0D2F36;
+    text-align: left;
+    border-radius: 6px;
+    padding: 5px 0;
+	 padding-left: 8px;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip .tooltiptext ul {
+
+	list-style: none;
+}
+
+.tooltip:hover .tooltiptext {
+
+    visibility: visible;
 }

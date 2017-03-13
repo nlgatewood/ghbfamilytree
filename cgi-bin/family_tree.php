@@ -11,11 +11,50 @@ $ft_output_list = [];
 
 include('header.php');
 
-echo "<FORM method=post action='/?pg=family_tree&fam=".$fam."'>";
+echo "<FORM method=post action='/?pg=family_tree&fam=".$fam."'><BR>";
 
-//echo "<BR><iframe style='width:98%; height:100%' src='/gatewood_tree'></iframe>";
-echo "<BR><BR>
+echo "<h1>Gatewood Family Tree</h1><BR>
+		<div style='overflow:auto; width:80%; text-align:left;'>
+			<img src='images/ft_overview.png' height='40%' style='float:right; margin: 0 0 10px 10px;'>
+			<p style='text-indent:40px;'>
+The first United States Census in 1790 listed 22 families of Gatewoods living within the confines of the original thirteen states; eighteen in Virginia, three in North Carolina, and one of South Carolina.  While there are several Gatewood lines, this site will be focusing on Atwell Bowcock Gatewood and his heirs.  There's less information available on previous ancestors, but I hope to research  older ancestors in the near future and add them to the page.  Atwell Bowcock was born in 1829 in Stafford county, Virginia. He was the 2nd son of Thomas Jefferson Gatewood, Sr.  Thomas Jefferson Gatewood, who was the 5th generation from John Gatewood, the member who immigrated from England to America.  Atwell Bowcock married Fanny U. Harding and had several sons and daughters.  While several of his offspring met an untimely end,  three sons went on to create three large Gatewood branches: John Wallace Gatewood, Commilus Atwell Gatewood, and Cornealus Linzy Gatewood.  Therefore, we will be splitting the tree by the John Wallace tree, the Commilus Atwell tree, and the Cornealus Linzy tree. To the right is a simple tree diagram to help visualize the relationships.
+			</p>
+		   <p style='text-indent:40px;'>
+Below is a family member viewer tool to help users view family member information more easily.  In the left window of the member tool is the family member list split out by the different family branches, Thomas Jefferson to Atwell Bowcock, John Wallace, Commilus Atwell, and Cornealus Linzy.  The list is organized by family branches, starting with the oldest.  It begins with generation 0, then their partner, then the first born between generation 0 and his partner.  Once the first child's line is exhausted, it moves to the second  child and so on.  If more clarification is needed, please review the toolip at the top of the viewer tool for a more detailed example.
+			</p>
+			<p style='text-indent:40px;'>
+In addition to the family member viewer tool, a visual tree diagram supplied by <a href='https://www.familyecho.com/'>Family Echo</a> can be viewed by clicking on the icon next to the Family branch headers in the family member list of the viewer tool.  As of now, only the Commilus Atwell visual diagram is available.
+			</p>
+		</div>";
+
+echo "
 	<div class='tree-wrapper'>
+
+      <div class='tooltip'>How is this list sorted?
+         <span class='tooltiptext'>
+
+				Example - Beginning with Generation 0 (George H.W. Bush):
+				<ul>
+				 <li>George H.W. Bush</li>
+				 <li>Barbara Bush (married George H.W.)</li>
+				 <li>George W. Bush</li>
+				</ul>
+				If Generation 0's first child married and had children, then his wife and children would come next.  If the 1st born's line end's (George W.) we move on to the 2nd born of Generation 0 (Jeb Bush):
+				<ul>
+				 <li>George H.W. Bush</li>
+				 <li>Barbara Bush (married George H.W.)</li>
+				 <li>George W. Bush</li>
+				 <li>Laura Bush (married George W.)</li>
+				 <li>Jenna Bush</li>
+				 <li>Barbara Bush</li>
+				 <li>Jeb Bush</li>
+				 <li>Columba Bush (married Jeb)</li>
+				</ul>
+				The list continues down the branches sorted by age.
+
+         </span>
+      </div><BR><BR>
+
 	 <div class='tree-members'>
 	  <ul class='tree-member-list'>";
 
@@ -51,9 +90,12 @@ foreach($ft_output_list as $id => $field_array){
 			$msg = $member_first_name." ".$member_last_name;
 		}
 
-     echo "</ul>";
-     echo "<ul class='tree-member-list' id='".$id."-member-list'><div style='display:inline;' onclick='collapseExpandTree(".$id.");'><i>
-			 ".$msg." <img id='".$id."-fam-arrow' src='/images/up_arrow_12x12.png'></i></div>";
+     	echo "</ul>";
+   	echo "<ul class='tree-member-list' id='".$id."-member-list'>
+				<span style='display:inline;'>
+					<a href='javascript:popupWindow(\"/family_echo/commilus_tree/index.htm\", $id)'><img src='/images/family_echo_icon.png' width=5% height=3%></a>
+				</span>
+				<div style='display:inline;' onclick='collapseExpandTree(".$id.");'><i>".$msg." <img id='".$id."-fam-arrow' src='/images/up_arrow_12x12.png'></i></div>";
    }
 
    echo "<li class='ft_members' id='member".$id."'><a href='javascript:void(0)' onclick ='refreshFTFrame(".$id.");'>".
@@ -70,7 +112,7 @@ foreach($ft_output_list as $id => $field_array){
 echo "    </ul>
          </div>
          <iframe class='tree-details-frame' id='tree-details-frame' src='/?pg=ft_frame'></iframe>
-        </div>";
+        </div><BR><BR>";
 
 include('footer.php');
 
