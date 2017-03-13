@@ -93,7 +93,7 @@ foreach($ft_output_list as $id => $field_array){
      	echo "</ul>";
    	echo "<ul class='tree-member-list' id='".$id."-member-list'>
 				<span style='display:inline;'>
-					<a href='javascript:popupWindow(\"/family_echo/commilus_tree/index.htm\", $id)'><img src='/images/family_echo_icon.png' width=5% height=3%></a>
+					<a href='/family_echo/commilus_tree/index.htm' class='newPopup'><img src='/images/family_echo_icon.png' width=5% height=3%></a>
 				</span>
 				<div style='display:inline;' onclick='collapseExpandTree(".$id.");'><i>".$msg." <img id='".$id."-fam-arrow' src='/images/up_arrow_12x12.png'></i></div>";
    }

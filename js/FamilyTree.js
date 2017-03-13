@@ -1,5 +1,5 @@
 //li background changing color for the list of FT members
-$( document ).ready(function() {
+$(document).ready(function() {
 
 	$("#tree-details-frame").on("load", function () {
     
@@ -21,6 +21,19 @@ $( document ).ready(function() {
 				collapseExpandTree(parentIdInt[1]);
 			}
     	}
+    });
+
+	//popup when a member of the 'newPopup' class is clicked
+	$('.newPopup').click(function (event){
+ 
+		var url = $(this).attr("href");
+		var windowName = "popUp";
+		var winVars = "height=700,width=1000,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no";
+
+		var popup = window.open(url, windowName, winVars);
+ 		popup.focus();
+ 
+		event.preventDefault();
     });
 });
 
