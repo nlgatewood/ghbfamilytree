@@ -26,8 +26,8 @@ echo "<HTML>
 $member_name 		 = $ft_members_array['first_name']." ".$ft_members_array['middle_name']." ".$ft_members_array['last_name']." ".$ft_members_array['suffix'];
 $member_maiden 	 = ($ft_members_array['maiden_name'] != null) ? "(n&eacute;e ".$ft_members_array['maiden_name'].")" : '';
 $member_nicknames  = ($ft_members_array['nicknames'] != null) ? "Nicknames: ".$ft_members_array['nicknames'] : '';
-$member_birth 		 = ($ft_members_array['birth_date'] != null) ? $ft_members_array['birth_date'].": ".$ft_members_array['birth_loc'] : ' Unknown';
-$member_death 		 = ($ft_members_array['death_date'] != null) ? $ft_members_array['death_date'].": ".$ft_members_array['death_loc'] : ' N/A';
+$member_birth      = format_date($ft_members_array['birth_year'],$ft_members_array['birth_month'],$ft_members_array['birth_day'],'MM/DD/YYYY');
+$member_death      = format_date($ft_members_array['death_year'],$ft_members_array['death_month'],$ft_members_array['death_day'],'MM/DD/YYYY');
 $member_burial_loc = ($ft_members_array['burial_loc'] != null) ? $ft_members_array['burial_loc'] : '';
 $member_gender 	 = null;
 
@@ -161,8 +161,8 @@ foreach($ft_relation_array as $partner_id => $relation_array){
 	$ft_partner_array = get_member_data($partner_id);
 	$partner_name     = $ft_partner_array['first_name']." ".$ft_partner_array['middle_name']." ".$ft_partner_array['last_name']." ".$ft_partner_array['suffix'];
 	$partner_maiden   = ($ft_partner_array['maiden_name'] != null) ? " (n&eacute;e ".$ft_partner_array['maiden_name'].")" : '';
-	$relation_begin   = ($relation_array['begin_date'] != null) ? $relation_array['begin_date'].": ".$relation_array['begin_loc'] : ' N/A';
-	$relation_end     = ($relation_array['end_date'] != null) ? $relation_array['end_date']  : ' N/A';
+	$relation_begin	= format_date($relation_array['begin_year'],$relation_array['begin_month'],$relation_array['begin_day'],'MM/DD/YYYY');
+	$relation_end	   = format_date($relation_array['end_year'],$relation_array['end_month'],$relation_array['end_day'],'MM/DD/YYYY');
 
 	echo "<TR align='left'>
           <TD style='padding-right:25px; white-space:nowrap;'><a href='/?pg=ft_frame&id=".$partner_id."'>".$partner_name.$partner_maiden."</a></TD>
