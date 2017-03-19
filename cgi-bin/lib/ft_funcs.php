@@ -181,7 +181,7 @@
 	/*------------------------------------------------------------
 	 *
 	 *------------------------------------------------------------*/
-	function build_members_list($id, &$ft_members_array, &$ft_output_list){
+	function build_members_list($id, &$ft_members_array, &$ft_output_list, $gen){
 
 	   //my idea on how to deal with this...
 	   $ft_members_relations = get_member_relations($id);
@@ -189,7 +189,8 @@
 		$ft_output_list[$id] = array('first_name'		=> $ft_members_array[$id]['first_name'],
 											  'last_name'	   => $ft_members_array[$id]['last_name'],
 											  'middle_name'	=> $ft_members_array[$id]['middle_name'],
-											  'suffix'			=> $ft_members_array[$id]['suffix']);
+											  'suffix'			=> $ft_members_array[$id]['suffix'],
+											  'gen'           => $gen);
 
 	   //Get the person they had a relationship with
 	   foreach($ft_members_relations as $relation_member_id => $relation_data){
@@ -198,8 +199,10 @@
                                    	  						'last_name'     => $ft_members_array[$relation_member_id]['last_name'],
                                       						'middle_name'   => $ft_members_array[$relation_member_id]['middle_name'],
                                       						'suffix'        => $ft_members_array[$relation_member_id]['suffix'],
-																		'married'		 => $id);
+																		'married'		 => $id,
+																		'gen'				 => $gen);
 
+			$gen++;
 	      //Get the children they had together
 	      foreach($ft_members_array as $child_member_id => $child_data){
 
@@ -207,7 +210,7 @@
 	            ($child_data['parent_id1'] == $relation_member_id || $child_data['parent_id2'] == $relation_member_id)){
 
 	            //recursively build the tree
-	            build_members_list($child_member_id, $ft_members_array, $ft_output_list);
+	            build_members_list($child_member_id, $ft_members_array, $ft_output_list, $gen);
 	         }
 	      }
 	   }
