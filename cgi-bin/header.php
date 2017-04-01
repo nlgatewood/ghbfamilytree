@@ -22,9 +22,10 @@
                <script language='JavaScript' src='/js/lib/jquery-ui-1.10.3.custom.min.js'></script>
                <script language='JavaScript' src='/js/lib/jquery.cookie.js'></script>
                <script language='JavaScript' src='/js/lib/SigPlusWeb.js'></script>
+               <script language='JavaScript' src='/js/lib/lightbox/lightbox.js'></script>
                <script language='JavaScript' src='/js/HeaderMenuBar.js'></script>
                <script language='JavaScript' src='/js/FamilyTree.js'></script>
-               <script language='JavaScript' src='/js/dragscroll.js'></script>
+				<link href='/css/lightbox/lightbox.css' rel='stylesheet' type='text/css'/>
 				<link href='/css/family_tree.css' rel='stylesheet' type='text/css'/>
 				<link href='/css/nav_menu.css' rel='stylesheet' type='text/css'/>
 				<link href='/css/panel.css' rel='stylesheet' type='text/css'/>

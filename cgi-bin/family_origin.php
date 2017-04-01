@@ -17,6 +17,10 @@ echo "<div class='panel-text' style='width:80%; font-size:16px;'><BR>
 		<h1>Surname History and the Origins of the Gatewood Surname</h1><BR>
 		<h3 align='left'>History of European Surname</h3>
 <p>
+
+<a href='images/geo_genealogy_england.jpg' data-lightbox='image-1' data-title='My caption'>
+<img src='images/geo_genealogy_england.jpg' style='float:right;' width='20%'></a>
+
 A 'surname' in today's terms is simply a personal name that is passed from either or both parents to their offspring.  However, customs on the surname format and inheritance change from region to region and from time period to time period.  For example, in Western nations, surnames usually occur at the end of a personal name while some East Asian countries place their surnames before given names.  While almost everyone in the Western world today has a surname, before the Norman conquest of Britain in 1066 most people in Britain did not have hereditary surnames.  Populations were small, making each person identifiable by personal names or nicknames.  However, as the populations grew, distinguishing between different people with similar or identical names became a necessity.  At first, simple identifiers like 'William of Sutton' or 'John the Tall' were used as pseudo-surnames to help keep everybody straight.  At this time, surnames were rarely maintained through hereditary.  It was not uncommon for people to drop or change their surname at will.  Eventually, surnames begin to stick and began being passed down through the generations.  In most regions and time periods, surnames were assumed from the male ancestor.  However, this has not always been cut and dry.  There are cases where children assumed surnames through a female ancestor.  Use of the mother's name is usually due to an abnormal situation such as illegitimacy, posthumous birth, or inheritance.  Some regions and cultures actually encourage the use of the mother's surname.  Many Spanish-speaking cultures will combine both the mother's and the father's surname to create a dual surname.  Once surnames became hereditary, they began taking on more meaningful connotations.
 </p>
 
