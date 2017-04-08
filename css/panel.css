@@ -30,6 +30,11 @@ div.panel p {
 div.panel-text p {
 
 	text-indent: 40px;
-	text-align:left;
+	text-align: left;
 }
 
+div.panel-text p img {
+
+	width: 300px;
+   height: auto; 
+}
