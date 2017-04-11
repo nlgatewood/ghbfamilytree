@@ -119,8 +119,8 @@
 		$conn = get_mysqli_object();
 		$relation_array = [];
 
-		$sql = "SELECT IF(member_id1 != ".$id.",member_id1, member_id2) as 'partner',relation_type,begin_year,begin_month,begin_day,begin_loc,
-							end_year, end_month, end_day,end_reason
+		$sql = "SELECT id,IF(member_id1 != ".$id.",member_id1, member_id2) as 'partner',relation_type,begin_year,begin_month,begin_day,begin_loc,
+							end_year, end_month, end_day,end_reason,member_id1,member_id2
               FROM ft_members_relations 
                WHERE (member_id1 = ".$id." OR member_id2 = ".$id.")";
 
@@ -131,7 +131,8 @@
 
 		while($data = $result->fetch_assoc()){
 
-   		$relation_array[$data['partner']] = array('relation_type' => $data['relation_type'],
+   		$relation_array[$data['partner']] = array('id'				 => $data['id'],
+																	'relation_type' => $data['relation_type'],
                                                    'member_id1' 	 => $data['member_id1'],
                                                    'member_id2' 	 => $data['member_id2'],
                                                    'relation_type' => $data['relation_type'],
