@@ -1,21 +1,4 @@
 /*--------------------------------------
- * Top Page Description/images
- *--------------------------------------*/
-/*Main div - Encompassing all*/
-div.description {
-
-	overflow: auto;
-	width: 87%;
-	text-align: left;
-}
-
-/*Description paragrpahs*/
-div.description p {
-
-	text-indent: 40px;
-}
-
-/*--------------------------------------
  * Family Member Tool
  *--------------------------------------*/
 /*Wrapper for the tree diagram*/

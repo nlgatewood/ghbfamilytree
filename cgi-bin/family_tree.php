@@ -12,8 +12,8 @@ include('header.php');
 echo "<FORM method=post action='/?pg=family_tree'><BR>
 
 		<h1>Gatewood Family Tree</h1><BR>
-		<div class='description'>
-			<img src='images/ft_overview.png' height='33%' style='float:right; margin: 0 0 10px 10px;'>
+		<div class='page-text'>
+			<img src='images/ft_overview.png' style='width: 300px; height: auto; float:right; margin: 0 0 10px 10px;'>
 			<p>
 The first United States Census in 1790 listed 22 families of Gatewoods living within the confines of the original thirteen states; eighteen in Virginia, three in North Carolina, and one of South Carolina.  While there are several Gatewood lines, this site will be focusing on Atwell Bowcock Gatewood and his heirs.  There's less information available on previous ancestors, but I hope to research  older ancestors in the near future and add them to the page.  Atwell Bowcock was born in 1829 in Stafford county, Virginia. He was the 2nd son of Thomas Jefferson Gatewood, Sr.  Thomas Jefferson Gatewood, who was the 5th generation from John Gatewood, the member who immigrated from England to America.  Atwell Bowcock married Fanny U. Harding and had several sons and daughters.  While several of his offspring met an untimely end,  three sons went on to create three large Gatewood branches: John Wallace Gatewood, Commilus Atwell Gatewood, and Cornealus Linzy Gatewood.  Therefore, we will be splitting the tree by the John Wallace tree, the Commilus Atwell tree, and the Cornealus Linzy tree. To the right is a simple tree diagram to help visualize the relationships.
 			</p>

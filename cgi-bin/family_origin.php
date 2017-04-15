@@ -8,7 +8,7 @@ include('header.php');
 
 echo "<FORM method=post action='/'>";
 
-echo "<div class='page-text' style='width:80%; font-size:16px;'><BR>
+echo "<div class='page-text'><BR>
 		<h1>Surname History and the Origins of the Gatewood Surname</h1><BR>
 		<h3 align='left'>History of European Surname</h3>
 <p>
