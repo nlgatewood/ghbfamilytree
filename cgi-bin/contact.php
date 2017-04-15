@@ -11,7 +11,7 @@ echo "<FORM method=post action='/?pg=contact'>
          <div class='panel-heading'>
             <h1 class='panel-title'>Welcome to the contact page!</h1>
          </div>
-         <div class='panel-text'>
+         <div class='page-text'>
             <p style='text-align:left;'>I will update the Contact page shortly.</p>
          </div>
       </div>";

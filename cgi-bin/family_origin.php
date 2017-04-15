@@ -8,12 +8,7 @@ include('header.php');
 
 echo "<FORM method=post action='/'>";
 
-//echo" <div class='panel'>
-//     	<div class='panel-heading'>
-//         	<h1 class='panel-title'>The Origins of the Gatewood Surname</h1>
-//         </div>
-//      	<div class='panel-text' style='text-align:left;'>
-echo "<div class='panel-text' style='width:80%; font-size:16px;'><BR>
+echo "<div class='page-text' style='width:80%; font-size:16px;'><BR>
 		<h1>Surname History and the Origins of the Gatewood Surname</h1><BR>
 		<h3 align='left'>History of European Surname</h3>
 <p>
@@ -58,33 +53,23 @@ In order to understand how Gatewoods came to be located in the Americas, it's im
 The war and strife that plagued England in the 17th century caused many people to flee England; either voluntarily or involuntarily. Many ended up looking toward the Americas to begin a better life. One man caught up in the migration to the Americas was John Gatewood. He first appeared in Old Rappahannock county, Virginia as a constable in 1656; where several documents have him witnessing several land grant and exchanges.  After few generations, the Gatewood families began to move Westward.  They can eventually be found again in Missouri.  From there, some trekked further West all the way to California and Washington; while others found themselves in Texas where many of their descendants reside today.  It is possible that some Gatewoods may have relocated to the West Indies for a short amount of time. However, that's mostly speculative in that no Gatewood wills have been found there (Gatewood, 1981).
 </p>
 
-      	</div>
+</div>
 
-<div class='panel-sources'>
+<div class='page-sources'>
 
 <h3>Sources</h3>
 
-<p>Blake, Paul. “What's in a Name? Your link to the Past.” 26 Apr. 2011,
-http://www.bbc.co.uk/history/familyhistory/get_started/surnames_01.shtml
+<p>1) Blake, Paul. “What's in a Name? Your link to the Past.” 26 Apr. 2011, <a href='http://www.bbc.co.uk/history/familyhistory/get_started/surnames_01.shtml'>http://www.bbc.co.uk/history/familyhistory/get_started/surnames_01.shtml</a></p>
+<p>2) England Births and Christenings, 1538-1975. database, FamilySearch (<a href='https://familysearch.org/ark:/61903/1:1:NNBM-874'>https://familysearch.org/ark:/61903/1:1:NNBM-874</a>), Henry Gatwood, 11 Apr 1611; citing Coton, Cambridge, England, reference item 1; FHL microfilm 1,818,442</p>
+<p>3) England Births and Christenings, 1538-1975. database, FamilySearch (https://familysearch.org/ark:/61903/1:1:NP24-BPJ), John Gatwood, 10 Aug 1651; citing SAINT MARY SOMERSET,LONDON,LONDON,ENGLAND, reference ; FHL microfilm 845,245.</p>
+<p>4) Forebears. “Origin of Surnames.” <a href='http://forebears.io/surnames'>http://forebears.io/surnames</a></p>
+<p>5) Gatewood Family History. Ancestry.com. <a href='http://www.ancestry.com/name-origin?surname=Gatewood'>http://www.ancestry.com/name-origin?surname=Gatewood</a></p>
+<p>6) Gatewood, Gordon. Gatewood: Atwell Bowcock Gatewood Ancestry and Descendants. Stillhouse Hollow Publisher, 1981</p>
+<p>7) Hanks, Patrick, Coates, Richard, and McClure, Peter. The Oxford dictionary of family names in Britain and Ireland. 3rd ed., Oxford U Press, 2016, pp. 1024</p>
+<p>8) English Civil War - Charles I. Historyonthenet. 10 Dec. 2013. <a href='http://www.historyonthenet.com/english-civil-war-charles-i-the-slide-to-war'>http://www.historyonthenet.com/english-civil-war-charles-i-the-slide-to-war</a></p>
+<p>9) Reaney, Percy H., Wilson, Richard M. A Dictionary of English Surnames. Routledge, Chapman and Hall. 1958. <a href='https://books.google.com/books?id=5sVq7VQlNwcC'>https://books.google.com/books?id=5sVq7VQlNwcC</a></p>
 
-<p>England Births and Christenings, 1538-1975. database, FamilySearch (https://familysearch.org/ark:/61903/1:1:NNBM-874), Henry Gatwood, 11 Apr 1611; citing Coton, Cambridge, England, reference item 1; FHL microfilm 1,818,442
-
-<p>England Births and Christenings, 1538-1975. database, FamilySearch (https://familysearch.org/ark:/61903/1:1:NP24-BPJ), John Gatwood, 10 Aug 1651; citing SAINT MARY SOMERSET,LONDON,LONDON,ENGLAND, reference ; FHL microfilm 845,245.
-
-<p>Forebears. “Origin of Surnames.” http://forebears.io/surnames
-
-<p>Gatewood Family History. Ancestry.com.    http://www.ancestry.com/name-origin?surname=Gatewood
-
-<p>Gatewood, Gordon. Gatewood: Atwell Bowcock Gatewood Ancestry and Descendants. Stillhouse Hollow Publisher, 1981
-
-<p>Hanks, Patrick, Coates, Richard, and McClure, Peter. The Oxford dictionary of family names in Britain and Ireland. 3rd ed., Oxford U Press, 2016, pp. 1024
-
-<p>English Civil War - Charles I. Historyonthenet. 10 Dec. 2013. http://www.historyonthenet.com/english-civil-war-charles-i-the-slide-to-war/
-
-<p>Reaney, Percy H., Wilson, Richard M. A Dictionary of English Surnames. Routledge, Chapman and Hall. 1958. https://books.google.com/books?id=5sVq7VQlNwcC
-
-</div>
-      </div>";
+</div>";
 
 echo "</FORM>";
 

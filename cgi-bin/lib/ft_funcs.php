@@ -1,149 +1,268 @@
 <?php
 
-	/*------------------------------------------------------------
-	 * get_member_data($id) -- Returns an array of the persons
-	 *				'ft_members' data
-	 *------------------------------------------------------------*/
+   /*------------------------------------------------------------------------------
+    * get_member_data() - Look up the children of the member id passed.  Return
+    *                         results in an array.
+    *------------------------------------------------------------------------------*/
 	function get_member_data($id) {
-	
+
 		$ft_members_array = [];
-		$conn = get_mysqli_object(); //Get the connection to the database
+		$has_id = ($id == null) ? 0 : 1;		//id flag - '1'=id passed, '0'=no id passed
+		$conn = get_mysqli_object(); 			//Get the connection to the database
 
-		//Get all the members of the tree
-		$sql = "SELECT * FROM ft_members";
-		$sql .= ($id != null) ? " WHERE id = ".$id : "";
+		$sql = "SELECT id, first_name, middle_name, last_name, maiden_name, nicknames,
+       			      gender, birth_year, birth_month, birth_day, birth_loc, death_year,
+	   		         death_month, death_day, death_loc, burial_loc, bio, parent_id1, parent_id2
+	   		  FROM ft_members
+	   		  WHERE (id = ? OR ".$has_id."=0)";
 
-		if(!$result = $conn->query($sql)) {
+		if($stmt = $conn->prepare($sql)){
 
-   		echo "Query: " . $sql . "\nError: " . $conn ->errno."--".$conn->error;
+			$stmt->bind_param("i", $id); 
+			$stmt->execute();
+
+			$stmt->bind_result($res_id, $first_name, $middle_name, $last_name, $maiden_name, $nicknames,
+									 $gender, $birth_year, $birth_month, $birth_day, $birth_loc, $death_year,
+	   		       		    $death_month, $death_day, $death_loc, $burial_loc, $bio, $parent_id1, $parent_id2);
+
+			while($stmt->fetch()){
+
+	   			$data = array('id'	      	=> $res_id,
+	   				      	  'first_name'    => $first_name,
+	   				      	  'middle_name'   => $middle_name,
+	   				      	  'last_name'     => $last_name,
+	   				      	  'maiden_name'   => $maiden_name,
+	   				      	  'nicknames'     => $nicknames,
+	   				      	  'gender'        => $gender,
+	   				      	  'birth_year'    => $birth_year,
+	   				      	  'birth_month'   => $birth_month,
+	   				      	  'birth_day'     => $birth_day,
+	   				      	  'birth_loc'     => $birth_loc,
+	   				      	  'death_year'    => $death_year,
+	   				      	  'death_month'   => $death_month,
+	   				      	  'death_day'     => $death_day,
+	   				      	  'death_loc'     => $death_loc,
+	   				      	  'burial_loc'    => $burial_loc,
+	   				      	  'bio'   	      => $bio,
+	   				      	  'parent_id1'    => $parent_id1,
+	   				      	  'parent_id2'    => $parent_id2);
+
+	   			if(!$has_id){
+
+	   				$ft_members_array[$res_id] = $data;
+	   			}
+	   			else{
+
+	   				$ft_members_array = $data;
+	   			}
+    			}
+
+    			//close the statement
+    			$stmt->close();
 		}
 
-		//If an 'id' wasn't passed, add to array by id
-		if($id == null){
-
-			while ($data = $result->fetch_assoc()) {
-
-        		$ft_members_array[$data['id']] = $data;
-			}
-		}
-		//Else, just copy the returned data
-		else{
-			$ft_members_array = $result->fetch_assoc();
-		}
-
+		//close the connection
 		$conn->close();
 
 		return $ft_members_array;
 	}
 
-   /*------------------------------------------------------------
-    * get_member_parents($id) - returns an array of the member's
-    *             Parent information
-    *------------------------------------------------------------*/
+   /*------------------------------------------------------------------------------
+    * get_member_parents() - Look up the parents of the member id passed.  Return
+    *                        parent's member information in an array.
+    *------------------------------------------------------------------------------*/
    function get_member_parents($id){
 
-      $conn = get_mysqli_object();
+      if($id == null){
+
+         echo "ft_funcs::get_member_parents() - id parameter is null";
+         return [];
+      }
+
       $parents_array = [];
+      $conn = get_mysqli_object();
 
-      $sql = "SELECT * FROM ft_members 
-				  WHERE (id IN(SELECT parent_id1 FROM ft_members WHERE id = ".$id.") OR 
-						   id IN(SELECT parent_id2 FROM ft_members WHERE id=".$id."))";
+      $sql = "SELECT id, first_name, middle_name, last_name, maiden_name, nicknames,
+                     gender, birth_year, birth_month, birth_day, birth_loc, death_year,
+                     death_month, death_day, death_loc, burial_loc, bio, parent_id1, parent_id2
+				  FROM ft_members 
+				  WHERE (id IN(SELECT parent_id1 FROM ft_members WHERE id = ?) OR 
+						   id IN(SELECT parent_id2 FROM ft_members WHERE id= ?))";
 
+      if($stmt = $conn->prepare($sql)){
 
-      if(!$result = $conn->query($sql)){
+         $stmt->bind_param("ii", $id,$id);
+         $stmt->execute();
 
-         echo "Query: " . $sql . "\nError: " . $conn ->errno."--".$conn->error;
-      }
+         $stmt->bind_result($res_id, $first_name, $middle_name, $last_name, $maiden_name, $nicknames,
+                            $gender, $birth_year, $birth_month, $birth_day, $birth_loc, $death_year,
+                            $death_month, $death_day, $death_loc, $burial_loc, $bio, $parent_id1, $parent_id2);
 
-      while($data = $result->fetch_assoc()){
+         while($stmt->fetch()){
 
-         $parents_array[$data['id']] = $data;
-      }
+               $data = array('id'            => $res_id,
+                             'first_name'    => $first_name,
+                             'middle_name'   => $middle_name,
+                             'last_name'     => $last_name,
+                             'maiden_name'   => $maiden_name,
+                             'nicknames'     => $nicknames,
+                             'gender'        => $gender,
+                             'birth_year'    => $birth_year,
+                             'birth_month'   => $birth_month,
+                             'birth_day'     => $birth_day,
+                             'birth_loc'     => $birth_loc,
+                             'death_year'    => $death_year,
+                             'death_month'   => $death_month,
+                             'death_day'     => $death_day,
+                             'death_loc'     => $death_loc,
+                             'burial_loc'    => $burial_loc,
+                             'bio'           => $bio,
+                             'parent_id1'    => $parent_id1,
+                             'parent_id2'    => $parent_id2);
 
+					$parents_array[$res_id] = $data;
+				}
+
+				//close the statement
+				$stmt->close();
+		}
+
+		//close the connection
 		$conn->close();
 
-      return $parents_array;
-   }
+		return $parents_array;
+	}
 
-	/*------------------------------------------------------------
-	 * get_member_siblings($id) - Returns an array of the member's
-	 * 				siblings
-	 *------------------------------------------------------------*/
+   /*------------------------------------------------------------------------------
+    * get_member_siblings() - Look up the siblings of the member id passed.  Return
+    *                         the siblings member information in an array.
+    *------------------------------------------------------------------------------*/
 	function get_member_siblings($id){
 
-		$conn = get_mysqli_object();
+		if($id == null){
+
+			echo "ft_funcs::get_member_siblings() - id parameter is null";
+			return [];
+		}
+
+		$p_id1;
+		$p_id2;
 		$sibling_array = [];
+		$conn = get_mysqli_object();
 
 		//Get the parents id
 		$sql = "SELECT parent_id1, parent_id2
 				  FROM ft_members
-					WHERE id=".$id;
+					WHERE id= ?";
 
-		if(!$result = $conn->query($sql)){
+		if($stmt = $conn->prepare($sql)){
 
-         echo "Query: " . $sql . "\nError: " . $conn ->errno."--".$conn->error;
-      }
+			$stmt->bind_param("i",$id);
+			$stmt->execute();
 
-		$pdata = $result->fetch_assoc();
+			$stmt->bind_result($p_id1,$p_id2);
+			$stmt->fetch();
+			
+			$stmt->close();
+		}
 
 		//Get the siblings
-		$sib_sql = "SELECT *
+		$sib_sql = "SELECT id, first_name, middle_name, last_name, maiden_name, nicknames,
+                         gender, birth_year, birth_month, birth_day, birth_loc, death_year,
+                         death_month, death_day, death_loc, burial_loc, bio, parent_id1, parent_id2
 					  FROM ft_members
-						WHERE ((parent_id1='".$pdata['parent_id1']."' OR
-								  parent_id1='".$pdata['parent_id2']."') AND
-								 (parent_id2='".$pdata['parent_id1']."' OR
-								  parent_id2='".$pdata['parent_id2']."'))
-						AND id !=".$id;
+						WHERE ((parent_id1= ?  OR
+								  parent_id1= ?) AND
+								 (parent_id2= ?  OR
+								  parent_id2= ?))
+						AND id != ?";
 
-      if(!$result = $conn->query($sib_sql)){
+		if($stmt = $conn->prepare($sib_sql)){
 
-         echo "Query: " . $sql . "\nError: " . $conn ->errno."--".$conn->error;
-      }
+			$stmt->bind_param("iiiii", $p_id1,$p_id2,$p_id1,$p_id2,$id);
+			$stmt->execute();
 
-      while($sib_data = $result->fetch_assoc()){
+         $stmt->bind_result($sib_id, $first_name, $middle_name, $last_name, $maiden_name, $nicknames,
+                            $gender, $birth_year, $birth_month, $birth_day, $birth_loc, $death_year,
+                            $death_month, $death_day, $death_loc, $burial_loc, $bio, $parent_id1, $parent_id2);
 
-         $sibling_array[$sib_data['id']] = $sib_data;
-      }
+         while($stmt->fetch()){
 
+         	$data = array('id'            => $sib_id,
+								  'first_name'    => $first_name,
+                           'middle_name'   => $middle_name,
+                           'last_name'     => $last_name,
+                           'maiden_name'   => $maiden_name,
+                           'nicknames'     => $nicknames,
+                           'gender'        => $gender,
+                           'birth_year'    => $birth_year,
+                           'birth_month'   => $birth_month,
+                           'birth_day'     => $birth_day,
+                           'birth_loc'     => $birth_loc,
+                           'death_year'    => $death_year,
+                           'death_month'   => $death_month,
+                           'death_day'     => $death_day,
+                           'death_loc'     => $death_loc,
+                           'burial_loc'    => $burial_loc,
+                           'bio'           => $bio,
+                           'parent_id1'    => $parent_id1,
+                           'parent_id2'    => $parent_id2);
+
+				$sibling_array[$sib_id] = $data;
+			}
+		}
 		$conn->close();
 
 		return $sibling_array;
 	}
 
-	/*------------------------------------------------------------
-	 * get_member_relations($id) - returns an array of the member's
-	 *					relationship history
-	 *------------------------------------------------------------*/
+   /*------------------------------------------------------------------------------
+    * get_member_relations() - Look up the relationships of the member id passed.  Return
+    *                          a list of the members in a relationship with
+    *------------------------------------------------------------------------------*/
 	function get_member_relations($id){
 
-		$conn = get_mysqli_object();
-		$relation_array = [];
+      if($id == null){
 
-		$sql = "SELECT id,IF(member_id1 != ".$id.",member_id1, member_id2) as 'partner',relation_type,begin_year,begin_month,begin_day,begin_loc,
+         echo "ft_funcs::get_member_relations() - id parameter is null";
+         return [];
+      }
+
+		$relation_array = [];
+		$conn = get_mysqli_object();
+
+		$sql = "SELECT id,IF(member_id1 != ?,member_id1, member_id2) as 'partner',relation_type,begin_year,begin_month,begin_day,begin_loc,
 							end_year, end_month, end_day,end_reason,member_id1,member_id2
               FROM ft_members_relations 
-               WHERE (member_id1 = ".$id." OR member_id2 = ".$id.")";
+               WHERE (member_id1 = ? OR member_id2 = ?)";
 
-		if(!$result = $conn->query($sql)){
+		if($stmt = $conn->prepare($sql)){
 
-   		echo "Query: " . $sql . "\nError: " . $conn ->errno."--".$conn->error;
-		}
+			$stmt->bind_param("iii", $id,$id,$id);
+			$stmt->execute();
 
-		while($data = $result->fetch_assoc()){
+			$stmt->bind_result($r_id,$partner_id,$relation_type,$begin_year,$begin_month,$begin_day,$begin_loc,
+									 $end_year,$end_month,$end_day,$end_reason,$member_id1,$member_id2);
 
-   		$relation_array[$data['partner']] = array('id'				 => $data['id'],
-																	'relation_type' => $data['relation_type'],
-                                                   'member_id1' 	 => $data['member_id1'],
-                                                   'member_id2' 	 => $data['member_id2'],
-                                                   'relation_type' => $data['relation_type'],
-                                                   'begin_year' 	 => $data['begin_year'],
-                                                   'begin_month' 	 => $data['begin_month'],
-                                                   'begin_day' 	 => $data['begin_day'],
-                                                   'begin_loc' 	 => $data['begin_loc'],
-                                                   'end_year' 		 => $data['end_year'],
-                                                   'end_month' 	 => $data['end_month'],
-                                                   'end_day' 		 => $data['end_day'],
-                                                   'end_reason' 	 => $data['end_reason']);
+			while($stmt->fetch()){
+
+         	$data = array('id'            => $r_id,
+                          'relation_type' => $relation_type,
+                          'begin_year'    => $begin_year,
+                          'begin_month'   => $begin_month,
+                          'begin_day'     => $begin_day,
+                          'begin_loc'     => $begin_loc,
+                          'end_year'      => $end_year,
+                          'end_month'     => $end_month,
+                          'end_day'       => $end_day,
+                          'end_reason'    => $end_reason,
+                          'member_id1'    => $member_id1,
+                          'member_id2'    => $member_id2);
+
+				$relation_array[$partner_id] = $data;
+			}
+
+			$stmt->close();
 		}
 
 		$conn->close();
@@ -151,27 +270,63 @@
 		return $relation_array;
 	}
 
-	/*------------------------------------------------------------
-	 * get_member_children() - Get an array of the member's children
-	 *------------------------------------------------------------*/
+	/*------------------------------------------------------------------------------
+	 * get_member_children() - Look up the children of the member id passed.  Return
+	 *									results in an array.
+	 *------------------------------------------------------------------------------*/
 	function get_member_children($id){
 
-		$conn = get_mysqli_object();
+      if($id == null){
+
+         echo "ft_funcs::get_member_children() - id parameter is null";
+         return [];
+      }
+
 		$children_array = [];
+		$conn = get_mysqli_object();
 
 		// Get this person's children information
-		$sql = "SELECT *
+		$sql = "SELECT id, first_name, middle_name, last_name, maiden_name, nicknames,
+                     gender, birth_year, birth_month, birth_day, birth_loc, death_year,
+                     death_month, death_day, death_loc, burial_loc, bio, parent_id1, parent_id2
               FROM ft_members
-               WHERE (parent_id1 = ".$id." OR parent_id2 = ".$id.")";
+               WHERE (parent_id1 = ? OR parent_id2 = ?)";
 
-		if(!$result = $conn->query($sql)){
+		if($stmt = $conn->prepare($sql)){
 
-   		echo "Query: " . $sql . "\nError: " . $conn ->errno."--".$conn->error;
-		}
+			$stmt->bind_param("ii",$id,$id);
+			$stmt->execute();
 
-		while($data = $result->fetch_assoc()){
+         $stmt->bind_result($child_id, $first_name, $middle_name, $last_name, $maiden_name, $nicknames,
+                            $gender, $birth_year, $birth_month, $birth_day, $birth_loc, $death_year,
+                            $death_month, $death_day, $death_loc, $burial_loc, $bio, $parent_id1, $parent_id2);
 
-   		$children_array[$data['id']] = $data;
+			while($stmt->fetch()){
+
+            $data = array('id'            => $child_id,
+                          'first_name'    => $first_name,
+                           'middle_name'  => $middle_name,
+                           'last_name'    => $last_name,
+                           'maiden_name'  => $maiden_name,
+                           'nicknames'    => $nicknames,
+                           'gender'       => $gender,
+                           'birth_year'   => $birth_year,
+                           'birth_month'  => $birth_month,
+                           'birth_day'    => $birth_day,
+                           'birth_loc'    => $birth_loc,
+                           'death_year'   => $death_year,
+                           'death_month'  => $death_month,
+                           'death_day'    => $death_day,
+                           'death_loc'    => $death_loc,
+                           'burial_loc'   => $burial_loc,
+                           'bio'          => $bio,
+                           'parent_id1'   => $parent_id1,
+                           'parent_id2'   => $parent_id2);
+
+				$children_array[$child_id] = $data;
+			}
+
+			$stmt->close();
 		}
 
 		$conn->close();
@@ -179,9 +334,10 @@
 		return $children_array;
 	}
 
-	/*------------------------------------------------------------
-	 *
-	 *------------------------------------------------------------*/
+   /*------------------------------------------------------------------------------
+    * build_members_list() - Recursive function to build a sorted list of family members
+    *                        for the family tree tool.
+    *------------------------------------------------------------------------------*/
 	function build_members_list($id, &$ft_members_array, &$ft_output_list, $gen){
 
 	   //my idea on how to deal with this...

@@ -8,9 +8,9 @@ include('header.php');
 echo "<FORM method=post action='/?pg=about'>
       <div class='panel'>
          <div class='panel-heading'>
-            <h1 class='panel-title'>Welcome to the about page!</h1>
+            <h1 class='page-title'>Welcome to the about page!</h1>
          </div>
-         <div class='panel-text'>
+         <div class='page-text'>
             <p style='text-align:left;'>I will update the about page shortly.</p>
          </div>
       </div>";

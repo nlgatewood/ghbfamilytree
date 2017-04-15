@@ -25,10 +25,10 @@
                <script language='JavaScript' src='/js/lib/lightbox/lightbox.js'></script>
                <script language='JavaScript' src='/js/HeaderMenuBar.js'></script>
                <script language='JavaScript' src='/js/FamilyTree.js'></script>
-				<link href='/css/lightbox/lightbox.css' rel='stylesheet' type='text/css'/>
+				<link href='/css/page_layout.css' rel='stylesheet' type='text/css'/>
 				<link href='/css/family_tree.css' rel='stylesheet' type='text/css'/>
 				<link href='/css/nav_menu.css' rel='stylesheet' type='text/css'/>
-				<link href='/css/panel.css' rel='stylesheet' type='text/css'/>
+				<link href='/css/lightbox/lightbox.css' rel='stylesheet' type='text/css'/>
 			</HEAD>
 			<BODY style='background-color:222223';>
 			 <CENTER>";

@@ -12,7 +12,7 @@ echo" <div class='panel'>
       	<div class='panel-heading'>
          	<h1 class='panel-title'>Welcome to the Gatewood Timeline Page!</h1>
          </div>
-      	<div class='panel-text'>
+      	<div class='page-text'>
       		<p style='text-align:left;'>The Gatewood Timeline page is currently under construction.</p>
       	</div>
       </div>";
