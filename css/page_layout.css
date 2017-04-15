@@ -42,6 +42,11 @@ div.page-text p {
 	margin-right: 10;
 }
 
+div.page-text h1 {
+
+	margin-top: 75px;
+}
+
 div.page-text p img {
 
    width: 300px;

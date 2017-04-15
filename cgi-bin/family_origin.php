@@ -8,11 +8,10 @@ include('header.php');
 
 echo "<FORM method=post action='/'>";
 
-echo "<div class='page-text'><BR>
-		<h1>Surname History and the Origins of the Gatewood Surname</h1><BR>
+echo "<div class='page-text'>
+		<h1>Surname History and the Origins of the Gatewood Surname</h1>
 		<h3 align='left'>History of European Surname</h3>
 <p>
-
 <a href='images/geo_genealogy_england.jpg' data-lightbox='image-1' data-title='My caption'>
 <img src='images/geo_genealogy_england.jpg' style='float:right; margin-left: 10px;'></a>
 
