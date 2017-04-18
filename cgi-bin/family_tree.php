@@ -56,7 +56,7 @@ echo "<div class='tree-wrapper'>
 	  <ul class='tree-member-list'>";
 
 //create the ft member list to output
-build_members_list(1,$ft_members_array, $ft_output_list,0);
+build_members_list(1001,$ft_members_array, $ft_output_list,0);
 
 //Loop through each member in the tree
 foreach($ft_output_list as $id => $field_array){
@@ -72,11 +72,11 @@ foreach($ft_output_list as $id => $field_array){
 	$margin 				  = $gen*20;
 
 	//If this is the beginning of a tree, add the heading and family_echo icon
-   if($id == 1 || $id == 11){
+   if($id == 1001 || $id == 1011){
 		
 		$msg = '';
 
-		if($id == 1){
+		if($id == 1001){
 			$msg = "Thomas Jefferson to Atwell Bowcock";
 		}
 		else{

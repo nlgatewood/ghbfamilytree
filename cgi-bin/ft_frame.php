@@ -13,6 +13,7 @@ $ft_parents_array  = get_member_parents($id);
 $ft_siblings_array = get_member_siblings($id);
 $ft_relation_array = get_member_relations($id);
 $ft_children_array = get_member_children($id);
+$image_dir = "";
 
 echo "<HTML>
 		<HEAD>
@@ -43,8 +44,18 @@ else{
    $member_gender = 'Unknown';
 }
 
+//Get the profile image.  If it doesn't exist, use the empty image
+if(file_exists("./images/family/".$id."/profile.jpg")){
+
+	$image_dir = "/images/family/".$id."/profile.jpg";
+}
+else{
+
+	$image_dir = "/images/family/empty.png";
+}
+
 echo "<div class='ft-frame-content-wrapper' style='float:left; width:100%; height:100% border-width:1px; border-style:solid; border-right-style:hidden; border-left-style:hidden; border-top-style:hidden;'>
-		<img src='/images/empty.png' style='float:left; width:150px; height=150px;'>
+		<img src='".$image_dir."' style='float:left; width:150px; height=auto; margin-bottom: 10px;'>
 
       <TABLE style='padding-bottom:10px;'>
 		 <TR>
