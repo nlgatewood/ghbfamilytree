@@ -4,7 +4,7 @@
 /*Wrapper for the tree diagram*/
 div.tree-wrapper {
 
-	width: 90%;
+	width: 95%;
 	height: 700px; 
 	float: center;
 	margin-bottom: 500px;
@@ -12,26 +12,29 @@ div.tree-wrapper {
 /*Containing the list of people in the tree*/
 div.tree-members {
 
-	width: 26%; 
-	height: 700px;
-	border-width: 2px;
+	width: 27%; 
+	height: 100%;
+	border-width: 1px;
 	border-style: solid;
+   border-right-style: hidden;
 	overflow: scroll;
 	float: left;
 }
 /*Containing the details of each perosn when selected*/
 iframe.tree-details-frame {
 
-	width: 72%;
-	height: 700px;
-	border-width: 2px;
+	width: 71%;
+	height: 100%;
+	border-width: 1px;
 	border-style: solid;
+   border-left-style: hidden;
 	overflow: scroll;
 	float: left;
 }
 
 ul.tree-member-list {
 
+	font-size: 14px;
 	text-align: left;
 	list-style-type: none;
 	margin-top: 8px;

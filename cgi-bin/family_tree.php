@@ -14,16 +14,6 @@ echo "<FORM method=post action='/?pg=family_tree'>
 		<div class='page-text'>
 			<h1>Gatewood Family Tree</h1>
 
-<p>
-			<img src='images/ft_overview.png' style='float:right; margin: 0 0 10px 10px;'>
-The first United States Census in 1790 listed 22 families of Gatewoods living within the confines of the original thirteen states; eighteen in Virginia, three in North Carolina, and one of South Carolina.  While there are several Gatewood lines, this site will be focusing on Atwell Bowcock Gatewood and his heirs.  There's less information available on previous ancestors, but I hope to research  older ancestors in the near future and add them to the page.  Atwell Bowcock was born in 1829 in Stafford county, Virginia. He was the 2nd son of Thomas Jefferson Gatewood, Sr.  Thomas Jefferson Gatewood, who was the 5th generation from John Gatewood, the member who immigrated from England to America.  Atwell Bowcock married Fanny U. Harding and had several sons and daughters.  While several of his offspring met an untimely end,  three sons went on to create three large Gatewood branches: John Wallace Gatewood, Commilus Atwell Gatewood, and Cornealus Linzy Gatewood.  Therefore, we will be splitting the tree by the John Wallace tree, the Commilus Atwell tree, and the Cornealus Linzy tree. To the right is a simple tree diagram to help visualize the relationships.
-			</p>
-		   <p>
-Below is a family member viewer tool to help users view family member information more easily.  In the left window of the member tool is the family member list split out by the different family branches, Thomas Jefferson to Atwell Bowcock, John Wallace, Commilus Atwell, and Cornealus Linzy.  The list is organized by family branches, starting with the oldest.  It begins with generation 0, then their partner, then the first born between generation 0 and his partner.  Once the first child's line is exhausted, it moves to the second  child and so on.  If more clarification is needed, please review the toolip at the top of the viewer tool for a more detailed example.
-			</p>
-			<p>
-In addition to the family member viewer tool, a visual tree diagram supplied by <a href='https://www.familyecho.com/'>Family Echo</a> can be viewed by clicking on the icon next to the Family branch headers in the family member list of the viewer tool.  As of now, only the Commilus Atwell visual diagram is available.
-			</p>
 		</div>";
 
 //Begin the family tree viewer tool code
