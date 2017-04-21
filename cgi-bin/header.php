@@ -30,7 +30,7 @@
 				<link href='/css/nav_menu.css' rel='stylesheet' type='text/css'/>
 				<link href='/css/lightbox/lightbox.css' rel='stylesheet' type='text/css'/>
 			</HEAD>
-			<BODY style='background-color:222223';>
+			<BODY>
 			 <CENTER>";
 
 	echo "<img class='banner' src='/images/tree_of_life_banner.jpg'>

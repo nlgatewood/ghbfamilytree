@@ -9,17 +9,18 @@ $ft_output_list = [];
 
 include('header.php');
 
-echo "<FORM method=post action='/?pg=family_tree'>
+echo "<FORM method=post action='/?pg=family_tree'>";
 
-		<div class='page-text'>
+echo "<div class='page-text'>
 			<h1>Gatewood Family Tree</h1>
 
 		</div>";
 
 //Begin the family tree viewer tool code
-echo "<div class='tree-wrapper'>
+echo "<div class='tree-wrapper'>";
 
-      	<div class='tooltip'>How is this list sorted?
+/*
+echo "<div class='tooltip'>How is this list sorted?
          	<span class='tooltiptext'>
 					Example - Beginning with Generation 0 (George H.W. Bush):
 					<ul>
@@ -40,13 +41,14 @@ echo "<div class='tree-wrapper'>
 					</ul>
 					The list continues down the branches sorted by age.
          	</span>
-      	</div><BR><BR>
+      	</div><BR><BR>";
+*/
 
-	 <div class='tree-members'>
+echo "<div class='tree-members'>
 	  <ul class='tree-member-list'>";
 
 //create the ft member list to output
-build_members_list(1001,$ft_members_array, $ft_output_list,0);
+build_members_list(1154,$ft_members_array, $ft_output_list,0);
 
 //Loop through each member in the tree
 foreach($ft_output_list as $id => $field_array){
@@ -59,37 +61,45 @@ foreach($ft_output_list as $id => $field_array){
    $member_count 	     = $field_array['count'];
    $married 		     = $field_array['married'];
    $gen 		     		  = $field_array['gen'];
-	$margin 				  = $gen*20;
+	$margin 				  = $gen*10;
 
 	//If this is the beginning of a tree, add the heading and family_echo icon
-   if($id == 1001 || $id == 1011){
+   if($id == 1001 || $id == 1011 || $id == 1154){
 		
 		$msg = '';
 
-		if($id == 1001){
+		if($id == 1154){
+
+			$msg = "England to Thomas Jefferson";
+		}
+		elseif($id == 1001){
+
+     		echo "</ul>";
 			$msg = "Thomas Jefferson to Atwell Bowcock";
 		}
 		else{
-     	echo "</ul>";
+	     	echo "</ul>";
 			$msg = $member_first_name." ".$member_last_name;
 		}
 
-   	echo "<ul class='tree-member-list' id='".$id."-member-list'>
-					<span style='display:inline;'>
-						<a href='/family_echo/commilus_tree/index.htm' class='newPopup'><img src='/images/family_echo_icon.png' width=5% height=3%></a>
-					</span>
-					<div style='display:inline;' onclick='collapseExpandTree(".$id.");'><i>".$msg." <img id='".$id."-fam-arrow' src='/images/up_arrow_12x12.png'></i></div>";
+   	echo "<ul class='ft-members-header' id='".$id."-member-list'>
+				 <SPAN style='margin-left:".$margin."px;'>
+					<a href='/family_echo/commilus_tree/index.htm' class='newPopup'><img src='/images/family_echo_icon.png' style='width:15px; height=auto;'></a>
+					<div style='display:inline;' onclick='collapseExpandTree(".$id.");'><i>".$msg." <img id='".$id."-fam-arrow' src='/images/up_arrow_12x12.png'>
+					</i></div>
+					</SPAN>";
    }
 
 	//Print out the family member's link
-   echo "<li class='ft_members' id='member".$id."' style='margin-left:".$margin."px;'><a href='javascript:void(0)' onclick ='refreshFTFrame(".$id.");'>".
+   echo "<li class='ft-members' id='member".$id."' style='margin-left:".$margin."px;'><a href='javascript:void(0)' onclick ='refreshFTFrame(".$id.");'>".
          $member_last_name.$member_suffix.", ".$member_first_name." ".$member_middle_name."</a></li>";
 }
 
 echo "</ul>
      </div>
-     <iframe class='tree-details-frame' id='tree-details-frame' src='/?pg=ft_frame'></iframe>
-     </div>";
+     <iframe class='tree-details-frame' id='tree-details-frame' scrolling='no' src='/?pg=ft_frame'></iframe>
+     </div>
+";
 
 include('footer.php');
 ?>

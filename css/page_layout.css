@@ -1,3 +1,16 @@
+html {
+	overflow-y: scroll;
+}
+
+body {
+	background-color:222223;
+   color: white;
+}
+
+a {
+   color: #D34808;
+}
+
 /*-------------------------
  * Site panel box  Formatting
  *-------------------------*/
@@ -30,7 +43,7 @@ h1.panel-title {
  *-------------------------*/
 div.page-text {
 
-	width: 80%;
+	width: 85%;
 	font-size: 16px;
 }
 
@@ -38,8 +51,6 @@ div.page-text p {
 
 	text-indent: 40px;
 	text-align: left;
-	margin-left: 10;
-	margin-right: 10;
 }
 
 div.page-text h1 {
@@ -58,7 +69,7 @@ div.page-text p img {
  *-------------------------*/
 div.page-sources {
 
-	width: 55%;
+	width: 70%;
 	margin-top: 50px;
 }
 

@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 		if(id != null){
 
-			$(".ft_members").css("background-color","#222223");
+			$(".ft-members").css("background-color","#222223");
     		$("#member"+id[1]).css("background-color","#c8c8ca");
 
     		var parentIdString = $("#member"+id[1]).parent().attr("id");

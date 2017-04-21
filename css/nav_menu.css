@@ -1,21 +1,8 @@
-body {
-	color: white;
-}
-
-a {
-	color: #D34808;
-}
-
-a.back-home {
-	position: relative;
-	right: 5px;
-}
-
 /*Banner and Navigation Bar
   -------------------------*/
 .banner {
-	width: 98%;
-	height: 190px;
+	width: 100%;
+	height: 240px;
 }
 
 ul.navbar {
@@ -27,7 +14,7 @@ ul.navbar {
    margin: 0;
    padding: 0;
    overflow: hidden;
-	width: 98%;
+	width: 100%;
 }
 
 li a.navbar-link {
