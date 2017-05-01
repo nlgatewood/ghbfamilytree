@@ -1,36 +1,27 @@
 /*--------------------------------------
  * Family Member Tool
  *--------------------------------------*/
-/*Wrapper for the tree diagram*/
-div.tree-wrapper {
+/*top Wrapper for the tree diagram*/
+div#tree-wrapper {
 
 	width: 100%;
 	height: 100%;
 	float: center;
 }
-/*Containing the list of people in the tree*/
-div.tree-members {
 
-	width: 22%; 
+/*Div containing the list of family members*/
+div#tree-members {
+
+	width: 20%; 
 	height: 100%;
+	float: left;
 	border-width: 1px;
 	border-style: solid;
    border-right-style: hidden;
 	overflow: scroll;
-	float: left;
-}
-/*Containing the details of each perosn when selected*/
-iframe.tree-details-frame {
-
-	width: 77%;
-	height: 100%;
-	border-width: 1px;
-	border-style: solid;
-   border-left-style: hidden;
-	overflow: scroll;
-	float: left;
 }
 
+/*Top UL containing all of the family members in the list*/
 ul.tree-member-list {
 
 	font-size: 14px;
@@ -40,26 +31,38 @@ ul.tree-member-list {
 	list-style-type: none;
 }
 
-ul.tree-member-list ul{
-
-	list-style-type: none;
-	padding-left: 5px;
-}
-
-ul.tree-member-list li {
-
-	padding: 0px 0px 0px 0px;
-
-}
-
+/*Header UL for the different family lists*/
 ul.ft-members-header {
 
-	padding-top: 10px;
+	margin: 8px 8px 8px 8px;
+	padding: 0px 0px 0px 0px;
+	list-style-type: none;
+	white-space: nowrap;
 }
 
-.ft-members {
+/* Family Echo link image*/
+ul.ft-members-header > a > img{
 
+	width: 15px;
+	height: auto;
+}
+
+/*Family Member*/
+ul.ft-members-header > li {
+
+	padding: 0px 0px 0px 0px;
 	white-space: nowrap;
+}
+
+/*The iframe displaying the family member's information*/
+iframe#tree-member-iframe {
+   
+   width: 78%;
+   height: 100%; 
+   float: left;
+   border-width: 1px; 
+   border-style: solid;
+   border-left-style: hidden;
 }
 
 /*------------------------------------------

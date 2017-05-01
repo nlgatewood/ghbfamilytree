@@ -22,7 +22,7 @@
 		
 			if($month == null){
 
-				$year = 0;
+				$month = 0;
 			}
 
 			if($day == null){

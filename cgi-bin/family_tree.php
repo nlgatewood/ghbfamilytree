@@ -6,6 +6,7 @@ require('lib/ft_funcs.php');
 $page = isset($_GET["pg"]) ? $_GET["pg"] : '';
 $ft_members_array = get_member_data(null); //Get all the members of the tree
 $ft_output_list = [];
+$head_margin = 0;
 
 include('header.php');
 
@@ -17,7 +18,7 @@ echo "<div class='page-text'>
 		</div>";
 
 //Begin the family tree viewer tool code
-echo "<div class='tree-wrapper'>";
+echo "<div id='tree-wrapper'>";
 
 /*
 echo "<div class='tooltip'>How is this list sorted?
@@ -44,8 +45,8 @@ echo "<div class='tooltip'>How is this list sorted?
       	</div><BR><BR>";
 */
 
-echo "<div class='tree-members'>
-	  <ul class='tree-member-list'>";
+echo "<div id='tree-members'>
+	  	 <ul class='tree-member-list'>";
 
 //create the ft member list to output
 build_members_list(1154,$ft_members_array, $ft_output_list,0);
@@ -82,24 +83,24 @@ foreach($ft_output_list as $id => $field_array){
 			$msg = $member_first_name." ".$member_last_name;
 		}
 
-   	echo "<ul class='ft-members-header' id='".$id."-member-list'>
-				 <SPAN style='margin-left:".$margin."px;'>
-					<a href='/family_echo/commilus_tree/index.htm' class='newPopup'><img src='/images/family_echo_icon.png' style='width:15px; height=auto;'></a>
-					<div style='display:inline;' onclick='collapseExpandTree(".$id.");'><i>".$msg." <img id='".$id."-fam-arrow' src='/images/up_arrow_12x12.png'>
-					</i></div>
-					</SPAN>";
+   	echo "<ul class='ft-members-header' id='".$id."-member-list' style='margin-left:".$margin."px;'>
+					<a href='/family_echo/commilus_tree/index.htm' class='newPopup'><img src='/images/family_echo_icon.png'></a>
+					<SPAN onclick='collapseExpandTree(".$id.");'>
+						<i>".$msg." <img id='".$id."-fam-arrow' src='/images/up_arrow_12x12.png'></i>
+				   </SPAN>";
+
+		$head_margin = $margin;
    }
 
 	//Print out the family member's link
-   echo "<li class='ft-members' id='member".$id."' style='margin-left:".$margin."px;'><a href='javascript:void(0)' onclick ='refreshFTFrame(".$id.");'>".
+   echo "<li id='member".$id."' style='margin-left:".($margin-$head_margin)."px;'><a href='javascript:void(0)' onclick ='refreshFTFrame(".$id.");'>".
          $member_last_name.$member_suffix.", ".$member_first_name." ".$member_middle_name."</a></li>";
 }
 
 echo "</ul>
      </div>
-     <iframe class='tree-details-frame' id='tree-details-frame' scrolling='no' src='/?pg=ft_frame'></iframe>
-     </div>
-";
+     <iframe id='tree-member-iframe' src='/?pg=ft_frame'></iframe>
+	 </div>";
 
 include('footer.php');
 ?>

@@ -14,7 +14,8 @@
        			      gender, birth_year, birth_month, birth_day, birth_loc, death_year,
 	   		         death_month, death_day, death_loc, burial_loc, bio, parent_id1, parent_id2
 	   		  FROM ft_members
-	   		  WHERE (id = ? OR ".$has_id."=0)";
+	   		  WHERE (id = ? OR ".$has_id."=0)
+				  ORDER BY birth_year, birth_month, birth_day";
 
 		if($stmt = $conn->prepare($sql)){
 
@@ -87,7 +88,8 @@
                      death_month, death_day, death_loc, burial_loc, bio, parent_id1, parent_id2
 				  FROM ft_members 
 				  WHERE (id IN(SELECT parent_id1 FROM ft_members WHERE id = ?) OR 
-						   id IN(SELECT parent_id2 FROM ft_members WHERE id= ?))";
+						   id IN(SELECT parent_id2 FROM ft_members WHERE id= ?))
+				  ORDER BY birth_year, birth_month, birth_day";
 
       if($stmt = $conn->prepare($sql)){
 
@@ -175,7 +177,8 @@
 								  parent_id1= ?) AND
 								 (parent_id2= ?  OR
 								  parent_id2= ?))
-						AND id != ?";
+						AND id != ?
+					  ORDER BY birth_year, birth_month, birth_day";
 
 		if($stmt = $conn->prepare($sib_sql)){
 
@@ -290,7 +293,8 @@
                      gender, birth_year, birth_month, birth_day, birth_loc, death_year,
                      death_month, death_day, death_loc, burial_loc, bio, parent_id1, parent_id2
               FROM ft_members
-               WHERE (parent_id1 = ? OR parent_id2 = ?)";
+               WHERE (parent_id1 = ? OR parent_id2 = ?)
+				  ORDER BY birth_year, birth_month, birth_day";
 
 		if($stmt = $conn->prepare($sql)){
 

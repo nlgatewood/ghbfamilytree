@@ -1,14 +1,14 @@
 //li background changing color for the list of FT members
 $(document).ready(function() {
 
-	$("#tree-details-frame").on("load", function () {
+	$("#tree-member-iframe").on("load", function () {
     
-   	var url = document.getElementById("tree-details-frame").contentWindow.location.href;
+   	var url = document.getElementById("tree-member-iframe").contentWindow.location.href;
     	var id = url.match(/id=(\d+)$/);
 
 		if(id != null){
 
-			$(".ft-members").css("background-color","#222223");
+			$(".ft-members-header > li").css("background-color","#222223");
     		$("#member"+id[1]).css("background-color","#c8c8ca");
 
     		var parentIdString = $("#member"+id[1]).parent().attr("id");
@@ -42,7 +42,7 @@ $(document).ready(function() {
  *------------------------------------------------------------------------------------*/
 function refreshFTFrame(id) {
 
-	var ftFrame = document.getElementById('tree-details-frame');
+	var ftFrame = document.getElementById('tree-member-iframe');
 	ftFrame.src = "/?pg=ft_frame&id="+id;
 }
 
