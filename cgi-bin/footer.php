@@ -1,6 +1,6 @@
 <?php
 
-	echo "</CENTER>
+	echo "</div>
 			</BODY>
-			</HTML>";
+		 </HTML>";
 ?>
