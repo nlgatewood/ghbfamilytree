@@ -1,28 +1,6 @@
 //li background changing color for the list of FT members
 $(document).ready(function() {
 
-	$("#tree-member-iframe").on("load", function () {
-    
-   	var url = document.getElementById("tree-member-iframe").contentWindow.location.href;
-    	var id = url.match(/id=(\d+)$/);
-
-		if(id != null){
-
-			$(".ft-members-header > li").css("background-color","#222223");
-    		$("#member"+id[1]).css("background-color","#c8c8ca");
-
-    		var parentIdString = $("#member"+id[1]).parent().attr("id");
-    		var parentIdInt = parentIdString.match(/^(\d+)-member-list/);
-
-
-			//If the newly selected name is invisible, make it visible
-			if(!$('#'+parentIdInt[1]+'-member-list > li').is(':visible')){
-
-				collapseExpandTree(parentIdInt[1]);
-			}
-    	}
-    });
-
 	//popup when a member of the 'newPopup' class is clicked
 	$('.newPopup').click(function (event){
  
@@ -36,6 +14,27 @@ $(document).ready(function() {
 		event.preventDefault();
     });
 });
+
+/*------------------------------------------------------------------------------------
+ * selectFamilyMember()
+/*------------------------------------------------------------------------------------*/
+function selectFamilyMember(){
+
+	var url = $(location).attr('href');
+   var id = url.match(/mid=(\d+)$/);
+
+	var parentIdString = $("#member"+id[1]).parent().attr("id");
+	var parentIdInt = parentIdString.match(/^(\d+)-member-list/);
+
+	$(".ft-members-header > li").css("background-color","#222223");
+	$("#member"+id[1]).css("background-color","#c8c8ca");
+
+	//If the newly selected name is invisible, make it visible
+	if(!$('#'+parentIdInt[1]+'-member-list > li').is(':visible')){
+
+		collapseExpandTree(parentIdInt[1]);
+	}
+}
 
 /*------------------------------------------------------------------------------------
  *	refreshFTFrame(id) - refresh the Family Tree member details iframe 

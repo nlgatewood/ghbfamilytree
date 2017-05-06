@@ -2,27 +2,23 @@
 
 require('lib/dbobj.php');
 require('lib/ft_funcs.php');
+require('lib/date_funcs.php');
 
 $page = isset($_GET["pg"]) ? $_GET["pg"] : '';
+$mid = isset($_GET["mid"]) ? $_GET["mid"] : '';
+$page_post = $page.($mid != null) ? "&mid=".$mid : "";
+
 $ft_members_array = get_member_data(null); //Get all the members of the tree
 $ft_output_list = [];
 $head_margin = 0;
 
-include('header.php');
+$cgi_obj->html_header(array("onload","selectFamilyMember()"));
 
-echo "<FORM method=post action='/?pg=family_tree'>";
-
-echo "<div class='page-text'>
-			<h1>Gatewood Family Tree</h1>
-
-		</div>";
-
-//Begin the family tree viewer tool code
-echo "<div id='tree-wrapper'>";
-
+echo "<FORM method=post action='/?pg=".$page_post."'>
+			<div id='tree-wrapper'>";
 /*
 echo "<div class='tooltip'>How is this list sorted?
-         	<span class='tooltiptext'>
+         	<SPAN class='tooltiptext'>
 					Example - Beginning with Generation 0 (George H.W. Bush):
 					<ul>
 				 	 <li>George H.W. Bush</li>
@@ -41,15 +37,16 @@ echo "<div class='tooltip'>How is this list sorted?
 				 	 <li style='margin-left:20px;'>Columba Bush (married Jeb)</li>
 					</ul>
 					The list continues down the branches sorted by age.
-         	</span>
-      	</div><BR><BR>";
-*/
+         	</SPAN>
+      	</div><BR><BR>";*/
 
-echo "<div id='tree-members'>
+echo "<div id='tree-members' onload='selectFamilyMember();'>
 	  	 <ul class='tree-member-list'>";
 
 //create the ft member list to output
 build_members_list(1154,$ft_members_array, $ft_output_list,0);
+
+echo "<a href='/?pg=".$page."'>Home</a>";
 
 //Loop through each member in the tree
 foreach($ft_output_list as $id => $field_array){
@@ -93,14 +90,29 @@ foreach($ft_output_list as $id => $field_array){
    }
 
 	//Print out the family member's link
-   echo "<li id='member".$id."' style='margin-left:".($margin-$head_margin)."px;'><a href='javascript:void(0)' onclick ='refreshFTFrame(".$id.");'>".
+   echo "<li id='member".$id."' style='margin-left:".($margin-$head_margin)."px;'>
+			<a href='/?pg=".$page."&mid=".$id."'>".
          $member_last_name.$member_suffix.", ".$member_first_name." ".$member_middle_name."</a></li>";
 }
 
 echo "</ul>
-     </div>
-     <iframe id='tree-member-iframe' src='/?pg=ft_frame'></iframe>
-	 </div>";
+     </div>";
+
+//If a member exists, display their profile. 
+if($mid){
+
+	include('family_tree_profile.php');
+}
+//Otherwise, go to the 'home' page
+else{
+
+	echo "<div id='tree-member-profile'>";
+	echo"<div class='page-text'>
+	 	  	<h1>Family Tree Tool</h1>
+     	  </div>";
+
+	echo "</div>";
+}
 
 include('footer.php');
 ?>

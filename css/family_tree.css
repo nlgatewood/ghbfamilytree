@@ -4,21 +4,20 @@
 /*top Wrapper for the tree diagram*/
 div#tree-wrapper {
 
-	width: 100%;
-	height: 100%;
-	float: center;
+    width: 100%;
+    height: 100%;
+    margin: auto;
 }
 
 /*Div containing the list of family members*/
 div#tree-members {
 
-	width: 20%; 
-	height: 100%;
-	float: left;
-	border-width: 1px;
-	border-style: solid;
-   border-right-style: hidden;
+	width: auto;
+	height: 1500px;
+   border-width: 1px;
+   border-style: solid;
 	overflow: scroll;
+	float: left;
 }
 
 /*Top UL containing all of the family members in the list*/
@@ -54,15 +53,76 @@ ul.ft-members-header > li {
 	white-space: nowrap;
 }
 
-/*The iframe displaying the family member's information*/
-iframe#tree-member-iframe {
-   
-   width: 78%;
-   height: 100%; 
-   float: left;
-   border-width: 1px; 
-   border-style: solid;
-   border-left-style: hidden;
+div#tree-member-profile {
+
+   width: auto;
+   height: 1500px;
+   margin-left: 0;
+	padding-top: 10px;
+	padding-left: 10px;
+   overflow-x: hidden;
+}
+
+/*--------------------------------------
+ * Main table
+ *--------------------------------------*/
+#main-tbl {
+
+	width: 100%;
+	font-size: 14px;
+	margin: 0 auto; 
+	float: left;
+}
+
+/*--------------------------------------
+ * Demog Table
+ *--------------------------------------*/
+#demog-tbl {
+
+	margin-top: 20;
+}
+
+#demog-tbl th{
+
+	text-align: right;
+	padding-right: 5px;
+}
+
+#demog-tbl img {
+
+   width: 150px;
+   height: auto;
+}
+
+/*--------------------------------------
+ * Relation Table
+ *--------------------------------------*/
+#relation-tbl {
+
+	font-size: 14px;
+}
+
+#relation-tbl span {
+
+	font-weight: bold;
+	padding: 5px;
+}
+
+#relation-tbl .heading{
+
+	text-decoration: underline;
+	text-align: left;
+}
+
+#relation-tbl td.divider {
+
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+#relation-tbl .na {
+
+	font-style: italic;
 }
 
 /*------------------------------------------
