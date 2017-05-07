@@ -16,7 +16,7 @@
 				<link href='/css/family_tree.css' rel='stylesheet' type='text/css'/>
 				<link href='/css/lightbox/lightbox.css' rel='stylesheet' type='text/css'/>
 			</HEAD>
-			<BODY>
+			<BODY".(($body_event) ? " ".$body_event : "").">
 			 <div id='page-wrapper'>
 
 			  <div id='navbar-wrapper'>

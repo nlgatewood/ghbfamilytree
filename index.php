@@ -1,9 +1,7 @@
 <?php
 
-include("cgi-bin/lib/cgi.php");
 include("cgi-bin/lib/config.php");
 	
-$cgi_obj = new cgi();
 $config_obj = new config();
 $CONFIG = $config_obj->get_config_file();
 

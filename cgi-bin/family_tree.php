@@ -7,12 +7,13 @@ require('lib/date_funcs.php');
 $page = isset($_GET["pg"]) ? $_GET["pg"] : '';
 $mid = isset($_GET["mid"]) ? $_GET["mid"] : '';
 $page_post = $page.($mid != null) ? "&mid=".$mid : "";
+$body_event = "onload='selectFamilyMember()'";
 
 $ft_members_array = get_member_data(null); //Get all the members of the tree
 $ft_output_list = [];
 $head_margin = 0;
 
-$cgi_obj->html_header(array("onload","selectFamilyMember()"));
+include('header.php');
 
 echo "<FORM method=post action='/?pg=".$page_post."'>
 			<div id='tree-wrapper'>";
