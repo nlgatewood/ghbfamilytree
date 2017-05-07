@@ -1,5 +1,4 @@
 <?php
-	require('lib/dbobj.php');
 	require('lib/ft_funcs.php');
 
 	//Get POST and GET variables

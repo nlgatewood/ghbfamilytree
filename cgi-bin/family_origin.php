@@ -2,7 +2,6 @@
 <?php
 
 $page = isset($_GET["pg"]) ? $_GET["pg"] : '';
-//$fam = isset($_GET["fam"]) ? $_GET["fam"] : '';
 
 include('header.php');
 

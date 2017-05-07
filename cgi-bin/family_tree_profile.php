@@ -1,6 +1,4 @@
 <?php
-
-
 $page = isset($_GET["pg"]) ? $_GET["pg"] : '';
 $mid = isset($_GET["mid"]) ? $_GET["mid"] : '';
 $page_post = $page.($mid != null) ? "&mid=".$mid : "";
@@ -19,28 +17,29 @@ $member_burial_loc = ($ft_members_array[$mid]['burial_loc'] != null) ? $ft_membe
 $member_gender     = null;
 $image_dir;
 
+//Set the sex description
 if($ft_members_array['gender'] == 'M'){
 
-   $member_gender = 'Male';
+	$member_gender = 'Male';
 }
 elseif($ft_members_array['gender'] == 'F'){
 
-   $member_gender = 'Female';
+	$member_gender = 'Female';
 }
 else{
-   $member_gender = 'Unknown';
+	$member_gender = 'Unknown';
 }
 
 //Get the profile image.  If it doesn't exist, use the empty image
 if(file_exists("./images/family/".$mid."/profile.jpg")){
 
-   $image_dir = "/images/family/".$mid."/profile.jpg";
+	$image_dir = "/images/family/".$mid."/profile.jpg";
 }
 else{
-
-   $image_dir = "/images/family/empty.png";
+	$image_dir = "/images/family/empty.png";
 }
 
+//Begin the main container table
 echo "<TABLE id='main-tbl'>
        <TR>
         <TD>
@@ -53,7 +52,7 @@ echo "<TABLE id='main-tbl'>
              <TD id='member-name' colspan=2>".$member_name." ".$member_maiden."
             </TR>
             <TR>
-             <TD colspan=2>".$member_nicknames."</TD>
+             <TD id='member-nicknames' colspan=2>".$member_nicknames."</TD>
             </TR>
             <TR>
              <TH>Gender:</TH>
@@ -81,12 +80,12 @@ echo "<TABLE id='main-tbl'>
 /*-----------------------------------
  * Relationship and Offspring Section
  *-----------------------------------*/
-
 $ft_parents_array  = get_member_parents($mid);
 $ft_siblings_array = get_member_siblings($mid);
 $ft_relation_array = get_member_relations($mid);
 $ft_children_array = get_member_children($mid);
 
+//begin the nexted relationship table
 echo "<TABLE id='relation-tbl' style='width:100%;'>
          <TR>
           <TD class='divider' colspan=3><HR></TD>
@@ -103,7 +102,7 @@ if(count($ft_parents_array) == 0){
          </TR>";
 }
 
-//Loop through each of the children and display them
+//Loop through each of the children and print them
 foreach($ft_parents_array as $parent_id => $parent_array){
 
    $parent_name       = $parent_array['first_name']." ".$parent_array['middle_name']." ".$parent_array['last_name']." ".$parent_array['suffix'];
@@ -120,9 +119,12 @@ foreach($ft_parents_array as $parent_id => $parent_array){
          </TR>";
 }
 
-//Print the siblings
-echo "<TR><TD class='divider' colspan=3><HR></TD></TR>
-      <TR><TH class='heading' colspan=3>Siblings</TH></TR>";
+echo "<TR>
+		 <TD class='divider' colspan=3><HR></TD>
+		</TR>
+      <TR>
+		 <TH class='heading' colspan=3>Siblings</TH>
+		</TR>";
 
 //If a relationship doesn't exist, default to N/A
 if(count($ft_siblings_array) == 0){
@@ -132,7 +134,7 @@ if(count($ft_siblings_array) == 0){
          </TR>";
 }
 
-//Loop through each of the relationships for this member
+//Loop through each of the sibling relationships and print them
 foreach($ft_siblings_array as $sibling_id => $sibling_array){
 
    $sibling_name     = $sibling_array['first_name']." ".$sibling_array['middle_name']." ".$sibling_array['last_name']." ".$sibling_array['suffix'];

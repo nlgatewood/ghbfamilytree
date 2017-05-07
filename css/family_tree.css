@@ -14,14 +14,14 @@ div#tree-members {
 
 	width: auto;
 	height: 1500px;
-   border-width: 1px;
-   border-style: solid;
-	overflow: scroll;
 	float: left;
+	border: 1px solid #78BEB3;
+	border-top-style: hidden;
+	overflow: scroll;
 }
 
 /*Top UL containing all of the family members in the list*/
-ul.tree-member-list {
+ul#tree-member-list {
 
 	font-size: 14px;
 	text-align: left;
@@ -39,13 +39,6 @@ ul.ft-members-header {
 	white-space: nowrap;
 }
 
-/* Family Echo link image*/
-ul.ft-members-header > a > img{
-
-	width: 15px;
-	height: auto;
-}
-
 /*Family Member*/
 ul.ft-members-header > li {
 
@@ -53,6 +46,14 @@ ul.ft-members-header > li {
 	white-space: nowrap;
 }
 
+/* Family Echo link image*/
+.header-desc > a > img{
+
+   width: 15px;
+   height: auto;
+}
+
+/*Family Member Profile Div*/
 div#tree-member-profile {
 
    width: auto;
@@ -64,7 +65,7 @@ div#tree-member-profile {
 }
 
 /*--------------------------------------
- * Main table
+ * Main table - Profile Div
  *--------------------------------------*/
 #main-tbl {
 
@@ -75,7 +76,7 @@ div#tree-member-profile {
 }
 
 /*--------------------------------------
- * Demog Table
+ * Demog Table - Profile div
  *--------------------------------------*/
 #demog-tbl {
 
@@ -94,8 +95,19 @@ div#tree-member-profile {
    height: auto;
 }
 
+#demog-tbl #member-name {
+
+	font-size: 24px;
+	font-weight: bold;
+}
+
+#demog-tbl #member-nicknames {
+
+	padding-bottom: 20px;
+}
+
 /*--------------------------------------
- * Relation Table
+ * Relation Table - Profile div
  *--------------------------------------*/
 #relation-tbl {
 

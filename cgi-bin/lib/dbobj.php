@@ -1,49 +1,48 @@
 <?php
 
-	$user       = $CONFIG['user_uname'];
-	$admin_user = $CONFIG['admin_uname'];
-	$pw 			= $CONFIG['user_pw'];
-	$admin_pw 	= $CONFIG['admin_pw'];
+$user       = $CONFIG['user_uname'];
+$admin_user = $CONFIG['admin_uname'];
+$pw 			= $CONFIG['user_pw'];
+$admin_pw 	= $CONFIG['admin_pw'];
 
-	/*------------------------------------------------------------
-	 * get_mysqli_object() -- Get the connect object for the main
-	 *                        database
-	 *------------------------------------------------------------*/
-	function get_mysqli_object() {
+/*------------------------------------------------------------
+ * get_mysqli_object() -- Get the connect object for the main
+ *                        database
+ *------------------------------------------------------------*/
+function get_mysqli_object() {
 
-		global $user;
-		global $pw;
+	global $user;
+	global $pw;
 	
-		//Get the connection to the database
-		$conn = new mysqli('localhost',$user,$pw,'ghbfamilytree');
+	//Get the connection to the database
+	$conn = new mysqli('localhost',$user,$pw,'ghbfamilytree');
 
-		if($conn->connect_error){
+	if($conn->connect_error){
 
-   		echo "<p>Connection Failed: ".$conn->connect_error."</p>";
-		}
-
-		return $conn;
+   	echo "<p>Connection Failed: ".$conn->connect_error."</p>";
 	}
 
-   /*------------------------------------------------------------
-    * get_mysqli_admin_object() -- Get the connect object for the main
-    *                              database
-    *------------------------------------------------------------*/
-   function get_mysqli_admin_object($dbase) {
+	return $conn;
+}
 
-      global $admin_user;
-      global $admin_pw;
+/*------------------------------------------------------------
+ * get_mysqli_admin_object() -- Get the connect object for the main
+ *                              database
+ *------------------------------------------------------------*/
+function get_mysqli_admin_object($dbase) {
 
-      //Get the connection to the database
-      $conn = new mysqli('localhost',$admin_user,$admin_pw,$dbase);
+	global $admin_user;
+	global $admin_pw;
 
-      if($conn->connect_error){
+	//Get the connection to the database
+   $conn = new mysqli('localhost',$admin_user,$admin_pw,$dbase);
 
-         echo "<p>Connection Failed: ".$conn->connect_error."</p>";
-      }
+	if($conn->connect_error){
 
-      return $conn;
-   }
+		echo "<p>Connection Failed: ".$conn->connect_error."</p>";
+	}
 
+	return $conn;
+}
 
 ?>

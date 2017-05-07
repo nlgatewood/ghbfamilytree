@@ -1,4 +1,3 @@
-//li background changing color for the list of FT members
 $(document).ready(function() {
 
 	//popup when a member of the 'newPopup' class is clicked
@@ -16,23 +15,30 @@ $(document).ready(function() {
 });
 
 /*------------------------------------------------------------------------------------
- * selectFamilyMember()
+ * selectFamilyMember() - selects and focuses the family member the user selected
 /*------------------------------------------------------------------------------------*/
 function selectFamilyMember(){
 
 	var url = $(location).attr('href');
    var id = url.match(/mid=(\d+)$/);
 
-	var parentIdString = $("#member"+id[1]).parent().attr("id");
-	var parentIdInt = parentIdString.match(/^(\d+)-member-list/);
+	if(id != null){
 
-	$(".ft-members-header > li").css("background-color","#222223");
-	$("#member"+id[1]).css("background-color","#c8c8ca");
+		var parentIdString = $("#member"+id[1]).parent().attr("id");
+		var parentIdInt = parentIdString.match(/^(\d+)-member-list/);
 
-	//If the newly selected name is invisible, make it visible
-	if(!$('#'+parentIdInt[1]+'-member-list > li').is(':visible')){
+		$(".ft-members-header > li").css("background-color","#222223");
+		$("#member"+id[1]).css("background-color","#c8c8ca");
 
-		collapseExpandTree(parentIdInt[1]);
+		//If the newly selected name is invisible, make it visible
+		if(!$('#'+parentIdInt[1]+'-member-list > li').is(':visible')){
+
+			collapseExpandTree(parentIdInt[1]);
+		}
+
+		//Get the position of the selected element and move the div to that location
+		var newPos = document.getElementById("member"+id[1]).offsetTop - document.getElementById("tree-members").offsetTop;
+		$("#tree-members").scrollTop(newPos);
 	}
 }
 

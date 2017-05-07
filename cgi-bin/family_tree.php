@@ -1,21 +1,19 @@
 <?php
-
-require('lib/dbobj.php');
 require('lib/ft_funcs.php');
 require('lib/date_funcs.php');
 
 $page = isset($_GET["pg"]) ? $_GET["pg"] : '';
 $mid = isset($_GET["mid"]) ? $_GET["mid"] : '';
-$page_post = $page.($mid != null) ? "&mid=".$mid : "";
 $body_event = "onload='selectFamilyMember()'";
 
-$ft_members_array = get_member_data(null); //Get all the members of the tree
+$ft_members_array = get_member_data(); //Get all the members of the tree
+$member_groups_array = get_member_groups();
 $ft_output_list = [];
 $head_margin = 0;
 
 include('header.php');
 
-echo "<FORM method=post action='/?pg=".$page_post."'>
+echo "<FORM method=post action='/?pg=".$page.(($mid != "") ? "&mid=".$mid : "")."'>
 			<div id='tree-wrapper'>";
 /*
 echo "<div class='tooltip'>How is this list sorted?
@@ -42,61 +40,53 @@ echo "<div class='tooltip'>How is this list sorted?
       	</div><BR><BR>";*/
 
 echo "<div id='tree-members' onload='selectFamilyMember();'>
-	  	 <ul class='tree-member-list'>";
+	  	 <ul id='tree-member-list'>";
 
 //create the ft member list to output
-build_members_list(1154,$ft_members_array, $ft_output_list,0);
+build_members_list(1154,$ft_members_array, $ft_output_list,0,null);
 
 echo "<a href='/?pg=".$page."'>Home</a>";
 
-//Loop through each member in the tree
-foreach($ft_output_list as $id => $field_array){
+ksort($member_groups_array);
 
-	$member_first_name  = $field_array['first_name'];
-   $member_last_name   = $field_array['last_name'];
-   $member_middle_name = $field_array['middle_name'];
-   $member_suffix      = $field_array['suffix'];
-   $member_suffix      = ($field_array['suffix'] != null) ? " ".$field_array[$id]['suffix'] : "";
-   $member_count 	     = $field_array['count'];
-   $married 		     = $field_array['married'];
-   $gen 		     		  = $field_array['gen'];
-	$margin 				  = $gen*10;
+foreach($member_groups_array as $rank => $group_data){
 
-	//If this is the beginning of a tree, add the heading and family_echo icon
-   if($id == 1001 || $id == 1011 || $id == 1154){
-		
-		$msg = '';
+	$group_id   = $group_data['start_member_id'];
+	$group_desc = $group_data['group_desc'];
+	$margin     = $ft_output_list[$group_id][$group_id]['gen']*10;
+	echo $ft_output_list[$group_id]['gen'];
 
-		if($id == 1154){
+	echo "<ul class='ft-members-header' id='".$group_id."-member-list'>
+				<SPAN class='header-desc' style='margin-left:".$margin.";'>
+      			<a href='/family_echo/commilus_tree/index.htm' class='newPopup'><img src='/images/family_echo_icon.png'></a>
+         		<SPAN onclick='collapseExpandTree(".$group_id.");'>
+            		<i>".$group_desc." <img id='".$group_id."-fam-arrow' src='/images/up_arrow_12x12.png'></i>
+            	</SPAN>
+				</SPAN>";
 
-			$msg = "England to Thomas Jefferson";
-		}
-		elseif($id == 1001){
+	//Loop through each member in the tree
+	foreach($ft_output_list[$group_id] as $id => $field_array){
 
-     		echo "</ul>";
-			$msg = "Thomas Jefferson to Atwell Bowcock";
-		}
-		else{
-	     	echo "</ul>";
-			$msg = $member_first_name." ".$member_last_name;
-		}
+		$member_first_name  = $field_array['first_name'];
+	   $member_last_name   = $field_array['last_name'];
+	   $member_middle_name = $field_array['middle_name'];
+	   $member_suffix      = $field_array['suffix'];
+	   $member_suffix      = ($field_array['suffix'] != null) ? " ".$field_array[$id]['suffix'] : "";
+	   $member_count 	     = $field_array['count'];
+	   $married 		     = $field_array['married'];
+	   $gen 		     		  = $field_array['gen'];
+		$margin 				  = $gen*10;
 
-   	echo "<ul class='ft-members-header' id='".$id."-member-list' style='margin-left:".$margin."px;'>
-					<a href='/family_echo/commilus_tree/index.htm' class='newPopup'><img src='/images/family_echo_icon.png'></a>
-					<SPAN onclick='collapseExpandTree(".$id.");'>
-						<i>".$msg." <img id='".$id."-fam-arrow' src='/images/up_arrow_12x12.png'></i>
-				   </SPAN>";
+		//Print out the family member's link
+   	echo "<li id='member".$id."' style='margin-left:".$margin."px;'>
+				<a href='/?pg=".$page."&mid=".$id."'>".
+   	      $member_last_name.$member_suffix.", ".$member_first_name." ".$member_middle_name."</a></li>";
+	}
 
-		$head_margin = $margin;
-   }
-
-	//Print out the family member's link
-   echo "<li id='member".$id."' style='margin-left:".($margin-$head_margin)."px;'>
-			<a href='/?pg=".$page."&mid=".$id."'>".
-         $member_last_name.$member_suffix.", ".$member_first_name." ".$member_middle_name."</a></li>";
+	echo "</ul>";
 }
 
-echo "</ul>
+echo "
      </div>";
 
 //If a member exists, display their profile. 
@@ -109,7 +99,11 @@ else{
 
 	echo "<div id='tree-member-profile'>";
 	echo"<div class='page-text'>
-	 	  	<h1>Family Tree Tool</h1>
+	 	  	<h1>Gatewood Family Tree</h1>
+		
+			<p>
+				
+			</p>
      	  </div>";
 
 	echo "</div>";
