@@ -388,10 +388,12 @@ function build_members_list($id, &$ft_members_array, &$ft_output_list, $gen,$gro
 
 	//Add the person to the output array
 	$ft_output_list[$group][$id] = array('first_name'		=> $ft_members_array[$id]['first_name'],
-		  										    'last_name'	   => $ft_members_array[$id]['last_name'],
-										  			 'middle_name'		=> $ft_members_array[$id]['middle_name'],
-										  			 'suffix'			=> $ft_members_array[$id]['suffix'],
-										  			 'gen'            => $gen);
+		  			     'last_name'	   => $ft_members_array[$id]['last_name'],
+					     'middle_name'		=> $ft_members_array[$id]['middle_name'],
+					     'suffix'			=> $ft_members_array[$id]['suffix'],
+					     'birth_year' => $ft_members_array[$id]['birth_year'],
+                                             'death_year' => $ft_members_array[$id]['death_year'],
+					     'gen'            => $gen);
 
 	//Get the members relationships
  	$ft_members_relations = get_member_relations($id);
@@ -400,11 +402,13 @@ function build_members_list($id, &$ft_members_array, &$ft_output_list, $gen,$gro
 	foreach($ft_members_relations as $relation_member_id => $relation_data){
 
 		$ft_output_list[$group][$relation_member_id] = array('first_name'    => $ft_members_array[$relation_member_id]['first_name'],
-											   							  'last_name'     => $ft_members_array[$relation_member_id]['last_name'],
-																			  'middle_name'   => $ft_members_array[$relation_member_id]['middle_name'],
-																			  'suffix'        => $ft_members_array[$relation_member_id]['suffix'],
-																			  'married'		   => $id,
-																			  'gen'				=> $gen);
+								     'last_name'     => $ft_members_array[$relation_member_id]['last_name'],
+								     'middle_name'   => $ft_members_array[$relation_member_id]['middle_name'],
+								     'suffix'        => $ft_members_array[$relation_member_id]['suffix'],
+								     'birth_year'    => $ft_members_array[$relation_member_id]['birth_year'],
+                                  				     'death_year'    => $ft_members_array[$relation_member_id]['death_year'],
+								     'married'	  => $id,
+								     'gen'		  => $gen);
 
 		$gen++;
 
