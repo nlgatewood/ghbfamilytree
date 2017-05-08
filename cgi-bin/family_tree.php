@@ -72,6 +72,9 @@ foreach($member_groups_array as $rank => $group_data){
 	   $member_middle_name = $field_array['middle_name'];
 	   $member_suffix      = $field_array['suffix'];
 	   $member_suffix      = ($field_array['suffix'] != null) ? " ".$field_array[$id]['suffix'] : "";
+	   $member_birth_year  = ($field_array['birth_year']) ? $field_array['birth_year'] : "";
+	   $member_death_year  = ($field_array['death_year']) ? $field_array['death_year'] : "";
+	   $member_life_range  = " (".$member_birth_year." - ".$member_death_year.")";
 	   $member_count 	     = $field_array['count'];
 	   $married 		     = $field_array['married'];
 	   $gen 		     		  = $field_array['gen'];
@@ -80,7 +83,7 @@ foreach($member_groups_array as $rank => $group_data){
 		//Print out the family member's link
    	echo "<li id='member".$id."' style='margin-left:".$margin."px;'>
 				<a href='/?pg=".$page."&mid=".$id."'>".
-   	      $member_last_name.$member_suffix.", ".$member_first_name." ".$member_middle_name."</a></li>";
+   	      $member_last_name.$member_suffix.", ".$member_first_name." ".$member_middle_name.$member_life_range."</a></li>";
 	}
 
 	echo "</ul>";
