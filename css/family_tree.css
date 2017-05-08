@@ -33,7 +33,7 @@ ul#tree-member-list {
 /*Header UL for the different family lists*/
 ul.ft-members-header {
 
-	margin: 8px 8px 8px 8px;
+	margin: 8px 3px 8px 0px;
 	padding: 0px 0px 0px 0px;
 	list-style-type: none;
 	white-space: nowrap;
@@ -42,8 +42,13 @@ ul.ft-members-header {
 /*Family Member*/
 ul.ft-members-header > li {
 
-	padding: 0px 0px 0px 0px;
+	padding: 3px 0px 0px 0px;
 	white-space: nowrap;
+}
+
+.header-desc {
+
+   margin-right: 5px;
 }
 
 /* Family Echo link image*/
@@ -81,6 +86,7 @@ div#tree-member-profile {
 #demog-tbl {
 
 	margin-top: 20;
+	font-size: 12px;
 }
 
 #demog-tbl th{
@@ -93,6 +99,7 @@ div#tree-member-profile {
 
    width: 150px;
    height: auto;
+   margin-right: 5px;
 }
 
 #demog-tbl #member-name {
@@ -111,7 +118,12 @@ div#tree-member-profile {
  *--------------------------------------*/
 #relation-tbl {
 
-	font-size: 14px;
+	font-size: 12px;
+}
+
+#relation-tbl td {
+
+   vertical-align: top;
 }
 
 #relation-tbl span {
