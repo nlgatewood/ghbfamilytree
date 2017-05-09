@@ -4,6 +4,6 @@ root = true
 end_of_line = lf
 insert_final_newline = true
 
-[*.php]
+[*.{php,css,js}]
 indent_size = 3
 indent_style = space
