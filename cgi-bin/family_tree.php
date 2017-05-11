@@ -105,7 +105,17 @@ else{
 	 	  	<h1>Gatewood Family Tree</h1>
 		
 			<p>
-				
+				Representing family trees in a way that is easily readable and searchable can be very difficult.  Family trees can be very large and very complicated with large gaps of information.  Fining a balance between relationship visualization and the information content can be challenging.  The goal was to create a tool that was easily navigable, yet informative.
+         </p>
+         <p>
+            While the Gatewood name is not particularly common, it is still vast and complex.  Therefore, this website primarily focuses on the descendants of <a href=’1009’>Atwell Bowcock Gatewood</a> and his direct ancestors.  To the left is a list of Gatewood family members that have been researched so far.  The list splits into different groups for easier navigation.  
+            Currently, we have three groups:  ‘<i>England to John Gatewood</i>’, ‘<i>John Gatewood to Atwell Bowcock Gatewood</i>’, and ‘<i>Commilus Atwell Gatewood</i>’.  These are not arbitrary groups.  Each group represents an important branch point within the family tree.  For example, one of the most important branch points in the tree is <a href=’/?pg=tree&mid=1160’>John Gatewood</a>.  
+            He immigrated to the United States from England in the 1600s.  Every Gatewood in the United States today can trace their ancestry back to him.  Other inflection points include the three sons of Atwell Bowcock: John Wallace Gatewood, <a href=’/?pg=tree&mid=1011’>Commilus Atwell Gatewood</a>, and Cornealus Linzy Gatewood.  All three spawned large family trees that include much of 
+            the modern day Gatewoods found in Texas and Missouri.  Currently, only the Commilus Atwell tree has been researched.  The other two branches will be added later.
+	      </p>
+         <p>
+            In addition to the list/profile format, there is also a visual representation of the family trees.  To the left of the group headings is a small people image.  Click on this image to bring up a graphical representation of the family tree, supplied by Family Echo (<a href=’https://www.familyecho.com’>https://www.familyecho.com</a>).  It is a great way to create and share your own family tree.  
+            Currently, only the Commilus Atwell Family Echo tree has been created.
 			</p>
      	  </div>";
 
