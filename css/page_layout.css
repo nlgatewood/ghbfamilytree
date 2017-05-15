@@ -23,15 +23,16 @@ a {
 #banner {
    width: 100%;
    height: 240px;
+   margin-bottom: 0px;
 }
 
 ul#navbar {
    width: 100%;
-   margin: 0;
-   padding: 0;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
    list-style-type: none;
-   border: 2px double #78BEB3;
-   border-top-style: hidden;
+   border: 2px solid #78BEB3;
+   border-top-style: solid;
    border-right-style: hidden;
    border-left-style: hidden;
    overflow: hidden;
@@ -118,7 +119,7 @@ h1.panel-title {
 div.page-text {
 	width: 90%;
 	font-size: 16px;
-	margin: 0 auto;
+	margin: 0px auto;
 }
 
 div.page-text p {
@@ -140,7 +141,7 @@ div.page-text p img {
  *-------------------------*/
 div.page-sources {
 	width: 70%;
-	margin: 50px auto 0 auto;
+	margin: 50px auto 0px auto;
 }
 div.page-sources p {
 	text-align: left;
