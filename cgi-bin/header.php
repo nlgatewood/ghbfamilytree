@@ -5,7 +5,7 @@ $page = isset($_GET["pg"]) ? $_GET["pg"] : "";
 echo "<!DOCTYPE html>
       <HTML>
 		   <HEAD>
-   		   <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+   		   <meta charset=UTF-8'>
             <script language='JavaScript' src='/js/lib/jquery-1.11.1.min.js'></script>
             <script language='JavaScript' src='/js/lib/jquery-ui-1.10.3.custom.min.js'></script>
             <script language='JavaScript' src='/js/lib/jquery.cookie.js'></script>
