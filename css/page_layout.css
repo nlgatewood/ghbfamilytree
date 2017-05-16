@@ -2,28 +2,34 @@ html {
 	overflow-y: scroll;
 }
 
+body {
+   background-color: #222223;
+   color: white;
+}
+
 #page-wrapper {
-	width: 99%;
+	width: 100%;
 	text-align: center;
 	margin: 0 auto;
 }
 
-body {
-	background-color: #222223;
-   color: white;
-}
-
-a {
+#page-wrapper a {
    color: #D34808;
 }
 
 /*-------------------------
  * Top Navbar/Banner
  *-------------------------*/
+#navbar-wrapper {
+	width: 100%;
+	text-align: center;
+}
+
 #banner {
-   width: 100%;
-   height: auto;
-   margin-bottom: 0px;
+	width: 100%;
+	height: auto;
+   margin: 0px 0px 0px 0px;
+	vertical-align: bottom;
 }
 
 ul#navbar {
@@ -32,21 +38,21 @@ ul#navbar {
    padding: 0px 0px 0px 0px;
    list-style-type: none;
    border: 2px solid #78BEB3;
-   border-top-style: solid;
+   border-top-style: hidden;
    border-right-style: hidden;
    border-left-style: hidden;
    overflow: hidden;
 }
 
-ul#navbar a {
+ul#navbar > li > a {
+    width: 120px;
+    padding: 14px 16px;
     float: left;
     color: white;
-    padding: 14px 16px;
     text-decoration: none;
-    width: 120px;
 }
 
-ul#navbar a:hover {
+ul#navbar > li > a:hover {
     background-color: #78BEB3;
 }
 

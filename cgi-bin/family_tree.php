@@ -57,7 +57,7 @@ foreach($member_groups_array as $rank => $group_data){
 	echo $ft_output_list[$group_id]['gen'];
 
 	echo "<ul class='ft-members-header' id='".$group_id."-member-list'>
-				<SPAN class='header-desc' style='margin-left:".$margin.";'>
+				<SPAN class='header-desc' style='margin-left:".$margin."px;'>
       			<a href='/family_echo/commilus_tree/index.htm' class='newPopup'><img src='/images/family_echo_icon.png'></a>
          		<SPAN onclick='collapseExpandTree(".$group_id.");'>
             		<i>".$group_desc." <img id='".$group_id."-fam-arrow' src='/images/up_arrow_12x12.png'></i>
