@@ -13,16 +13,18 @@ $member_maiden     = ($ft_members_array[$mid]['maiden_name'] != null) ? "(n&eacu
 $member_nicknames  = ($ft_members_array[$mid]['nicknames'] != null) ? "Nicknames: <i>".$ft_members_array[$mid]['nicknames']."</i>" : '';
 $member_birth      = format_date($ft_members_array[$mid]['birth_year'],$ft_members_array[$mid]['birth_month'],$ft_members_array[$mid]['birth_day'],'MM/DD/YYYY');
 $member_death      = format_date($ft_members_array[$mid]['death_year'],$ft_members_array[$mid]['death_month'],$ft_members_array[$mid]['death_day'],'MM/DD/YYYY');
-$member_burial_loc = ($ft_members_array[$mid]['burial_loc'] != null) ? $ft_members_array[$mid]['burial_loc'] : '';
-$member_gender     = null;
+$member_birth_loc = ($ft_members_array[$mid]['birth_loc'] != null) ? $ft_members_array[$mid]['birth_loc'] : 'N/A';
+$member_death_loc = ($ft_members_array[$mid]['death_loc'] != null) ? $ft_members_array[$mid]['death_loc'] : 'N/A';
+$member_burial_loc = ($ft_members_array[$mid]['burial_loc'] != null) ? $ft_members_array[$mid]['burial_loc'] : 'N/A';
+$member_gender     = $ft_members_array[$mid]['gender'];
 $image_dir;
 
 //Set the sex description
-if($ft_members_array['gender'] == 'M'){
+if($member_gender== 'M'){
 
 	$member_gender = 'Male';
 }
-elseif($ft_members_array['gender'] == 'F'){
+elseif($member_gender == 'F'){
 
 	$member_gender = 'Female';
 }
@@ -60,11 +62,11 @@ echo "<TABLE id='main-tbl'>
             </TR>
             <TR>
              <TH>Date of Birth:</TH>
-             <TD>".$member_birth."</TD>
+             <TD>".$member_birth.": ".$member_birth_loc."</TD>
             </TR>
             <TR>
              <TH>Date of Death:</TH>
-             <TD>".$member_death."</TD>
+             <TD>".$member_death.": ".$member_death_loc."</TD>
             </TR>
             <TR>
              <TH>Buried:</TH>

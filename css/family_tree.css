@@ -95,6 +95,11 @@ div#tree-member-profile {
 	padding-right: 5px;
 }
 
+#demog-tbl td{
+
+	text-align: left;
+}
+
 #demog-tbl img {
 
    width: 150px;
