@@ -52,13 +52,14 @@ ksort($member_groups_array);
 foreach($member_groups_array as $rank => $group_data){
 
 	$group_id   = $group_data['start_member_id'];
+	$group_name = $group_data['group_name'];
 	$group_desc = $group_data['group_desc'];
 	$margin     = $ft_output_list[$group_id][$group_id]['gen']*10;
 	echo $ft_output_list[$group_id]['gen'];
 
 	echo "<ul class='ft-members-header' id='".$group_id."-member-list'>
 				<SPAN class='header-desc' style='margin-left:".$margin."px;'>
-      			<a href='/family_echo/$group_id/index.htm' class='newPopup'><img src='/images/family_echo_icon.png'></a>
+      			<a href='/family_echo/$group_name/index.htm' class='newPopup'><img src='/images/family_echo_icon.png'></a>
          		<SPAN onclick='collapseExpandTree(".$group_id.");'>
             		<i>".$group_desc." <img id='".$group_id."-fam-arrow' src='/images/up_arrow_12x12.png'></i>
             	</SPAN>

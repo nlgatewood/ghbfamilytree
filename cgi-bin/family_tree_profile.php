@@ -32,12 +32,11 @@ else{
 	$member_gender = 'Unknown';
 }
 
-//Get the profile image.  If it doesn't exist, use the empty image
-if(file_exists("./images/family/".$mid."/profile.jpg")){
+$image_dir = "./images/family/".$mid."/profile.jpg";
 
-	$image_dir = "/images/family/".$mid."/profile.jpg";
-}
-else{
+//Get the profile image.  If it doesn't exist, use the empty image
+if(!file_exists($image_dir)){
+
 	$image_dir = "/images/family/empty.png";
 }
 
@@ -171,16 +170,17 @@ if(count($ft_relation_array) == 0){
 //Loop through each of the relationships for this member
 foreach($ft_relation_array as $partner_id => $relation_array){
 
-   $ft_partner_array = get_member_data($partner_id);
-   $partner_name     = $ft_partner_array['first_name']." ".$ft_partner_array['middle_name']." ".$ft_partner_array['last_name']." ".$ft_partner_array['suffix'];
-   $partner_maiden   = ($ft_partner_array['maiden_name'] != null) ? " (n&eacute;e ".$ft_partner_array['maiden_name'].")" : '';
-   $relation_begin   = format_date($relation_array['begin_year'],$relation_array['begin_month'],$relation_array['begin_day'],'MM/DD/YYYY');
-   $relation_end     = format_date($relation_array['end_year'],$relation_array['end_month'],$relation_array['end_day'],'MM/DD/YYYY');
+   $ft_partner_array 	= get_member_data($partner_id);
+   $partner_name     	= $ft_partner_array['first_name']." ".$ft_partner_array['middle_name']." ".$ft_partner_array['last_name']." ".$ft_partner_array['suffix'];
+   $partner_maiden   	= ($ft_partner_array['maiden_name'] != null) ? " (n&eacute;e ".$ft_partner_array['maiden_name'].")" : '';
+   $relation_begin		= format_date($relation_array['begin_year'],$relation_array['begin_month'],$relation_array['begin_day'],'MM/DD/YYYY');
+	$relation_begin_loc 	= ($relation_array['begin_loc']) ? $relation_array['begin_loc'] : 'N/A'; 
+   $relation_end     	= format_date($relation_array['end_year'],$relation_array['end_month'],$relation_array['end_day'],'MM/DD/YYYY');
 
    echo "<TR>
-          <TD><a href='/?pg=".$page."&mid=".$partner_id."'>".$partner_name.$partner_maiden."</a></TD>
-          <TD><SPAN>Married:</SPAN>".$relation_begin."</TD>
-          <TD><SPAN>Divorced: </SPAN>".$relation_end."</TD>
+          <TD><a href='/?pg=$page&mid=$partner_id'>$partner_name$partner_maiden</a></TD>
+          <TD><SPAN>Married:</SPAN>$relation_begin: $relation_begin_loc</TD>
+          <TD><SPAN>Divorced: </SPAN>$relation_end</TD>
          </TR>";
 }
 
@@ -211,9 +211,9 @@ foreach($ft_children_array as $child_id => $child_array){
    $child_death_loc = ($child_array['death_loc']) ? ": ".$child_array['death_loc'] : '';
 
    echo "<TR>
-          <TD><a href='/?pg=".$page."&mid=".$child_id."'>".$child_name.$child_maiden."</a></TD>
-          <TD><SPAN>Born:</SPAN>".$child_birth.$child_birth_loc."</TD>
-          <TD><SPAN>Death:</SPAN> ".$child_death.$child_death_loc."</TD>
+          <TD><a href='/?pg=$page&mid=$child_id'>$child_name$child_maiden</a></TD>
+          <TD><SPAN>Born:</SPAN>$child_birth$child_birth_loc</TD>
+          <TD><SPAN>Death:</SPAN>$child_death$child_death_loc</TD>
          </TR>";
 }
 
