@@ -54,7 +54,7 @@ function get_member_data($id = NULL) {
 
  				$ft_members_array[$res_id] = $data;
  			}
- 				else{
+ 			else{
  				$ft_members_array = $data;
  			}
  		}
@@ -439,6 +439,10 @@ function searchResults($query){
 	   $query_flds[$search_flds[0]] = $search_flds[1];
 	}
    
+   $last_name = "%".$query_flds['last_name']."%";
+   $first_name = "%".$query_flds['first_name']."%";
+   $gender = "%".$query_flds['gender']."%";
+   
    $result_array = [];
 	$conn = get_mysqli_object();
 
@@ -447,14 +451,14 @@ function searchResults($query){
                   gender, birth_year, birth_month, birth_day, birth_loc, death_year,
                   death_month, death_day, death_loc, burial_loc, parent_id1, parent_id2
            FROM ft_members
-            WHERE (? IS NULL OR last_name LIKE '%?%')
-            AND (? IS NULL OR first_name LIKE '%?%')
-            AND (? IS NULL OR gender LIKE '%?%')";
+            WHERE (? IS NULL OR last_name LIKE ?)
+            AND (? IS NULL OR first_name LIKE ?)
+            AND (? IS NULL OR gender LIKE ?)";
 
 	if($stmt = $conn->prepare($sql)){
 
-		$stmt->bind_param("ssssss",$query_flds['last_name'], $query_flds['last_name'], $query_flds['first_name'], 
-                                 $query_flds['first_name'], $query_flds['gender'], $query_flds['gender']);
+		$stmt->bind_param("ssssss",$query_flds['last_name'], $last_name, $query_flds['first_name'], 
+                                 $first_name, $query_flds['gender'], $gender);
 		$stmt->execute();
 
       $stmt->bind_result($id, $first_name, $middle_name, $last_name, $maiden_name, $nicknames,
