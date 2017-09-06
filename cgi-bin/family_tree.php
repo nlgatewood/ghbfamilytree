@@ -56,6 +56,46 @@ echo "<div id='search-box'>
 			<input type='submit' value='Search'>
 		</div>";
 
+$results_array = get_search_results($query);
+
+if(count($results_array) > 0){
+   
+   //Get all of the keys from the array
+   $result_keys = array_keys($results_array);
+   
+   echo "<TABLE border=1>";
+   
+   //Loop through the results
+   for($i=0; $i<20; $i++){
+
+      echo "<TR>
+               <TD><a href='/?pg=profile&id=$member_id'>".$member_data['last_name'].", ".$member_data['first_name']."</a></TD>
+               <TD>
+                  <TABLE border=1>
+                  <TR>
+                     <TD>Birth:</TD>
+                     <TD></TD>
+                  </TR>
+                  <TR>
+                     <TD>Death:</TD>
+                     <TD></TD>
+                  </TR>
+                  </TABLE>
+               </TD>
+               <TD>
+                  <TABLE border=1>
+                  <TR>
+                     <TD>Relationships</TD>
+                     <TD></TD>
+                  </TR>
+                  </TABLE>
+               </TD>
+            </TR>";
+   }
+   
+   echo "</TABLE>";
+}
+
 //-------------------------------------------------------
 /*
 /*
