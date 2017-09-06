@@ -5,6 +5,7 @@ require('lib/date_funcs.php');
 $page = isset($_GET["pg"]) ? $_GET["pg"] : '';
 $mid = isset($_GET["mid"]) ? $_GET["mid"] : '';
 $query = isset($_GET["query"]) ? $_GET["query"] : '';
+$range = isset($_GET["range"]) ? $_GET["range"] : '';
 $body_event = "onload='selectFamilyMember()'";
 
 $ft_members_array = get_member_data(); //Get all the members of the tree
@@ -18,6 +19,10 @@ include('header.php');
 #			<div id='tree-wrapper'>";
 
 //-------------------------------------------------------
+if($range == null){
+
+   $range = 20;
+}
 
 echo "<FORM method='get' name='ft_form' id='ft_form' action='/'>
          <input type='hidden' name='pg' value='$page'>
@@ -94,6 +99,12 @@ if(count($results_array) > 0){
    }
    
    echo "</TABLE>";
+   
+   if(count($result_keys) > $range){
+        
+      echo "<input type='hidden' id='range' value='".$range+20."'>
+            <a href='#' onclick='form.submit();'> <<".$range-19."-$range>> </a>";
+   }
 }
 
 //-------------------------------------------------------
