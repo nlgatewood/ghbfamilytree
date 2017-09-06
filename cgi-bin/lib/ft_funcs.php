@@ -426,9 +426,9 @@ function build_members_list($id, &$ft_members_array, &$ft_output_list, $gen,$gro
 }
 
 /*------------------------------------------------------------------------------
- * searchResults($query) - Get the results from the query
+ * get_search_results($query) - Get the results from the query
  *------------------------------------------------------------------------------*/
-function searchResults($query){
+function get_search_results($query){
 
 	$query_flds = [];
 	$query_comps = preg_split("/\~/", $query);
