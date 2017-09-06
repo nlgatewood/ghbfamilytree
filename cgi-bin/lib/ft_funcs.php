@@ -426,6 +426,7 @@ function build_members_list($id, &$ft_members_array, &$ft_output_list, $gen,$gro
 }
 
 /*------------------------------------------------------------------------------
+ * searchResults($query) - Get the results from the query
  *------------------------------------------------------------------------------*/
 function searchResults($query){
 
@@ -437,6 +438,59 @@ function searchResults($query){
 	   $search_flds = preg_split("/\:/", $value);
 	   $query_flds[$search_flds[0]] = $search_flds[1];
 	}
+   
+   $result_array = [];
+	$conn = get_mysqli_object();
+
+	// Get this person's children information
+	$sql = "SELECT id, first_name, middle_name, last_name, maiden_name, nicknames,
+                  gender, birth_year, birth_month, birth_day, birth_loc, death_year,
+                  death_month, death_day, death_loc, burial_loc, parent_id1, parent_id2
+           FROM ft_members
+            WHERE (? IS NULL OR last_name LIKE '%?%')
+            AND (? IS NULL OR first_name LIKE '%?%')
+            AND (? IS NULL OR gender LIKE '%?%')";
+
+	if($stmt = $conn->prepare($sql)){
+
+		$stmt->bind_param("ssssss",$query_flds['last_name'], $query_flds['last_name'], $query_flds['first_name'], 
+                                 $query_flds['first_name'], $query_flds['gender'], $query_flds['gender']);
+		$stmt->execute();
+
+      $stmt->bind_result($id, $first_name, $middle_name, $last_name, $maiden_name, $nicknames,
+                         $gender, $birth_year, $birth_month, $birth_day, $birth_loc, $death_year,
+                         $death_month, $death_day, $death_loc, $burial_loc, $parent_id1, $parent_id2);
+
+		while($stmt->fetch()){
+
+			$data = array('id'           => $child_id,
+                       'first_name'   => $first_name,
+                       'middle_name'  => $middle_name,
+                       'last_name'    => $last_name,
+                       'maiden_name'  => $maiden_name,
+                       'nicknames'    => $nicknames,
+                       'gender'       => $gender,
+                       'birth_year'   => $birth_year,
+                       'birth_month'  => $birth_month,
+                       'birth_day'    => $birth_day,
+                       'birth_loc'    => $birth_loc,
+                       'death_year'   => $death_year,
+                       'death_month'  => $death_month,
+                       'death_day'    => $death_day,
+                       'death_loc'    => $death_loc,
+                       'burial_loc'   => $burial_loc,
+                       'parent_id1'   => $parent_id1,
+                       'parent_id2'   => $parent_id2);
+
+			$result_array[$id] = $data;
+		}
+
+		$stmt->close();
+	}
+
+	$conn->close();
+
+	return $result_array;
 }
 
 ?>
