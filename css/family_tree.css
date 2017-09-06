@@ -194,3 +194,40 @@ div#tree-member-profile {
 
     visibility: visible;
 }
+
+/* Search Box Fields */
+/* ----------------- */
+div#search-box {
+
+	width: 60%; 
+	margin: 0 auto; 
+	color: black;
+	background-color: #ECEBEA;
+	border: 1px solid black;
+}
+
+div#search-criteria {
+
+	display: inline-block;
+	margin: 0 auto;
+	border: 1px solid #78BEB3;
+}
+
+span.search-field {
+
+	display: inline-block;
+	margin: 0 auto;
+	border: 1px solid #78BEB3; 
+}
+
+span.search-field > label {
+
+	display: block; 
+	text-align: left;
+}
+
+span.search-radio {
+
+	display:block;
+	text-align: left;
+}

@@ -7,15 +7,15 @@ $CONFIG = $config_obj->get_config_file();
 
 $page = isset($_GET["pg"]) ? $_GET["pg"] : '';
 
-if($page == "origin"){
+if($page == "family_origin"){
 
 	include("./cgi-bin/family_origin.php");
 }
-elseif($page == "history"){
+elseif($page == "family_history"){
 
 	include("./cgi-bin/family_history.php");
 }
-elseif($page == "tree"){
+elseif($page == "family_tree"){
 
 	include("./cgi-bin/family_tree.php");
 }

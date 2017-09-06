@@ -4,6 +4,7 @@ require('lib/date_funcs.php');
 
 $page = isset($_GET["pg"]) ? $_GET["pg"] : '';
 $mid = isset($_GET["mid"]) ? $_GET["mid"] : '';
+$query = isset($_GET["query"]) ? $_GET["query"] : '';
 $body_event = "onload='selectFamilyMember()'";
 
 $ft_members_array = get_member_data(); //Get all the members of the tree
@@ -13,8 +14,50 @@ $head_margin = 0;
 
 include('header.php');
 
-echo "<FORM method=post action='/?pg=".$page.(($mid != "") ? "&mid=".$mid : "")."'>
-			<div id='tree-wrapper'>";
+#echo "<FORM method='get' action='/'>
+#			<div id='tree-wrapper'>";
+
+//-------------------------------------------------------
+
+echo "<FORM method='get' name='ft_form' id='ft_form' action='/'>
+         <input type='hidden' name='pg' value='$page'>
+         <div class='page-text'>
+				<h1>Family Member Search</h1>
+			</div>";
+
+$query_flds = [];
+$query_comps = preg_split("/\~/", $query);
+
+foreach($query_comps as $value){
+
+	$search_flds = preg_split("/\:/", $value);
+	$query_flds[$search_flds[0]] = $search_flds[1];
+}
+
+echo "<div id='search-box'>
+
+			<div id='search-criteria'>
+				<span class='search-field'>
+					<label>Last Name</label>
+					<input type='text' name='last_name' class='search-fld' id='last_name' value='".$query_flds['last_name']."'>\n
+				</span>
+         	<span class='search-field'>
+         	   <label>First Name</label>
+         	   <input type='text' name='first_name' class='search-fld' id='first_name' value='".$query_flds['first_name']."'>\n
+         	</span>
+         	<span class='search-radio'>
+					<label>Male:</label>
+					<input type='radio' name='gender' value='M'>
+					<label>Female:</label>
+					<input type='radio' name='gender' value='F'>
+				</span>
+			</div>
+
+			<input type='submit' value='Search'>
+		</div>";
+
+//-------------------------------------------------------
+/*
 /*
 echo "<div class='tooltip'>How is this list sorted?
          	<SPAN class='tooltiptext'>
@@ -37,7 +80,7 @@ echo "<div class='tooltip'>How is this list sorted?
 					</ul>
 					The list continues down the branches sorted by age.
          	</SPAN>
-      	</div><BR><BR>";*/
+      	</div><BR><BR>";
 
 echo "<div id='tree-members' onload='selectFamilyMember();'>
 	  	 <ul id='tree-member-list'>";
@@ -123,6 +166,7 @@ else{
 
 	echo "</div>";
 }
+*/
 
 include('footer.php');
 ?>

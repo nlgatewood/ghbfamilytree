@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
 	//popup when a member of the 'newPopup' class is clicked
+	/*
 	$('.newPopup').click(function (event){
  
 		var url = $(this).attr("href");
@@ -12,6 +13,36 @@ $(document).ready(function() {
  
 		event.preventDefault();
     });
+	*/
+
+	//On Submit, generate the search String
+	$("#ft_form").submit( function(eventObj) {
+
+		var queryArray = [];
+
+		//Remove any search
+		$('.search-fld').each(function(index,obj){
+
+			var name = $(this).attr('name');
+			var id = $(this).attr('id');
+
+   		if($('#'+id).val() != ""){
+
+				queryArray.push(name+":"+$('#'+id).val());
+   		}
+
+      	$('#'+id).remove();
+		});
+
+		if(queryArray.length > 0){
+
+	      $('<input />').attr('type', 'hidden')
+	      				  .attr('name', "query")
+	         			  .attr('value', queryArray.join('~'))
+	         			  .appendTo('#ft_form');
+	      	return true;
+		}
+  	});
 });
 
 /*------------------------------------------------------------------------------------

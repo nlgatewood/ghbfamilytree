@@ -24,9 +24,9 @@ echo "
 				<img id='banner' src='/images/tree_of_life_banner.jpg'>
 				<ul id='navbar'>
 					<li><a href='/'>Home</a></li>
-					<li><a href='/?pg=origin'>Family Origins</a></li>
-					<li><a href='/?pg=history'>Family History</a></li>
-					<li><a href='/?pg=tree'>Family Tree</a></li>
+					<li><a href='/?pg=family_origin'>Family Origins</a></li>
+					<li><a href='/?pg=family_history'>Family History</a></li>
+					<li><a href='/?pg=family_tree'>Family Tree</a></li>
 					<li><a href='/?pg=about'>About</a></li>
 					<li><a href='/?pg=contact'>Contact</a></li>
 				</ul>

@@ -425,4 +425,18 @@ function build_members_list($id, &$ft_members_array, &$ft_output_list, $gen,$gro
 	}
 }
 
+/*------------------------------------------------------------------------------
+ *------------------------------------------------------------------------------*/
+function searchResults($query){
+
+	$query_flds = [];
+	$query_comps = preg_split("/\~/", $query);
+
+	foreach($query_comps as $value){
+
+	   $search_flds = preg_split("/\:/", $value);
+	   $query_flds[$search_flds[0]] = $search_flds[1];
+	}
+}
+
 ?>
