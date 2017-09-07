@@ -19,9 +19,9 @@ elseif($page == "family_tree"){
 
 	include("./cgi-bin/family_tree.php");
 }
-elseif($page == "ft_frame"){
+elseif($page == "profile"){
 
-	include("./cgi-bin/ft_frame.php");
+	include("./cgi-bin/profile.php");
 }
 elseif($page == "about"){
 

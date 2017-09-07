@@ -26,7 +26,7 @@ echo "
 					<li><a href='/'>Home</a></li>
 					<li><a href='/?pg=family_origin'>Family Origins</a></li>
 					<li><a href='/?pg=family_history'>Family History</a></li>
-					<li><a href='/?pg=family_tree'>Family Tree</a></li>
+					<li><a href='/?pg=family_tree'>Family Search</a></li>
 					<li><a href='/?pg=about'>About</a></li>
 					<li><a href='/?pg=contact'>Contact</a></li>
 				</ul>

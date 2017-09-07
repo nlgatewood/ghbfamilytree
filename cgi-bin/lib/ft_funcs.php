@@ -430,6 +430,11 @@ function build_members_list($id, &$ft_members_array, &$ft_output_list, $gen,$gro
  *------------------------------------------------------------------------------*/
 function get_search_results($query){
 
+	if($query == null){
+	
+		return null;
+	}
+
 	$query_flds = [];
 	$query_comps = preg_split("/\~/", $query);
 

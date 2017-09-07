@@ -1,22 +1,28 @@
 <?php
+require('lib/ft_funcs.php');
+require('lib/date_funcs.php');
+
 $page = isset($_GET["pg"]) ? $_GET["pg"] : '';
 $mid = isset($_GET["mid"]) ? $_GET["mid"] : '';
-$page_post = $page.($mid != null) ? "&mid=".$mid : "";
+
+$ft_members_array = get_member_data($mid);
+
+include('header.php');
 
 echo "<div id='tree-member-profile'>";
 
 /*--------------------------
  * Basic Information Section
  *--------------------------*/
-$member_name       = $ft_members_array[$mid]['first_name']." ".$ft_members_array[$mid]['middle_name']." ".$ft_members_array[$mid]['last_name']." ".$ft_members_array[$mid]['suffix'];
-$member_maiden     = ($ft_members_array[$mid]['maiden_name'] != null) ? "(n&eacute;e ".$ft_members_array[$mid]['maiden_name'].")" : '';
-$member_nicknames  = ($ft_members_array[$mid]['nicknames'] != null) ? "Nicknames: <i>".$ft_members_array[$mid]['nicknames']."</i>" : '';
-$member_birth      = format_date($ft_members_array[$mid]['birth_year'],$ft_members_array[$mid]['birth_month'],$ft_members_array[$mid]['birth_day'],'MM/DD/YYYY');
-$member_death      = format_date($ft_members_array[$mid]['death_year'],$ft_members_array[$mid]['death_month'],$ft_members_array[$mid]['death_day'],'MM/DD/YYYY');
-$member_birth_loc = ($ft_members_array[$mid]['birth_loc'] != null) ? $ft_members_array[$mid]['birth_loc'] : 'N/A';
-$member_death_loc = ($ft_members_array[$mid]['death_loc'] != null) ? $ft_members_array[$mid]['death_loc'] : 'N/A';
-$member_burial_loc = ($ft_members_array[$mid]['burial_loc'] != null) ? $ft_members_array[$mid]['burial_loc'] : 'N/A';
-$member_gender     = $ft_members_array[$mid]['gender'];
+$member_name       = $ft_members_array['first_name']." ".$ft_members_array['middle_name']." ".$ft_members_array['last_name']." ".$ft_members_array['suffix'];
+$member_maiden     = ($ft_members_array['maiden_name'] != null) ? "(n&eacute;e ".$ft_members_array['maiden_name'].")" : '';
+$member_nicknames  = ($ft_members_array['nicknames'] != null) ? "Nicknames: <i>".$ft_members_array['nicknames']."</i>" : '';
+$member_birth      = format_date($ft_members_array['birth_year'],$ft_members_array['birth_month'],$ft_members_array['birth_day'],'MM/DD/YYYY');
+$member_death      = format_date($ft_members_array['death_year'],$ft_members_array['death_month'],$ft_members_array['death_day'],'MM/DD/YYYY');
+$member_birth_loc = ($ft_members_array['birth_loc'] != null) ? $ft_members_array['birth_loc'] : 'N/A';
+$member_death_loc = ($ft_members_array['death_loc'] != null) ? $ft_members_array['death_loc'] : 'N/A';
+$member_burial_loc = ($ft_members_array['burial_loc'] != null) ? $ft_members_array['burial_loc'] : 'N/A';
+$member_gender     = $ft_members_array['gender'];
 $image_dir;
 
 //Set the sex description
@@ -243,4 +249,6 @@ else{
     </TR>
    </TABLE>
   </div>";
+
+include('footer.php');
 ?>
