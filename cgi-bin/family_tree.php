@@ -96,7 +96,7 @@ echo "<div id='search-box'>
                      <input type='submit' value='Search'>
                   </div>
                   <div class='search-submit'>
-                     <input type='submit' value='Clear'>
+                     <input type='reset' value='Clear'>
                   </div>
             </div>
             
