@@ -30,55 +30,78 @@ foreach($query_comps as $value){
 }
 
 echo "<div id='search-box'>
-			<fieldset style='display:block; float:left;'>
-				<div style='display:inline; margin: 0 15px 0 0;'>
-					<label>Last Name</label>
-					<input type='text' name='last_name' class='search-fld' id='last_name' value='".$query_flds['last_name']."'>
-				</div>
-
-            <div style='display:inline; margin: 0 15px 0 0;'>
-               <label>First Name</label>
-               <input type='text' name='first_name' class='search-fld' id='first_name' value='".$query_flds['first_name']."'>
+         <fieldset>
+         
+            <div class='search-criteria'>
+               <div class='search-section'>
+                  <div class='search-fld'>
+                     <label id='top-label'>Last Name</label>
+                     <input type='text' name='last_name' id='last_name' value='".$query_flds['last_name']."'>
+                  </div>
+                  <div class='search-fld'>
+                     <label id='top-label'>First Name</label>
+                     <input type='text' name='first_name' id='first_name' value='".$query_flds['first_name']."'>
+                  </div>
+               </div>
+               <div class='search-section'>
+                  <div class='search-fld'>
+                     <label>Male:</label>
+                     <input type='radio' name='gender' class='search-fld' id='genderm' value='M' ".(($query_flds['gender'] == 'M') ?"checked='checked'" : "").">
+                  </div>
+                  <div class='search-fld'>
+                     <label>Female:</label>
+                     <input type='radio' name='gender' class='search-fld' id='genderf' value='F' ".(($query_flds['gender'] == 'F') ?"checked='checked'" : "").">
+                  </div>
+               </div>
             </div>
-			</fieldset>
-		</div>
-";
-/*
-echo"
-			</fieldset>
+            
+            <div class='search-criteria'>
+               <div class='search-section'>
+                  <label id='top-label'>Birth Date (MM-DD-YYYY):</label>
+                  <div class='search-fld'>
+                     <input type='text' name='birth_month' class='search-fld' id='birth_month' value='".$query_flds['birth_month']."' maxlength='2' size='2'>
+                  </div>
+                  <div class='search-fld'>
+                     <input type='text' name='birth_day' class='search-fld' id='birth_day' value='".$query_flds['birth_day']."' maxlength='2' size='2'>
+                  </div>
+                  <div class='search-fld'>
+                     <input type='text' name='birth_year' class='search-fld' id='birth_year' value='".$query_flds['birth_year']."' maxlength='4' size='4'>
+                  </div>
+                  <div class='search-fld'>
+                     &nbsp;<label>Birth Location:</label>
+                     <input type='text' name='birth_loc' class='search-fld' id='birth_loc' value='".$query_flds['birth_loc']."'>
+                  </div>
+               </div>
+            </div>
 
-            <label>Search by Birth Date(MM-DD-YYYY)</label>
-			<div id='search-criteria'>
-				<span class='search-field'>
-					<label>Last Name</label>
-					<input type='text' name='last_name' class='search-fld' id='last_name' value='".$query_flds['last_name']."'>\n
-				</span>
-         	<span class='search-field'>
-         	   <label>First Name</label>
-         	   <input type='text' name='first_name' class='search-fld' id='first_name' value='".$query_flds['first_name']."'>\n
-         	</span>
-         	<span class='search-radio'>
-					<label>Male:</label>
-					<input type='radio' name='gender' class='search-fld' id='genderm' value='M' ".(($query_flds['gender'] == 'M') ?"checked='checked'" : "").">
-					<label>Female:</label>
-					<input type='radio' name='gender' class='search-fld' id='genderf' value='F' ".(($query_flds['gender'] == 'F') ?"checked='checked'" : "").">
-				</span>
-
-            <label>Search by Birth Date(MM-DD-YYYY)</label>
-            <span class='search-field'>
-               <input type='text' name='birth_month' class='search-fld' id='birth_month' value='".$query_flds['birth_month']."' maxlength='2' size='2'>\n
-            </span>
-            <span class='search-field'>
-               <input type='text' name='birth_day' class='search-fld' id='birth_day' value='".$query_flds['birth_day']."' maxlength='2' size='2'>\n
-            </span>
-            <span class='search-field'>
-               <input type='text' name='birth_year' class='search-fld' id='birth_year' value='".$query_flds['birth_year']."' maxlength='4' size='4'>\n
-            </span>
-
-			</div>
-			<input type='submit' value='Search'>
-		 </div>";
-*/
+            <div class='search-criteria'>
+               <div class='search-section'>
+                  <label id='top-label'>Death Date (MM-DD-YYYY):</label>
+                  <div class='search-fld'>
+                     <input type='text' name='death_month' class='search-fld' id='death_month' value='".$query_flds['death_month']."' maxlength='2' size='2'>
+                  </div>
+                  <div class='search-fld'>
+                     <input type='text' name='death_day' class='search-fld' id='death_day' value='".$query_flds['death_day']."' maxlength='2' size='2'>
+                  </div>
+                  <div class='search-fld'>
+                     <input type='text' name='death_year' class='search-fld' id='death_year' value='".$query_flds['death_year']."' maxlength='4' size='4'>
+                  </div>
+                  <div class='search-fld'>
+                     <label>Death Location:</label>
+                     <input type='text' name='death_loc' class='search-fld' id='death_loc' value='".$query_flds['death_loc']."'>
+                  </div>
+               </div>
+               <HR>
+                  <div class='search-submit'>
+                     <input type='submit' value='Search'>
+                  </div>
+                  <div class='search-submit'>
+                     <input type='submit' value='Clear'>
+                  </div>
+            </div>
+            
+         </fieldset>
+      </div>";
 
 //Get the search results from the search criteria
 $results_array = get_search_results($query);
