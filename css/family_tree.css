@@ -2,43 +2,42 @@
  * Search Box Fields 
  *--------------------------------------*/
 div#search-box {
-
-   width: 60%;
+   width: 600px;
    margin: 0 auto;
-	background-color: #333;
 }
 
-div#search-criteria {
+div#search-box > fieldset{
+   background-color: #333;
+}
 
+div.search-criteria {
+   width: 500px;
    display: inline-block;
    margin: 0 auto;
-   border: 1px solid #78BEB3;
 }
 
-span.search-field {
+div.search-section {
+   text-align:left;
+   padding: 5px 5px 5px 5px;
+}
 
+div.search-fld {
    display: inline-block;
-   margin: 0 auto;
-   border: 1px solid black;
+   padding: 0px 5px;
 }
 
-span.search-field > label {
+div.search-submit {
+   display: inline-block;
+   padding: 5px 3px;
+}
 
-   display: block;
+label#top-label {
+   display: block; 
    text-align: left;
 }
 
-span.search-radio {
-
-   display: block;
-   margin: 0 auto;
-	text-align: left;
-	border: 1px solid #78BEB3;
-}
-
-span.search-radio > label{
-
-	margin: 0 0 0 0;
+label {
+   font-size: 12px;
 }
 
 /*--------------------------------------
