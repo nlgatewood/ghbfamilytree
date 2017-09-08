@@ -23,10 +23,13 @@ $(document).ready(function() {
 		//Remove any search
 		$('.search-fld').each(function(index,obj){
 
+			var type = $(this).attr('type');
 			var name = $(this).attr('name');
 			var id = $(this).attr('id');
 
-   		if($('#'+id).val() != ""){
+			//Add name, value pairs to the query array
+   		if((type == "text" && $('#'+id).val() != "") ||
+				 type == "radio" && $("input[id="+id+"]:checked").val() != undefined){
 
 				queryArray.push(name+":"+$('#'+id).val());
    		}
@@ -34,6 +37,7 @@ $(document).ready(function() {
       	$('#'+id).remove();
 		});
 
+		//Create the query field
 		if(queryArray.length > 0){
 
 	      $('<input />').attr('type', 'hidden')

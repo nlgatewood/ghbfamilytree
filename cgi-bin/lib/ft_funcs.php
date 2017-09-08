@@ -458,7 +458,8 @@ function get_search_results($query){
            FROM ft_members
             WHERE (? IS NULL OR last_name LIKE ?)
             AND (? IS NULL OR first_name LIKE ?)
-            AND (? IS NULL OR gender LIKE ?)";
+            AND (? IS NULL OR gender LIKE ?)
+			  ORDER BY first_name";
 
 	if($stmt = $conn->prepare($sql)){
 
