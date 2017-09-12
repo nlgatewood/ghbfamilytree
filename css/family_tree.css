@@ -2,12 +2,18 @@
  * Search Box Fields 
  *--------------------------------------*/
 div#search-box {
-   width: 600px;
+   width: 50%;
+	min-width: 525px;
+	height: 275px;
    margin: 0 auto;
+   background-color: #333;
+   border: 1px solid white;
 }
 
 div#search-box > fieldset{
-   background-color: #333;
+   width: 100%;
+   margin: 0 auto;
+	border: 0;
 }
 
 div.search-criteria {
@@ -38,6 +44,27 @@ label#top-label {
 
 label {
    font-size: 12px;
+}
+
+/*--------------------------------------
+ * Search Results CSS
+ *--------------------------------------*/
+div#search-results {
+	width: 1200px;
+	margin: 20px auto 0px;
+}
+
+div#search-results > table{
+	width:100%;
+}
+
+#member-name {
+	vertical-align: text-top;
+	text-align: left;
+}
+
+.rec-break {
+	padding: 0 0 0 0;
 }
 
 /*--------------------------------------

@@ -430,11 +430,6 @@ function build_members_list($id, &$ft_members_array, &$ft_output_list, $gen,$gro
  *------------------------------------------------------------------------------*/
 function get_search_results($query){
 
-	if($query == null){
-	
-		return null;
-	}
-
 	$query_flds = [];
 	$query_comps = preg_split("/\~/", $query);
 
@@ -444,9 +439,33 @@ function get_search_results($query){
 	   $query_flds[$search_flds[0]] = $search_flds[1];
 	}
    
+	//format for the search query
    $last_name = "%".$query_flds['last_name']."%";
    $first_name = "%".$query_flds['first_name']."%";
    $gender = "%".$query_flds['gender']."%";
+   $birth_year = "%".$query_flds['birth_year']."%";
+   $birth_month = "%".$query_flds['birth_month']."%";
+   $birth_day = "%".$query_flds['birth_day']."%";
+   $birth_loc = "%".$query_flds['birth_loc']."%";
+   $death_year = "%".$query_flds['death_year']."%";
+   $death_month = "%".$query_flds['death_month']."%";
+   $death_day = "%".$query_flds['death_day']."%";
+   $death_loc = "%".$query_flds['death_loc']."%";
+	$sort_by;
+
+	//Format sort String
+	if($query_flds['sort_by'] == 'birth_date'){
+
+		$sort_by = "birth_year, birth_month, birth_day";
+	}
+	else if($query_flds['sort_by'] == 'death_date'){
+
+		$sort_by = "death_year, death_month, death_day";
+	}
+	else{
+		$sort_by = "last_name, first_name";
+	}
+
    
    $result_array = [];
 	$conn = get_mysqli_object();
@@ -459,12 +478,30 @@ function get_search_results($query){
             WHERE (? IS NULL OR last_name LIKE ?)
             AND (? IS NULL OR first_name LIKE ?)
             AND (? IS NULL OR gender LIKE ?)
-			  ORDER BY first_name";
+				AND (? IS NULL OR birth_year LIKE ?)
+            AND (? IS NULL OR birth_month LIKE ?)
+            AND (? IS NULL OR birth_day LIKE ?)
+            AND (? IS NULL OR birth_loc LIKE ?)
+            AND (? IS NULL OR death_year LIKE ?)
+            AND (? IS NULL OR death_month LIKE ?)
+            AND (? IS NULL OR death_day LIKE ?)
+            AND (? IS NULL OR death_loc LIKE ?)
+			  ORDER BY $sort_by";
 
 	if($stmt = $conn->prepare($sql)){
 
-		$stmt->bind_param("ssssss",$query_flds['last_name'], $last_name, $query_flds['first_name'], 
-                                 $first_name, $query_flds['gender'], $gender);
+		$stmt->bind_param("ssssssssssssssssssssss",
+								$query_flds['last_name'], 	 $last_name, 
+								$query_flds['first_name'],  $first_name, 
+								$query_flds['gender'], 		 $gender,
+								$query_flds['birth_year'],  $birth_year,
+								$query_flds['birth_month'], $birth_month,
+								$query_flds['birth_day'], 	 $birth_day,
+								$query_flds['birth_loc'], 	 $birth_loc,
+                        $query_flds['death_year'],  $death_year,
+                        $query_flds['death_month'], $death_month,
+                        $query_flds['death_day'],   $death_day,
+                        $query_flds['death_loc'],   $death_loc);
 		$stmt->execute();
 
       $stmt->bind_result($id, $first_name, $middle_name, $last_name, $maiden_name, $nicknames,

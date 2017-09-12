@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
 	//popup when a member of the 'newPopup' class is clicked
-	/*
 	$('.newPopup').click(function (event){
  
 		var url = $(this).attr("href");
@@ -13,7 +12,6 @@ $(document).ready(function() {
  
 		event.preventDefault();
     });
-	*/
 
 	//On Submit, generate the search String
 	$("#ft_form").submit( function(eventObj) {
@@ -21,20 +19,28 @@ $(document).ready(function() {
 		var queryArray = [];
 
 		//Remove any search
-		$('.search-fld').each(function(index,obj){
+		$('.search-input').each(function(index,obj){
 
 			var type = $(this).attr('type');
 			var name = $(this).attr('name');
-			var id = $(this).attr('id');
+			var fldObject = $('[name='+name+']');
 
-			//Add name, value pairs to the query array
-   		if((type == "text" && $('#'+id).val() != "") ||
-				 type == "radio" && $("input[id="+id+"]:checked").val() != undefined){
+			//For radio fields, add the selected value
+			if(type == "radio"){
 
-				queryArray.push(name+":"+$('#'+id).val());
-   		}
+				if($("input[name="+name+"]:checked").val() != undefined){
 
-      	$('#'+id).remove();
+					queryArray.push(name+":"+$("input[name="+name+"]:checked").val());
+				}
+			}
+			//For all the other fields, add the value
+			else if(fldObject.val() != ""){
+
+				queryArray.push(name+":"+fldObject.val());
+			}
+
+			//Remove the get field
+      	fldObject.remove();
 		});
 
 		//Create the query field
@@ -50,8 +56,20 @@ $(document).ready(function() {
 });
 
 /*------------------------------------------------------------------------------------
+ *Popup window code
+ *------------------------------------------------------------------------------------*/
+function popupWindow(url, name) {
+
+   popupWindow = window.open(url, name,'height=700,width=1000,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes');
+   popupwindow.focus();
+}
+
+//Unused, but may use in the future or use for reference
+
+/*------------------------------------------------------------------------------------
  * selectFamilyMember() - selects and focuses the family member the user selected
-/*------------------------------------------------------------------------------------*/
+ *------------------------------------------------------------------------------------*/
+/*
 function selectFamilyMember(){
 
 	var url = $(location).attr('href');
@@ -76,19 +94,23 @@ function selectFamilyMember(){
 		$("#tree-members").scrollTop(newPos);
 	}
 }
+*/
 
 /*------------------------------------------------------------------------------------
  *	refreshFTFrame(id) - refresh the Family Tree member details iframe 
  *------------------------------------------------------------------------------------*/
+/*
 function refreshFTFrame(id) {
 
 	var ftFrame = document.getElementById('tree-member-iframe');
 	ftFrame.src = "/?pg=ft_frame&id="+id;
 }
+*/
 
 /*------------------------------------------------------------------------------------
  * collapseExpandTree(id) - Collapse/Expand the Family Tree Sub-families
  *------------------------------------------------------------------------------------*/
+/*
 function collapseExpandTree(id){
 
 	var members = $('#'+id+'-member-list > li');
@@ -109,12 +131,5 @@ function collapseExpandTree(id){
 
    $('#'+id+'-fam-arrow').attr('src', '/images/'+arrowDirection+'_arrow_12x12.png');
 }
+*/
 
-/*------------------------------------------------------------------------------------
- *Popup window code
- *------------------------------------------------------------------------------------*/
-function popupWindow(url, name) {
-
-	popupWindow = window.open(url, name,'height=700,width=1000,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes');
-	popupwindow.focus();
-}
