@@ -5,21 +5,21 @@ div#search-box {
    width: 50%;
 	min-width: 525px;
 	height: 275px;
-   margin: 0 auto;
+   margin: 0px auto;
    background-color: #333;
    border: 1px solid white;
 }
 
 div#search-box > fieldset{
    width: 100%;
-   margin: 0 auto;
-	border: 0;
+   margin: 0px auto;
+	border: 0px;
 }
 
 div.search-criteria {
    width: 500px;
    display: inline-block;
-   margin: 0 auto;
+   margin: 0px auto;
 }
 
 div.search-section {
@@ -58,13 +58,44 @@ div#search-results > table{
 	width:100%;
 }
 
-#member-name {
+.main-tbl {
+	border-top: 1px solid white;
+	border-right: 0;
+	border-bottom: 0;
+	border-left: 0;
+}
+
+div#search-results > table tr:hover{
+	background-color: #36454f;
+}
+
+#result-member-name {
+	width: 25%;
 	vertical-align: text-top;
 	text-align: left;
 }
 
-.rec-break {
-	padding: 0 0 0 0;
+#result-member-date {
+	width: 25%;
+	vertical-align: top; 
+}
+
+#result-member-date table tr th{
+	text-align: right;
+}
+
+#result-member-date table tr td{
+	text-align: left;
+}
+
+#result-member-relation table {
+	width: 100%;
+	text-align: left;
+	font-size: 12px;
+}
+
+#result-member-relation table tr td{
+	width: 33%;
 }
 
 /*--------------------------------------
@@ -73,7 +104,6 @@ div#search-results > table{
 
 /*Family Member Profile Div*/
 div#tree-member-profile {
-
    width: auto;
    height: 1500px;
    margin-left: 0px;
@@ -84,63 +114,53 @@ div#tree-member-profile {
 
 /* Main table - Profile Div*/
 #main-tbl {
-
 	width: 100%;
 	font-size: 16px;
-	margin: 0 auto; 
+	margin: 0px auto; 
 	float: left;
 }
 
 /* Demog Table - Profile div*/
 #demog-tbl {
-
 	margin-top: 20px;
 	font-size: 14px;
 }
 
 #demog-tbl th{
-
 	text-align: right;
 	padding-right: 5px;
 }
 
 #demog-tbl td{
-
 	text-align: left;
 }
 
 #demog-tbl img {
-
-   width: 150px;
+	width: 200px;
    height: auto;
    margin-right: 5px;
 }
 
 #demog-tbl #member-name {
-
 	font-size: 24px;
 	font-weight: bold;
 }
 
 #demog-tbl #member-nicknames {
-
 	padding-bottom: 20px;
 }
 
 /* Relation Table - Profile div*/
 #relation-tbl {
-
 	font-size: 14px;
    text-align: left;
 }
 
 #relation-tbl td {
-
    vertical-align: top;
 }
 
 #relation-tbl span {
-
 	font-weight: bold;
 	padding: 5px;
 }

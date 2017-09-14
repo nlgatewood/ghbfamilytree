@@ -62,7 +62,13 @@ echo "<div class='panel' style='position:absolute;'>
             <h1>Visual Family Tree</h1>
          </div>
 			<div class='panel-text'>
-				<a href='/family_echo/COMG/index.htm' class='newPopup'>click!</a>
+				Click the image below for a visual representation of the Gatewood Family Tree (Currently not complete).
+			</div>
+
+			<a href='/family_echo/COMG/index.htm' class='newPopup'><img src='/images/family_echo.png' style='width:300px; height:auto;'></a>
+
+			<div class='panel-text' style='font-size:10px;'>
+				(Family Echo (<a href='https://www.familyecho.com/'>www.familyecho.com/</a>) family is a free Family Tree builder created by  Familiality Ltd., a private company based in Tel Aviv.)
 			</div>
 		</div>";
 
@@ -137,7 +143,6 @@ echo "<div id='search-box'>
                	<label>Sort By:</label>
                   <div class='search-fld'>
 							<SELECT name='sort_by' class='search-input'>
-								<OPTION value=''></OPTION>
 								<OPTION value='name' ".(($query_flds['sort_by'] == 'name') ?"selected" : "").">Name</OPTION>
 								<OPTION value='birth_date' ".(($query_flds['sort_by'] == 'birth_date') ?"selected" : "").">Birth Date</OPTION>
 								<OPTION value='death_date' ".(($query_flds['sort_by'] == 'death_date') ?"selected" : "").">Death Date</OPTION>
@@ -178,45 +183,99 @@ if($query != null){
 			$num = $range;
 		}
 
-		echo "<div id='search-results'>";
+		echo "<BR>
+				<div id='search-results'>";
 
 		//Print the link to go to the next set of results   
 		resultPages($result_keys, $query, $range, $num);
    
-   	echo "<TABLE>";
+   	echo "<TABLE id='result-main'>";
 
    	//Loop through the results
    	for($i=($range-20); $i<$num; $i++){
 
 			$member_data = $results_array[$result_keys[$i]];
 
-      	echo "<TD class='rec-break' colspan=3><hr></TD>
-					<TR>
-      	         <TD id='member-name'><a href='/?pg=profile&mid=".$result_keys[$i]."'>".$member_data['last_name'].", ".$member_data['first_name']."</a></TD>
-      	         <TD>
+			$mid = $result_keys[$i];
+			$m_parents_array  = get_member_parents($mid);
+			$m_siblings_array = get_member_siblings($mid);
+			$m_children_array = get_member_children($mid);
+			$row_group = ($i%2==0) ? 0 : 1;
+
+      	echo "<TR class='member-row'>
+      	         <TD id='result-member-name' class='main-tbl'><a href='/?pg=profile&mid=$mid'>".$member_data['last_name'].", ".$member_data['first_name']."</a></TD>
+      	         <TD id='result-member-date' class='main-tbl'>
       	            <TABLE>
       	            <TR>
-      	               <TD align='right'>Birth:</TD>
-      	               <TD align='left'>".format_date($member_data['birth_year'],$member_data['birth_month'],$member_data['birth_day'],'MM/DD/YYYY')."</TD>
+      	               <TH>Birth:</TH>
+      	               <TD>".format_date($member_data['birth_year'],$member_data['birth_month'],$member_data['birth_day'],'MM/DD/YYYY')."</TD>
       	            </TR>
       	            <TR>
-      	               <TD align='right'>Death:</TD>
-      	               <TD align='left'>".format_date($member_data['death_year'],$member_data['death_month'],$member_data['death_day'],'MM/DD/YYYY')."</TD>
+      	               <TH>Death:</TH>
+      	               <TD>".format_date($member_data['death_year'],$member_data['death_month'],$member_data['death_day'],'MM/DD/YYYY')."</TD>
       	            </TR>
       	            </TABLE>
       	         </TD>
-      	         <TD>
-      	            <TABLE>
-      	            <TR>
-      	               <TD>Relationships</TD>
-      	            </TR>
-      	            </TABLE>
+      	         <TD id='result-member-relation' class='main-tbl'>
+      	            <TABLE>";
+
+					$size = 0;
+					$parents_keys = array_keys($m_parents_array);
+					$siblings_keys = array_keys($m_siblings_array);
+					$children_keys = array_keys($m_children_array);
+						
+					echo "<TR>
+								<TD>Parents</TD>
+								<TD>Siblings</TD>
+								<TD>Children</TD>
+							</TR>";
+
+					if(count($parent_keys) > $size){
+
+						$size = count($parent_keys);
+					}
+					if(count($siblings_keys) > $size){
+
+						$size = count($siblings_keys);
+					}
+					if(count($children_keys) > $size){
+
+						$size = count($children_keys);
+					}
+
+					for($j=0; $j<$size; $j++){
+
+						$rtypes = array();
+						$rtypes['parents']  = $m_parents_array;
+						$rtypes['siblings'] = $m_siblings_array;
+						$rtypes['children'] = $m_children_array;
+
+						echo "<TR>";
+
+						foreach($rtypes as $type => $array){
+		
+							$new_line = null;
+							$keys = array_keys($array);
+							
+							if($array[$keys[$j]] != null){
+
+                     	$new_line = "<a href='/?pg=profile&mid=".$keys[$j]."'>".$array[$keys[$j]]['first_name']." ".$array[$keys[$j]]['middle_name']." ".
+                                     $array[$keys[$j]]['last_name']." ".$array[$keys[$j]]['suffix']."</a>";
+
+							}
+
+							echo "<TD>$new_line</TD>";
+						}
+
+						echo "</TR>";
+					}
+
+      	      echo"</TABLE>
       	         </TD>
       	      </TR>";
    	}
    
-   	echo "<TD class='rec-break' colspan=3><hr></TD>
-				</TABLE>";
+   	echo "</TABLE>";
 
 		//Print the link to go to the next set of results   
 		resultPages($result_keys, $query, $range, $num);
