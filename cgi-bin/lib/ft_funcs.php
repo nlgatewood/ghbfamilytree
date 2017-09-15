@@ -430,20 +430,7 @@ function build_members_list($id, &$ft_members_array, &$ft_output_list, $gen,$gro
  *------------------------------------------------------------------------------*/
 function get_search_results($query){
 
-	$query_flds = [];
-	$query_comps = preg_split("/\~/", $query);
-
-	//Initialize the fields
-	foreach(array('last_name','first_name','gender','birth_month','birth_day','birth_year','birth_loc','death_month','death_day','death_year','death_loc','sort_by') as $fld){
-
-	   $query_flds[$fld] = null;
-	}
-
-	foreach($query_comps as $value){
-
-	   $search_flds = preg_split("/\:/", $value);
-	   $query_flds[$search_flds[0]] = isset($search_flds[1]) ? $search_flds[1] : null;
-	}
+	$query_flds = parse_query_field($query);
    
 	//format for the search query
    $last_name = "%".$query_flds['last_name']."%";
@@ -472,7 +459,6 @@ function get_search_results($query){
 		$sort_by = "last_name, first_name";
 	}
 
-   
    $result_array = [];
 	$conn = get_mysqli_object();
 
@@ -544,6 +530,30 @@ function get_search_results($query){
 	$conn->close();
 
 	return $result_array;
+}
+
+/*------------------------------------------------------------------------------
+ * parse_query_field($query) - Parse the query GET field and return the fields
+ *                             in an array
+ *------------------------------------------------------------------------------*/
+function parse_query_field($query) {
+
+   $query_comps = preg_split("/\~/", $query);
+   $query_flds = [];
+
+	//Initialize the fields
+	foreach(array('last_name','first_name','gender','birth_month','birth_day','birth_year','birth_loc','death_month','death_day','death_year','death_loc','sort_by') as $fld){
+
+	   $query_flds[$fld] = null;
+	}
+
+	foreach($query_comps as $value){
+
+	   $search_flds = preg_split("/\:/", $value);
+	   $query_flds[$search_flds[0]] = isset($search_flds[1]) ? $search_flds[1] : null;
+	}
+   
+   return $query_flds;
 }
 
 ?>
