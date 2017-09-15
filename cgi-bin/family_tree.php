@@ -87,11 +87,11 @@ echo "<div id='search-box'>
                <div class='search-section'>
                   <div class='search-fld'>
                      <label>Male:</label>
-                     <input type='radio' name='gender' class='search-input' value='M' ".(($query_flds['gender'] == 'M') ?"checked='checked'" : "").">
+                     <input type='radio' name='gender' id='genderM' class='search-input' value='M' ".(($query_flds['gender'] == 'M') ?"checked='checked'" : "").">
                   </div>
                   <div class='search-fld'>
                      <label>Female:</label>
-                     <input type='radio' name='gender' class='search-input' value='F' ".(($query_flds['gender'] == 'F') ?"checked='checked'" : "").">
+                     <input type='radio' name='gender' id='genderF' class='search-input' value='F' ".(($query_flds['gender'] == 'F') ?"checked='checked'" : "").">
                   </div>
                </div>
             </div>
