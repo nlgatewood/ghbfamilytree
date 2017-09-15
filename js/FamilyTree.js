@@ -26,12 +26,13 @@ $(document).ready(function() {
 
 			var type = $(this).attr('type');
 			var name = $(this).attr('name');
+         var id = $(this).attr('id');
 			var fldObject = $('[name='+name+']');
 
 			//For radio fields, add the selected value
 			if(type == "radio"){
 
-				if($("input[name="+name+"]:checked").val() != undefined){
+				if($("input[id="+id+"]:checked").val() != undefined){
 
 					queryArray.push(name+":"+$("input[name="+name+"]:checked").val());
 				}
@@ -42,8 +43,8 @@ $(document).ready(function() {
 				queryArray.push(name+":"+fldObject.val());
 			}
 
-			//Remove the get field
-      	fldObject.remove();
+			//"Remove" the get field
+      	fldObject.attr("disabled","disabled");
 		});
 
 		//Create the query field
