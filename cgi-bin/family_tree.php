@@ -20,20 +20,8 @@ echo "<FORM method='get' name='ft_form' id='ft_form' action='/'>
 				<h1>Family Member Search</h1>
 			</div>";
 
-$query_flds = [];
-$query_comps = preg_split("/\~/", $query);
-
-//Initialize the fields
-foreach(array('last_name','first_name','gender','birth_month','birth_day','birth_year','birth_loc','death_month','death_day','death_year','death_loc','sort_by') as $fld){
-
-	$query_flds[$fld] = null;
-}
-
-foreach($query_comps as $value){
-
-	$search_flds = preg_split("/\:/", $value);
-	$query_flds[$search_flds[0]] = isset($search_flds[1]) ? $search_flds[1] : null;
-}
+//parse the fields from the query string
+$query_flds = parse_query_field($query);
 
 echo "<div class='panel' style='position:absolute;'>
          <div class='panel-heading'>
