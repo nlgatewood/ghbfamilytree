@@ -1,6 +1,7 @@
 <?php
 
 $page = isset($_GET["pg"]) ? $_GET["pg"] : "";
+$body_event = isset($body_event) ? $body_event : "";
 
 echo "
 	<!DOCTYPE html>

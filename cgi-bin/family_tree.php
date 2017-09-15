@@ -5,7 +5,7 @@ require('lib/date_funcs.php');
 $page = isset($_GET["pg"]) ? $_GET["pg"] : '';
 $query = isset($_GET["query"]) ? $_GET["query"] : '';
 $range = isset($_GET["range"]) ? $_GET["range"] : '';
-$body_event = "";
+$body_event = 1;
 
 include('header.php');
 
@@ -23,10 +23,16 @@ echo "<FORM method='get' name='ft_form' id='ft_form' action='/'>
 $query_flds = [];
 $query_comps = preg_split("/\~/", $query);
 
+//Initialize the fields
+foreach(array('last_name','first_name','gender','birth_month','birth_day','birth_year','birth_loc','death_month','death_day','death_year','death_loc','sort_by') as $fld){
+
+	$query_flds[$fld] = null;
+}
+
 foreach($query_comps as $value){
 
 	$search_flds = preg_split("/\:/", $value);
-	$query_flds[$search_flds[0]] = $search_flds[1];
+	$query_flds[$search_flds[0]] = isset($search_flds[1]) ? $search_flds[1] : null;
 }
 
 echo "<div class='panel' style='position:absolute;'>
@@ -230,9 +236,9 @@ if($query != null){
 								<TD>Children</TD>
 							</TR>";
 
-					if(count($parent_keys) > $size){
+					if(count($parents_keys) > $size){
 
-						$size = count($parent_keys);
+						$size = count($parents_keys);
 					}
 					if(count($siblings_keys) > $size){
 
@@ -256,8 +262,16 @@ if($query != null){
 		
 							$new_line = null;
 							$keys = array_keys($array);
+
+							//Initialize variables
+							$keys[$j] = isset($keys[$j]) ? $keys[$j] : null;
+
+							foreach(array('first_name','middle_name','last_name','suffix') as $fld){
+
+								$array[$keys[$j]][$fld] = isset($array[$keys[$j]][$fld]) ? $array[$keys[$j]][$fld] : null;
+							}
 							
-							if($array[$keys[$j]] != null){
+							if($keys[$j] != null){
 
                      	$new_line = "<a href='/?pg=profile&mid=".$keys[$j]."'>".$array[$keys[$j]]['first_name']." ".$array[$keys[$j]]['middle_name']." ".
                                      $array[$keys[$j]]['last_name']." ".$array[$keys[$j]]['suffix']."</a>";

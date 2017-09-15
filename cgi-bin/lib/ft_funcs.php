@@ -433,10 +433,16 @@ function get_search_results($query){
 	$query_flds = [];
 	$query_comps = preg_split("/\~/", $query);
 
+	//Initialize the fields
+	foreach(array('last_name','first_name','gender','birth_month','birth_day','birth_year','birth_loc','death_month','death_day','death_year','death_loc','sort_by') as $fld){
+
+	   $query_flds[$fld] = null;
+	}
+
 	foreach($query_comps as $value){
 
 	   $search_flds = preg_split("/\:/", $value);
-	   $query_flds[$search_flds[0]] = $search_flds[1];
+	   $query_flds[$search_flds[0]] = isset($search_flds[1]) ? $search_flds[1] : null;
 	}
    
 	//format for the search query
@@ -510,7 +516,7 @@ function get_search_results($query){
 
 		while($stmt->fetch()){
 
-			$data = array('id'           => $child_id,
+			$data = array('id'           => $id,
                        'first_name'   => $first_name,
                        'middle_name'  => $middle_name,
                        'last_name'    => $last_name,

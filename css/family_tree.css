@@ -92,6 +92,7 @@ div#search-results > table tr:hover{
 	width: 100%;
 	text-align: left;
 	font-size: 12px;
+	padding: 0px 0px 0px 0px;
 }
 
 #result-member-relation table tr td{
