@@ -12,8 +12,11 @@ $(document).ready(function() {
  
 		event.preventDefault();
     });
-
-	//On Submit, generate the search String
+   
+   /*---------------------------------------
+    * When ft_form is submitted, generate the
+    * query string
+    *---------------------------------------*/
 	$("#ft_form").submit( function(eventObj) {
 
 		var queryArray = [];
@@ -56,7 +59,28 @@ $(document).ready(function() {
 });
 
 /*------------------------------------------------------------------------------------
- *Popup window code
+ * clearSearchFields() - Clear the search fields in the Family Tree search box
+ *------------------------------------------------------------------------------------*/
+ function clearSearchFields() {
+ 
+    $('.search-input').each(function(index,obj){
+
+       var type = $(this).attr('type');
+       
+       //Clear the radio buttons
+       if(type == "radio"){
+       
+          $(this).prop('checked', false);
+       }
+       //Clear everything else
+       else {
+       	$(this).val("");
+       }
+    });
+ }
+
+/*------------------------------------------------------------------------------------
+ * popupWindow(url, name) - create/open a pop-up window with the passed 'url' and 'name' 
  *------------------------------------------------------------------------------------*/
 function popupWindow(url, name) {
 
