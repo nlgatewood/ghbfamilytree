@@ -9,6 +9,7 @@ body {
 
 #page-wrapper {
 	width: 100%;
+   min-width: 1000px;
 	text-align: center;
 	margin: 0 auto;
 }
@@ -22,6 +23,7 @@ body {
  *-------------------------*/
 #navbar-wrapper {
 	width: 100%;
+   min-width: 1000px;
 	text-align: center;
 }
 
