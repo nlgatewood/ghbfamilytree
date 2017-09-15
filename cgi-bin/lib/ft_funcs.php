@@ -85,7 +85,7 @@ function get_member_parents($id){
    $parents_array = [];
    $conn = get_mysqli_object();
 
-   $sql = "SELECT id, first_name, middle_name, last_name, maiden_name, nicknames,
+   $sql = "SELECT id, first_name, middle_name, last_name, suffix, maiden_name, nicknames,
                   gender, birth_year, birth_month, birth_day, birth_loc, death_year,
                   death_month, death_day, death_loc, burial_loc, bio, parent_id1, parent_id2
 	  		  FROM ft_members 
@@ -98,7 +98,7 @@ function get_member_parents($id){
    	$stmt->bind_param("ii", $id,$id);
       $stmt->execute();
 
-      $stmt->bind_result($res_id, $first_name, $middle_name, $last_name, $maiden_name, $nicknames,
+      $stmt->bind_result($res_id, $first_name, $middle_name, $last_name, $suffix, $maiden_name, $nicknames,
                          $gender, $birth_year, $birth_month, $birth_day, $birth_loc, $death_year,
                          $death_month, $death_day, $death_loc, $burial_loc, $bio, $parent_id1, $parent_id2);
 
@@ -108,6 +108,7 @@ function get_member_parents($id){
                        'first_name'    => $first_name,
                        'middle_name'   => $middle_name,
                        'last_name'     => $last_name,
+                       'suffix'        => $suffix,
                        'maiden_name'   => $maiden_name,
                        'nicknames'     => $nicknames,
                        'gender'        => $gender,
@@ -171,7 +172,7 @@ function get_member_siblings($id){
 		}
 
 		//Get the siblings
-		$sib_sql = "SELECT id, first_name, middle_name, last_name, maiden_name, nicknames,
+		$sib_sql = "SELECT id, first_name, middle_name, last_name, suffix, maiden_name, nicknames,
                       gender, birth_year, birth_month, birth_day, birth_loc, death_year,
                       death_month, death_day, death_loc, burial_loc, bio, parent_id1, parent_id2
 		  				FROM ft_members
@@ -187,7 +188,7 @@ function get_member_siblings($id){
 			$stmt->bind_param("iiiii", $p_id1,$p_id2,$p_id1,$p_id2,$id);
 			$stmt->execute();
 
-      	$stmt->bind_result($sib_id, $first_name, $middle_name, $last_name, $maiden_name, $nicknames,
+      	$stmt->bind_result($sib_id, $first_name, $middle_name, $last_name, $suffix, $maiden_name, $nicknames,
          	                $gender, $birth_year, $birth_month, $birth_day, $birth_loc, $death_year,
          	                $death_month, $death_day, $death_loc, $burial_loc, $bio, $parent_id1, $parent_id2);
 
@@ -197,6 +198,7 @@ function get_member_siblings($id){
 				 				  'first_name'    => $first_name,
                           'middle_name'   => $middle_name,
                           'last_name'     => $last_name,
+                          'suffix'        => $suffix,
                           'maiden_name'   => $maiden_name,
                           'nicknames'     => $nicknames,
                           'gender'        => $gender,
@@ -291,7 +293,7 @@ function get_member_children($id){
 	$conn = get_mysqli_object();
 
 	// Get this person's children information
-	$sql = "SELECT id, first_name, middle_name, last_name, maiden_name, nicknames,
+	$sql = "SELECT id, first_name, middle_name, last_name, suffix, maiden_name, nicknames,
                   gender, birth_year, birth_month, birth_day, birth_loc, death_year,
                   death_month, death_day, death_loc, burial_loc, bio, parent_id1, parent_id2
            FROM ft_members
@@ -303,7 +305,7 @@ function get_member_children($id){
 		$stmt->bind_param("ii",$id,$id);
 		$stmt->execute();
 
-      $stmt->bind_result($child_id, $first_name, $middle_name, $last_name, $maiden_name, $nicknames,
+      $stmt->bind_result($child_id, $first_name, $middle_name, $last_name, $suffix, $maiden_name, $nicknames,
                          $gender, $birth_year, $birth_month, $birth_day, $birth_loc, $death_year,
                          $death_month, $death_day, $death_loc, $burial_loc, $bio, $parent_id1, $parent_id2);
 
@@ -313,6 +315,7 @@ function get_member_children($id){
                        'first_name'   => $first_name,
                        'middle_name'  => $middle_name,
                        'last_name'    => $last_name,
+                       'suffix'       => $suffix,
                        'maiden_name'  => $maiden_name,
                        'nicknames'    => $nicknames,
                        'gender'       => $gender,
