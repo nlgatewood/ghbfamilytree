@@ -12,7 +12,7 @@ function get_member_data($id = NULL) {
 	$has_id = ($id == null) ? 0 : 1;		//id flag - '1'=id passed, '0'=no id passed
 	$conn = get_mysqli_object(); 			//Get the connection to the database
 
-	$sql = "SELECT id, first_name, middle_name, last_name, maiden_name, nicknames,
+	$sql = "SELECT id, first_name, middle_name, last_name, suffix, maiden_name, nicknames,
    		      	gender, birth_year, birth_month, birth_day, birth_loc, death_year,
  	         		death_month, death_day, death_loc, burial_loc, bio, parent_id1, parent_id2
  	  		  FROM ft_members
@@ -24,7 +24,7 @@ function get_member_data($id = NULL) {
 		$stmt->bind_param("i", $id); 
 		$stmt->execute();
 
-		$stmt->bind_result($res_id, $first_name, $middle_name, $last_name, $maiden_name, $nicknames,
+		$stmt->bind_result($res_id, $first_name, $middle_name, $last_name, $suffix, $maiden_name, $nicknames,
 								 $gender, $birth_year, $birth_month, $birth_day, $birth_loc, $death_year,
  	      				    $death_month, $death_day, $death_loc, $burial_loc, $bio, $parent_id1, $parent_id2);
 
@@ -34,6 +34,7 @@ function get_member_data($id = NULL) {
  				      	  'first_name'    => $first_name,
  				      	  'middle_name'   => $middle_name,
  				      	  'last_name'     => $last_name,
+                       'suffix'        => $suffix,
  				      	  'maiden_name'   => $maiden_name,
  				      	  'nicknames'     => $nicknames,
  				      	  'gender'        => $gender,
