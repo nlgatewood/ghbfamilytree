@@ -137,6 +137,7 @@ echo "<div id='search-box'>
                	<label>Sort By:</label>
                   <div class='search-fld'>
 							<SELECT name='sort_by' class='search-input'>
+                        <OPTION value=''></OPTION>
 								<OPTION value='name' ".(($query_flds['sort_by'] == 'name') ?"selected" : "").">Name</OPTION>
 								<OPTION value='birth_date' ".(($query_flds['sort_by'] == 'birth_date') ?"selected" : "").">Birth Date</OPTION>
 								<OPTION value='death_date' ".(($query_flds['sort_by'] == 'death_date') ?"selected" : "").">Death Date</OPTION>
