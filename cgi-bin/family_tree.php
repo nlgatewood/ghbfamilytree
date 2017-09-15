@@ -148,7 +148,7 @@ echo "<div id='search-box'>
                	<input type='submit' value='Search'>
                </div>
                <div class='search-submit'>
-               	<input type='reset' value='Clear'>
+               	<input type='button' value='Clear' onclick='clearSearchFields();'>
                </div>
             </div>
             
