@@ -182,7 +182,7 @@ if($query != null){
 				<div id='search-results'>";
 
 		//Print the link to go to the next set of results   
-		resultPages($result_keys, $query, $range, $num);
+		next_search_results($result_keys, $query, $range, $num);
    
    	echo "<TABLE id='result-main'>";
 
@@ -281,7 +281,7 @@ if($query != null){
    	echo "</TABLE>";
 
 		//Print the link to go to the next set of results   
-		resultPages($result_keys, $query, $range, $num);
+		next_search_results($result_keys, $query, $range, $num);
 
 		echo "</div>";
 	}
@@ -295,9 +295,11 @@ if($query != null){
 include('footer.php');
 
 #----------------------------------------------------------
-#	resultPages() - Print the next results list links
+#	next_search_results() - Print the next results list links
 #----------------------------------------------------------
-function resultPages($result_keys, $query, $range, $num){
+function next_search_results($result_keys, $query, $range, $num){
+
+	echo "<div class='result-next'>";
 
    //Print the link to go to the next set of results   
    if($range-20 > 0){
@@ -311,5 +313,7 @@ function resultPages($result_keys, $query, $range, $num){
 
       echo "<a href='/?pg=family_tree&query=".urlencode($query)."&range=".($range+20)."' style='margin-left:5px;'><img src='/images/right_arrow_12x12.png'></a>";
    }
+
+	echo "</div>";
 }
 ?>
