@@ -38,13 +38,9 @@ else{
 	$member_gender = 'Unknown';
 }
 
-$image_dir = "./images/family/".$mid."/profile.jpg";
-
-//Get the profile image.  If it doesn't exist, use the empty image
-if(!file_exists($image_dir)){
-
-	$image_dir = "/images/family/empty.png";
-}
+$ft_member_images = get_profile_images($mid);
+$main_profile_image = $ft_member_images[0]['file'];
+$main_profile_caption = $ft_member_images[0]['caption'];
 
 //Begin the main container table
 echo "<TABLE id='main-tbl'>
@@ -53,7 +49,7 @@ echo "<TABLE id='main-tbl'>
 
          <TABLE id='demog-tbl'>
             <TR>
-             <TD rowSPAN=7><a href='".$image_dir."' data-lightbox='image-1' data-title='My caption'><img src='".$image_dir."'></TD></a>
+             <TD rowSPAN=7><a href='$main_profile_image' data-lightbox='image-1' data-title='$main_profile_caption'><img src='$main_profile_image'></TD></a>
             </TR>
             <TR>
              <TD id='member-name' colspan=2>".$member_name." ".$member_maiden."

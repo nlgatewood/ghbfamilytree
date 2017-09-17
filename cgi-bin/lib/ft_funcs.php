@@ -560,4 +560,54 @@ function parse_query_field($query) {
    return $query_flds;
 }
 
+/*------------------------------------------------------------------------------
+ *	get_profile_images($mid) - Retrieve the profile images and captions for the 
+										family member passed as a parameter.
+ *------------------------------------------------------------------------------*/
+function get_profile_images($mid) {
+
+   $ft_images_array = [];
+   $conn = get_mysqli_object();        //Get the connection to the database
+
+   $sql = "SELECT directory, filename, caption
+           FROM ft_member_images
+           WHERE member_id = ?
+           ORDER BY profile_ind DESC";
+
+   if($stmt = $conn->prepare($sql)){
+
+      $stmt->bind_param("i", $mid);
+      $stmt->execute();
+
+      $stmt->bind_result($directory, $filename, $caption);
+
+      while($stmt->fetch()){
+
+			$image_dir = $directory.$filename;
+
+			//Check to see if it exists.  Add to the results if it does
+			if(file_exists($image_dir)){
+
+         	$data = array('file'       => $image_dir,
+         	              'caption'    => $caption);
+
+				array_push($ft_images_array, $data);
+			}		
+      }
+
+		//close the statement
+		$stmt->close();
+   }
+
+	$conn->close();
+
+	//If nothing was returned, used the base profile image
+	if(count($ft_images_array) == 0){
+
+		array_push($ft_images_array, array('file'	=>	'./images/family_profile/empty.png', 'caption'	=> NULL));
+	}
+
+	return $ft_images_array;
+}
+
 ?>

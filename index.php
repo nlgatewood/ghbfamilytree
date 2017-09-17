@@ -7,7 +7,12 @@ $CONFIG = $config_obj->get_config_file();
 
 $page = isset($_GET["pg"]) ? $_GET["pg"] : '';
 
-if($page == "family_origin"){
+//Go to the page that was selected
+if($page == "home" || $page == ""){
+
+	include("./cgi-bin/home.php");
+
+}elseif($page == "family_origin"){
 
 	include("./cgi-bin/family_origin.php");
 }
@@ -34,8 +39,9 @@ elseif($page == "contact"){
 }elseif($page == "family_tree_edit"){
 
 	include("./cgi-bin/family_tree_edit.php");
+
 }else{
-	include("./cgi-bin/home.php");
+	include("./cgi-bin/not_found.php");
 }
 
 ?>
