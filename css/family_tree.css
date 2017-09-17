@@ -99,6 +99,10 @@ div#search-results > table tr:hover{
 	width: 33%;
 }
 
+.result-next {
+	padding: 10px 0px 10px 0px;
+}
+
 /*--------------------------------------
  * Profile CSS
  *--------------------------------------*/
