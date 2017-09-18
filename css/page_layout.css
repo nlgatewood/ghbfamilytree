@@ -99,17 +99,17 @@ div.page-text {
 	margin: 0px auto;
 }
 
-div.text-section {
-	overflow: hidden;
+div.page-text h1 {
+	margin-top: 75px;
 }
 
-div.text-section p {
+div.page-text p{
 	text-indent: 40px;
 	text-align: left;
 }
 
-div.text-section h1 {
-	margin-top: 75px;
+div.text-section {
+	overflow: hidden;
 }
 
 div.text-section p img {
