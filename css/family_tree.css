@@ -127,7 +127,7 @@ div#tree-member-profile {
 
 /* Demog Table - Profile div*/
 #demog-tbl {
-	margin-top: 20px;
+	padding-left: 10px;
 	font-size: 14px;
 }
 
@@ -157,6 +157,7 @@ div#tree-member-profile {
 
 div#img-gallery {
    max-width:200px;
+   float: left;
 }
 
 div#img-gallery a {
