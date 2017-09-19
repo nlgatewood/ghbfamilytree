@@ -46,12 +46,8 @@ $main_profile_caption = $ft_member_images[0]['caption'];
 echo "<TABLE id='main-tbl'>
        <TR>
         <TD>
-
-         <TABLE id='demog-tbl'>
-            <TR>
-             <TD rowSPAN=7>
-              <div id='img-gallery'>
-               <a href='$main_profile_image' data-lightbox='image-1' data-title='$main_profile_caption'><img id='profile-img' src='$main_profile_image'></a>";
+         <div id='img-gallery'>
+            <a href='$main_profile_image' data-lightbox='image-1' data-title='$main_profile_caption'><img id='profile-img' src='$main_profile_image'></a>";
 
 //Print out the image link
 for($i=1; $i<count($ft_member_images);$i++){
@@ -59,8 +55,8 @@ for($i=1; $i<count($ft_member_images);$i++){
    echo "<a href='".$ft_member_images[$i]['file']."' data-lightbox='image-1' data-title='".$ft_member_images[$i]['caption']."'><img class='add-img' src='".$ft_member_images[$i]['file']."'></a>";
 }
              
-echo "        </div>
-             </TD>
+echo "   </div>
+         <TABLE id='demog-tbl'>
             </TR>
             <TR>
              <TD id='member-name' colspan=2>".$member_name." ".$member_maiden."
