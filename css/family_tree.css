@@ -140,12 +140,6 @@ div#tree-member-profile {
 	text-align: left;
 }
 
-#demog-tbl img {
-	width: 200px;
-   height: auto;
-   margin-right: 5px;
-}
-
 #demog-tbl #member-name {
 	font-size: 24px;
 	font-weight: bold;
@@ -153,6 +147,21 @@ div#tree-member-profile {
 
 #demog-tbl #member-nicknames {
 	padding-bottom: 20px;
+}
+
+#profile-img {
+	width: 200px;
+   height: auto;
+   margin-right: 5px;
+}
+
+div#img-gallery {
+   max-width:200px;
+}
+
+.add-img {
+   width: 30px;
+   height:auto;
 }
 
 /* Relation Table - Profile div*/
