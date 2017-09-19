@@ -56,8 +56,7 @@ echo "<TABLE id='main-tbl'>
 //Print out the image link
 for($i=1; $i<count($ft_member_images);$i++){
    
-   echo "<a href='".$ft_member_images[$i]['file']."' data-lightbox='image-1' data-title='".$ft_member_images[$i]['caption']."'>
-            <img class='add-img' src='".$ft_member_images[$i]['file']."'></a>";
+   echo "<a href='".$ft_member_images[$i]['file']."' data-lightbox='image-1' data-title='".$ft_member_images[$i]['caption']."'><img class='add-img' src='".$ft_member_images[$i]['file']."'></a>";
 }
              
 echo "        </div>
