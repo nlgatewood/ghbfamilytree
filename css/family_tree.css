@@ -157,6 +157,7 @@ div#tree-member-profile {
 
 div#img-gallery {
    max-width:200px;
+   text-align: left;
    float: left;
 }
 
