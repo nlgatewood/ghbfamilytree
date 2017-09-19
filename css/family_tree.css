@@ -159,6 +159,10 @@ div#img-gallery {
    max-width:200px;
 }
 
+div#img-gallery a {
+   padding: 0px 2px 0px 2px;
+}
+
 .add-img {
    width: 30px;
    height:auto;
