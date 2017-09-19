@@ -41,7 +41,6 @@ else{
 $ft_member_images = get_profile_images($mid);
 $main_profile_image = $ft_member_images[0]['file'];
 $main_profile_caption = $ft_member_images[0]['caption'];
-$image_count = count($ft_member_images);
 
 //Begin the main container table
 echo "<TABLE id='main-tbl'>
@@ -50,28 +49,19 @@ echo "<TABLE id='main-tbl'>
 
          <TABLE id='demog-tbl'>
             <TR>
-             <TD rowSPAN=7><a href='$main_profile_image' data-lightbox='image-1' data-title='$main_profile_caption'><img src='$main_profile_image'></a>";
-
-//If additional images exist, open the div
-if($image_count > 0){
-   
-   echo "<div style='max-width:200px;'>";  
-}
+             <TD rowSPAN=7>
+              <div id='img-gallery'>
+               <a href='$main_profile_image' data-lightbox='image-1' data-title='$main_profile_caption'><img id='profile-img' src='$main_profile_image'></a>";
 
 //Print out the image link
-for($i=1; $i<$image_count;$i++){
+for($i=1; $i<count($ft_member_images);$i++){
    
    echo "<a href='".$ft_member_images[$i]['file']."' data-lightbox='image-1' data-title='".$ft_member_images[$i]['caption']."'>
-            <img style='width:30px; height:auto;' src='".$ft_member_images[$i]['file']."'></a>";
-}
-
-//Close the div
-if($image_count > 0){
-   
-   echo "</div>";  
+            <img class='add-img' src='".$ft_member_images[$i]['file']."'></a>";
 }
              
-echo "       </TD>
+echo "        </div>
+             </TD>
             </TR>
             <TR>
              <TD id='member-name' colspan=2>".$member_name." ".$member_maiden."
