@@ -36,9 +36,9 @@ elseif($page == "contact"){
 
 	include("./cgi-bin/contact.php");
 
-}elseif($page == "family_tree_edit"){
+}elseif($page == "profile_edit"){
 
-	include("./cgi-bin/family_tree_edit.php");
+	include("./cgi-bin/profile_edit.php");
 
 }else{
 	include("./cgi-bin/not_found.php");
