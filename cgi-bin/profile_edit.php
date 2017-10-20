@@ -3,13 +3,45 @@
 	require('lib/date_funcs.php');
 
 	//Get POST and GET variables
-	$pg        = isset($_GET["pg"]) ? $_GET["pg"] : '';
-	$mid       = isset($_POST["mid"]) ? $_POST["mid"] : '';
-	$opt		  = isset($_POST["opt"]) ? $_POST["opt"] : '';
-	$submit	  = isset($_POST["submit"]) ? $_POST["submit"] : '';
-	$ghb_conn  = get_mysqli_admin_object('ghbfamilytree');
-	$info_conn = get_mysqli_admin_object('information_schema');
+	$pg        	 = isset($_GET["pg"]) ? $_GET["pg"] : '';
+	$mid       	 = isset($_POST["mid"]) ? $_POST["mid"] : '';
+	$opt		  	 = isset($_POST["opt"]) ? $_POST["opt"] : '';
+	$submit_name = ($opt != null) ? $opt."_save" : "submit";
+	$ghb_conn  	 = get_mysqli_admin_object('ghbfamilytree');
+	$info_conn 	 = get_mysqli_admin_object('information_schema');
 	$members_array;
+	
+	echo ">>".$submit_name;
+
+	//If the info edit form was submitted
+	if($_POST["info_save"] != null){
+		
+		$field_names = array("first_name", "middle_name", "last_name", "maiden_name", "suffix",
+									"nicknames", "gender", "birth_year", "birth_month", "birth_day",
+									"birth_loc", "death_year", "death_month", "death_day", "death_loc", "buried_loc");
+									
+		$first_name = isset($_POST["first_name"]) ? $_POST["first_name"] : '';
+		$last_name = isset($_POST["first_name"]) ? $_POST["first_name"] : '';
+		$first_name = isset($_POST["first_name"]) ? $_POST["first_name"] : '';
+		
+		//Create the SQL Statement
+		$sql = "UPDATE ft_members SET ";
+		
+		foreach($field_names as $fld){
+			
+			$sql .= "$fld = ? ";
+		}
+		
+		$sql .= "WHERE id = ?";
+		
+		//Update the table
+		if($stmt = $ghb_conn->prepare($sql)){
+			
+			$stmt->bind_param("i", $id); 
+			$stmt->execute();
+			
+		}
+	}
 	
 	include('header.php');
 	
@@ -146,7 +178,7 @@
 		}
 	}
 	
-	echo "<BR><BR><input type='submit' name='submit' value='Submit'><BR>
+	echo "<BR><BR><input type='submit' name='$submit_name' value='Submit'><BR>
 			</FORM>";
 	
 	include('footer.php');
