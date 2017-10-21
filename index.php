@@ -40,6 +40,10 @@ elseif($page == "contact"){
 
 	include("./cgi-bin/profile_edit.php");
 
+}elseif($page == "upload_profile_image"){
+
+	include("./cgi-bin/upload_profile_image.php");
+
 }else{
 	include("./cgi-bin/not_found.php");
 }

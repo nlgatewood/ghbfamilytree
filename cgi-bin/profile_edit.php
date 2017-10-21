@@ -10,8 +10,6 @@
 	$ghb_conn  	 = get_mysqli_admin_object('ghbfamilytree');
 	$info_conn 	 = get_mysqli_admin_object('information_schema');
 	$members_array;
-	
-	echo ">>".$submit_name;
 
 	//If the info edit form was submitted
 	if($_POST["info_save"] != null){
@@ -39,19 +37,27 @@
 			
 			$stmt->bind_param("i", $id); 
 			$stmt->execute();
-			
 		}
 	}
-	
-	include('header.php');
-	
-	echo "<FORM method='post' name='profile_edit_form' id='profile_edit_form' action='/?pg=$pg'>";
+
+   include('header.php');
+
+	if($opt == "pic"){
+
+   	echo "<FORM method='post' name='profile_edit_form' id='profile_edit_form' action='/?pg=upload_profile_image' enctype='multipart/form-data'>";
+	}
+	else{
+   	echo "<FORM method='post' name='profile_edit_form' id='profile_edit_form' action='/?pg=$pg'>";
+	}
+
+   echo "<input type='hidden' name='mid' value='$mid'>
+         <input type='hidden' name='opt' value='$opt'>";
 	
 	// If no member is selected, show the list so they can activate
 	if($mid == null){
 		
 		$members_array = get_member_data();
-		
+
 		echo "<h1>Please select a Family Member</h1>
 					<SELECT name='mid'>
 					<OPTION value=''></OPTION>";
@@ -78,9 +84,6 @@
 						     $members_array['last_name']." ".
 							  "(Born: $member_birth)</h3>";
 		
-		echo "<input type='hidden' name='mid' value='$mid'>
-				<input type='hidden' name='opt' value='$opt'>";
-		
 		if($opt == null){
 			
 			echo "<TABLE border=1 align=center style='text-align:left;'>
@@ -93,10 +96,22 @@
 					</TABLE>";
 		}
 		else if($opt == "pic"){
+
+			echo "<TABLE border=1 align=center>
+					<TR>
+					 <TD><input type='file' name='fileToUpload' id='fileToUpload'></TD>
+					</TR>
+					<TR>
+					 <TD align=left>Make Profile Picture? <input type='checkbox' name='profile_pic' value='1'></TD>
+					</TR>
+					<TR>
+					 <TD align=left>Image Caption: <input type='text' name='caption' size='50'></TD>
+					</TABLE>";
 			
 		}
 		else if($opt == "info"){
 			
+   		echo "<FORM method='post' name='profile_edit_form' id='profile_edit_form' action='/?pg=$pg'>";
 			echo "<TABLE align='center'><TR><TD>";
 			echo "<TABLE style='text-align:left;'>
 						<TR><HR><TH colspan=3>Name(FML)</TH></TR>

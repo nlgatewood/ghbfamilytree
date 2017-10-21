@@ -610,4 +610,12 @@ function get_profile_images($mid) {
 	return $ft_images_array;
 }
 
+/*------------------------------------------------------------------------------
+ * back_button() - Print a back button
+ *------------------------------------------------------------------------------*/
+function back_button() {
+
+	echo "<button onclick='Javascript:window.history.back();'>Go Back</button>";
+}
+
 ?>
