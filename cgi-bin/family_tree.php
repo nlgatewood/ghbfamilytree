@@ -59,7 +59,7 @@ echo "<div class='panel' style='position:absolute;'>
 				Click the image below for a visual representation of the Gatewood Family Tree (Currently not complete).
 			</div>
 
-			<a href='/family_echo/COMG/index.htm' class='newPopup'><img src='/images/family_echo.png' style='max-width:90%; height:auto;'></a>
+			<a href='/family_echo/index.htm' class='newPopup'><img src='/images/family_echo.png' style='max-width:90%; height:auto;'></a>
 
 			<div class='panel-text' style='font-size:10px;'>
 				(Family Echo (<a href='https://www.familyecho.com/'>www.familyecho.com/</a>) family is a free Family Tree builder created by  Familiality Ltd., a private company based in Tel Aviv.)
