@@ -47,7 +47,10 @@ echo "<TABLE id='main-tbl'>
        <TR>
         <TD>
          <div id='img-gallery'>
-            <a href='$main_profile_image' data-lightbox='image-1' data-title='$main_profile_caption'><img id='profile-img' src='$main_profile_image'></a>";
+            <div id='profile-img'>
+               <a href='$main_profile_image' data-lightbox='image-1' data-title='$main_profile_caption'><img src='$main_profile_image'>
+               </a>
+            </div>";
 
 //Print out the image link
 for($i=1; $i<count($ft_member_images);$i++){
