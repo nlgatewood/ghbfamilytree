@@ -216,7 +216,7 @@ if(count($ft_children_array) == 0){
 foreach($ft_children_array as $child_id => $child_array){
 
    $child_name      = $child_array['first_name']." ".$child_array['middle_name']." ".$child_array['last_name']." ".$child_array['suffix'];
-   $child_maiden    = ($child_array['maiden_name'] != null) ? " (n&eacute;e ".$ft_partner_array['maiden_name'].")" : '';
+   $child_maiden    = ($child_array['maiden_name'] != null) ? " (n&eacute;e ".$child_array['maiden_name'].")" : '';
    $child_birth     = format_date($child_array['birth_year'],$child_array['birth_month'],$child_array['birth_day'],'MM/DD/YYYY');
    $child_birth_loc = ($child_array['birth_loc']) ? ": ".$child_array['birth_loc'] : '';
    $child_death     = format_date($child_array['death_year'],$child_array['death_month'],$child_array['death_day'],'MM/DD/YYYY');
