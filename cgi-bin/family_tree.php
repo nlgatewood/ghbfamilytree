@@ -38,10 +38,10 @@ echo "<div class='panel' style='position:absolute;'>
 						<TD>".format_date(1654,NULL,NULL,'MM/DD/YYYY')." - ".format_date(1706,NULL,NULL,'MM/DD/YYYY')."</TD>
 					</TR>
 					<TR>
-						<TD><a href='/?pg=profile&mid=1011'>Atwell Bowcock Gatewood</a></TD>
+						<TD><a href='/?pg=profile&mid=1009'>Atwell Bowcock Gatewood</a></TD>
 						<TD>".format_date(1829,1,26,'MM/DD/YYYY')." - ".format_date(1919,7,22,'MM/DD/YYYY')."</TD>
 					<TR>
-						<TD><a href='/?pg=profile&mid=1160'>Commilus Atwell Gatewood</a></TD>
+						<TD><a href='/?pg=profile&mid=1011'>Commilus Atwell Gatewood</a></TD>
 						<TD>".format_date(1855,8,21,'MM/DD/YYYY')." - ".format_date(1937,5,23,'MM/DD/YYYY')."</TD>
 					<TR>
 						<TD><a href='/?pg=profile&mid=1053'>Ludie Gatewood</a></TD>
