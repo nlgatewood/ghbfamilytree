@@ -6,27 +6,44 @@
 	$pg        	 = isset($_GET["pg"]) ? $_GET["pg"] : '';
 	$mid       	 = isset($_POST["mid"]) ? $_POST["mid"] : '';
 	$opt		  	 = isset($_POST["opt"]) ? $_POST["opt"] : '';
+	$info_save   = isset($_POST["info_save"]) ? $_POST["info_save"] : '';
 	$submit_name = ($opt != null) ? $opt."_save" : "submit";
 	$ghb_conn  	 = get_mysqli_admin_object('ghbfamilytree');
 	$members_array;
 
 	//If the info edit form was submitted
-	if($_POST["info_save"] != null){
+	if($info_save != null){
 		
 		$field_names = array("first_name", "middle_name", "last_name", "maiden_name", "suffix",
 									"nicknames", "gender", "birth_year", "birth_month", "birth_day",
 									"birth_loc", "death_year", "death_month", "death_day", "death_loc", "burial_loc");
 									
 		$first_name = isset($_POST["first_name"]) ? $_POST["first_name"] : '';
-		$last_name = isset($_POST["first_name"]) ? $_POST["first_name"] : '';
-		$first_name = isset($_POST["first_name"]) ? $_POST["first_name"] : '';
+		$middle_name = isset($_POST["middle_name"]) ? $_POST["middle_name"] : '';
+		$last_name = isset($_POST["last_name"]) ? $_POST["last_name"] : '';
+      $maiden_name = isset($_POST["maiden_name"]) ? $_POST["maiden_name"] : '';
+      $suffix = isset($_POST["suffix"]) ? $_POST["suffix"] : '';
+      $nicknames = isset($_POST["nicknames"]) ? $_POST["nicknames"] : '';
+      $gender = isset($_POST["gender"]) ? $_POST["gender"] : '';
+      $birth_year = isset($_POST["birth_year"]) ? $_POST["birth_year"] : '';
+      $birth_month = isset($_POST["birth_month"]) ? $_POST["birth_month"] : '';
+      $birth_day = isset($_POST["birth_day"]) ? $_POST["birth_day"] : '';
+      $birth_loc = isset($_POST["birth_loc"]) ? $_POST["birth_loc"] : '';
+      $death_year = isset($_POST["death_year"]) ? $_POST["death_year"] : '';
+      $death_month = isset($_POST["death_month"]) ? $_POST["death_month"] : '';
+      $death_day = isset($_POST["death_day"]) ? $_POST["death_day"] : '';
+      $death_loc = isset($_POST["death_loc"]) ? $_POST["death_loc"] : '';
+      $burial_loc = isset($_POST["burial_loc"]) ? $_POST["burial_loc"] : '';
+      $update_cnt = 0;
 		
 		//Create the SQL Statement
 		$sql = "UPDATE ft_members SET ";
 		
 		foreach($field_names as $fld){
 			
-			$sql .= "$fld = ? ";
+			$update_cnt++;
+			$sql .= "$fld = ?";
+			$sql .= ($update_cnt < count($field_names)) ? "," : " ";
 		}
 		
 		$sql .= "WHERE id = ?";
@@ -34,7 +51,9 @@
 		//Update the table
 		if($stmt = $ghb_conn->prepare($sql)){
 			
-			$stmt->bind_param("i", $id); 
+			$stmt->bind_param("ssssssssssssssssi", $first_name,$middle_name,$last_name,$maiden_name,$suffix,$nicknames,$gender,
+                           $birth_year,$birth_month,$birth_day,$birth_loc,$death_year,$death_month,$death_day,
+                           $death_loc,$burial_loc,$mid); 
 			$stmt->execute();
 		}
 	}
