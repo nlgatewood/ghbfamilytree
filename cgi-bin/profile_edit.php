@@ -174,8 +174,8 @@
 									</TD>
 								<TR>
 									<TD></TD>
-									<TD>Buried Location<BR>
-										 <INPUT type='text' name='buried_loc' value='".$members_array['buried_loc']."' style='width:100%;'>
+									<TD>Burial Location<BR>
+										 <INPUT type='text' name='burial_loc' value='".$members_array['burial_loc']."' style='width:100%;'>
 									</TD>
 								</TR>
 								</TABLE>
