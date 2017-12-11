@@ -15,7 +15,7 @@
 		
 		$field_names = array("first_name", "middle_name", "last_name", "maiden_name", "suffix",
 									"nicknames", "gender", "birth_year", "birth_month", "birth_day",
-									"birth_loc", "death_year", "death_month", "death_day", "death_loc", "buried_loc");
+									"birth_loc", "death_year", "death_month", "death_day", "death_loc", "burial_loc");
 									
 		$first_name = isset($_POST["first_name"]) ? $_POST["first_name"] : '';
 		$last_name = isset($_POST["first_name"]) ? $_POST["first_name"] : '';
