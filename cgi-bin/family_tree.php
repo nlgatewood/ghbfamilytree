@@ -83,6 +83,14 @@ echo "<div id='search-box'>
                      <label id='top-label'>First Name</label>
                      <input type='text' name='first_name' class='search-input' value='".$query_flds['first_name']."'>
                   </div>
+                  <div class='search-fld'>
+                     <label id='top-label'>Specificity</label>
+							
+							<SELECT name='search_spec' class='search-input'>
+								<option value='exact' ".(($query_flds['search_spec'] == 'exact') ?"selected" : "").">Exact</option>
+								<option value='like' ".(($query_flds['search_spec'] == 'like') ?"selected" : "").">Like</option>
+							</SELECT>
+						</div>
                </div>
                <div class='search-section'>
                   <div class='search-fld'>
@@ -137,7 +145,6 @@ echo "<div id='search-box'>
                	<label>Sort By:</label>
                   <div class='search-fld'>
 							<SELECT name='sort_by' class='search-input'>
-                        <OPTION value=''></OPTION>
 								<OPTION value='name' ".(($query_flds['sort_by'] == 'name') ?"selected" : "").">Name</OPTION>
 								<OPTION value='birth_date' ".(($query_flds['sort_by'] == 'birth_date') ?"selected" : "").">Birth Date</OPTION>
 								<OPTION value='death_date' ".(($query_flds['sort_by'] == 'death_date') ?"selected" : "").">Death Date</OPTION>

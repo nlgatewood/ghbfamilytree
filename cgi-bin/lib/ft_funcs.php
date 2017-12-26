@@ -435,19 +435,26 @@ function build_members_list($id, &$ft_members_array, &$ft_output_list, $gen,$gro
 function get_search_results($query){
 
 	$query_flds = parse_query_field($query);
-   
+	$lper = '';
+
+	#If 'like' is selected	
+	if($query_flds['search_spec'] == 'like'){
+
+		$lper = '%';
+	}
+
 	//format for the search query
-   $last_name = "%".$query_flds['last_name']."%";
-   $first_name = "%".$query_flds['first_name']."%";
-   $gender = "%".$query_flds['gender']."%";
-   $birth_year = "%".$query_flds['birth_year']."%";
-   $birth_month = "%".$query_flds['birth_month']."%";
-   $birth_day = "%".$query_flds['birth_day']."%";
-   $birth_loc = "%".$query_flds['birth_loc']."%";
-   $death_year = "%".$query_flds['death_year']."%";
-   $death_month = "%".$query_flds['death_month']."%";
-   $death_day = "%".$query_flds['death_day']."%";
-   $death_loc = "%".$query_flds['death_loc']."%";
+   $last_name = $lper.$query_flds['last_name'].$lper;
+   $first_name = $lper.$query_flds['first_name'].$lper;
+   $gender = $query_flds['gender'];
+   $birth_year = $query_flds['birth_year'];
+   $birth_month = $lper.$query_flds['birth_month'];
+   $birth_day = $lper.$query_flds['birth_day'];
+   $birth_loc = '%'.$lper.$query_flds['birth_loc'].'%';
+   $death_year = $lper.$query_flds['death_year'];
+   $death_month = $lper.$query_flds['death_month'];
+   $death_day = $lper.$query_flds['death_day'];
+   $death_loc = '%'.$query_flds['death_loc'].'%';
 	$sort_by;
 
 	//Format sort String
@@ -546,7 +553,7 @@ function parse_query_field($query) {
    $query_flds = [];
 
 	//Initialize the fields
-	foreach(array('last_name','first_name','gender','birth_month','birth_day','birth_year','birth_loc','death_month','death_day','death_year','death_loc','sort_by') as $fld){
+	foreach(array('last_name','first_name','search_spec','gender','birth_month','birth_day','birth_year','birth_loc','death_month','death_day','death_year','death_loc','sort_by') as $fld){
 
 	   $query_flds[$fld] = null;
 	}

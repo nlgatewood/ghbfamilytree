@@ -62,21 +62,32 @@ $(document).ready(function() {
 /*------------------------------------------------------------------------------------
  * clearSearchFields() - Clear the search fields in the Family Tree search box
  *------------------------------------------------------------------------------------*/
- function clearSearchFields() {
+function clearSearchFields() {
  
-    $('.search-input').each(function(index,obj){
+	$('.search-input').each(function(index,obj){
 
-       var type = $(this).attr('type');
+		var type = $(this).attr('type');
+		var name = $(this).attr('name');
        
-       //Clear the radio buttons
-       if(type == "radio"){
+      //Clear the radio buttons
+      if(type == "radio"){
        
-          $(this).prop('checked', false);
-       }
-       //Clear everything else
-       else {
-       	$(this).val("");
-       }
+      	$(this).prop('checked', false);
+      }
+		// Change search spec back to exact
+      else if(name == "search_spec"){
+
+			$(this).val("exact");
+		}
+		// Change the sort by back to name
+      else if(name == "sort_by"){
+
+			$(this).val("name");
+		}
+      //Clear everything else
+		else{
+      	$(this).val("");
+      }
     });
  }
 
