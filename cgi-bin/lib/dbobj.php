@@ -15,7 +15,7 @@ function get_mysqli_object() {
 	global $pw;
 	
 	//Get the connection to the database
-	$conn = new mysqli('localhost',$user,$pw,'ghbfamilytree');
+	$conn = new mysqli('localhost',$user,$pw,'rsgcnovb_ghbfamilytree');
 
 	if($conn->connect_error){
 
