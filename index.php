@@ -28,23 +28,23 @@ elseif($page == "profile"){
 
 	include("./cgi-bin/profile.php");
 }
+elseif($page == "forum"){
+
+   include("./cgi-bin/forum.php");
+}
 elseif($page == "about"){
 
 	include("./cgi-bin/about.php");
 }
-elseif($page == "contact"){
-
-	include("./cgi-bin/contact.php");
-
-}elseif($page == "profile_edit"){
+elseif($page == "profile_edit"){
 
 	include("./cgi-bin/profile_edit.php");
-
-}elseif($page == "upload_profile_image"){
+}
+elseif($page == "upload_profile_image"){
 
 	include("./cgi-bin/upload_profile_image.php");
-
-}else{
+}
+else{
 	include("./cgi-bin/not_found.php");
 }
 

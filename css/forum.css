@@ -1,0 +1,14 @@
+/*-------------------------
+ * CSS file for 'forum.php
+ *-------------------------*/
+#forum-wrapper {
+
+	width: 99%;
+	height: auto;
+}
+
+#forum-frame {
+
+	width: 100%;
+	border: none;
+}

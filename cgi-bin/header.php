@@ -15,8 +15,10 @@ echo "
          <script language='JavaScript' src='/js/lib/lightbox/lightbox.js'></script>
          <script language='JavaScript' src='/js/HeaderMenuBar.js'></script>
          <script language='JavaScript' src='/js/FamilyTree.js'></script>
+         <script language='JavaScript' src='/js/Forum.js'></script>
 			<link href='/css/page_layout.css' rel='stylesheet'>
 			<link href='/css/family_tree.css' rel='stylesheet'>
+			<link href='/css/forum.css' rel='stylesheet'>
 			<link href='/css/lightbox/lightbox.css' rel='stylesheet'>
 		</HEAD>
 		<BODY".(($body_event) ? " ".$body_event : "").">
@@ -28,8 +30,8 @@ echo "
 					<li><a href='/?pg=family_origin'>Family Origins</a></li>
 					<li><a href='/?pg=family_history'>Family History</a></li>
 					<li><a href='/?pg=family_tree'>Family Search</a></li>
+					<li><a href='/?pg=forum'>Forum</a></li>
 					<li><a href='/?pg=about'>About</a></li>
-					<li><a href='/?pg=contact'>Contact</a></li>
 				</ul>
 		   </div>
 
