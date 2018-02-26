@@ -4,12 +4,15 @@
 #forum-wrapper {
 
 	width: 99%;
+	min-width: 99%;
 	height: auto;
 }
 
 #forum-frame {
 
 	width: 100%;
+	min-width: 100%;
+	min-height: 300px;
 	border: none;
 	background:url(../images/page_loading.gif) center center no-repeat;
 }
